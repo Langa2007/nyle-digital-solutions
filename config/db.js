@@ -1,6 +1,7 @@
-// config/db.js
 import dotenv from 'dotenv';
 dotenv.config();
+
+const isProd = process.env.NODE_ENV === 'production';
 
 export default {
   development: {
@@ -10,7 +11,7 @@ export default {
     host: process.env.DB_HOST,
     port: Number(process.env.DB_PORT) || 5432,
     dialect: 'postgres',
-    logging: console.log,
+    logging: false, // keep dev clean
   },
 
   test: {
@@ -24,13 +25,13 @@ export default {
   },
 
   production: {
-    use_env_variable: 'DATABASE_URL',
+    use_env_variable: 'DATABASE_URL', // REQUIRED for Neon + Render
     dialect: 'postgres',
     logging: false,
     dialectOptions: {
       ssl: {
         require: true,
-        rejectUnauthorized: false,
+        rejectUnauthorized: false, // Neon-compatible
       },
     },
     pool: {
