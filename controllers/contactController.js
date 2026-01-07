@@ -1,6 +1,6 @@
 // controllers/contactController.js
 import { validationResult } from 'express-validator';
-import { Contact } from '../models/index.js';
+import { Contact,Op } from '../models/index.js';
 import { 
   sendContactConfirmation, 
   sendAdminNotification 

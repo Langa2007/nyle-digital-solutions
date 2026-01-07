@@ -117,7 +117,6 @@ async function startServer() {
     
     // Sync models with database
     if (process.env.NODE_ENV === 'development') {
-      await sequelize.sync({ alter: true });
       logger.info(' Database synchronized');
     }
     

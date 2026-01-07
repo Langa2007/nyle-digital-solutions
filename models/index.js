@@ -1,6 +1,6 @@
-// models/index.js
-import { Sequelize } from 'sequelize';
-import config from '../config/database.js';
+// backend/models/index.js
+import { Sequelize, Op } from 'sequelize';
+import config from '../config/db.js';
 
 const env = process.env.NODE_ENV || 'development';
 const dbConfig = config[env];
@@ -26,28 +26,39 @@ if (env === 'production' && dbConfig.use_env_variable) {
   );
 }
 
-// Import models
-import User from './User.js';
-import JobApplication from './JobApplication.js';
-import Contact from './Contact.js';
-import BlogPost from './BlogPost.js';
-import Portfolio from './Portfolio.js';
-import Testimonial from './Testimonial.js';
-import Service from './Service.js';
-import HostingPlan from './HostingPlan.js';
-import Subscription from './Subscription.js';
+// Import all models
+import userModel from './users.js';
+import jobApplicationModel from './JobApplication.js';
+import contactModel from './Contact.js';
+import blogPostModel from './BlogPost.js';
+import portfolioModel from './Portfolio.js';
+import testimonialModel from './Testimonial.js';
+import serviceModel from './Service.js';
+import hostingPlanModel from './HostingPlan.js';
+import subscriptionModel from './Subscription.js';
 
 // Initialize models
+const User = userModel(sequelize, Sequelize.DataTypes);
+const JobApplication = jobApplicationModel(sequelize, Sequelize.DataTypes);
+const Contact = contactModel(sequelize, Sequelize.DataTypes);
+const BlogPost = blogPostModel(sequelize, Sequelize.DataTypes);
+const Portfolio = portfolioModel(sequelize, Sequelize.DataTypes);
+const Testimonial = testimonialModel(sequelize, Sequelize.DataTypes);
+const Service = serviceModel(sequelize, Sequelize.DataTypes);
+const HostingPlan = hostingPlanModel(sequelize, Sequelize.DataTypes);
+const Subscription = subscriptionModel(sequelize, Sequelize.DataTypes);
+
+// Store all models in an object
 const models = {
-  User: User(sequelize, Sequelize.DataTypes),
-  JobApplication: JobApplication(sequelize, Sequelize.DataTypes),
-  Contact: Contact(sequelize, Sequelize.DataTypes),
-  BlogPost: BlogPost(sequelize, Sequelize.DataTypes),
-  Portfolio: Portfolio(sequelize, Sequelize.DataTypes),
-  Testimonial: Testimonial(sequelize, Sequelize.DataTypes),
-  Service: Service(sequelize, Sequelize.DataTypes),
-  HostingPlan: HostingPlan(sequelize, Sequelize.DataTypes),
-  Subscription: Subscription(sequelize, Sequelize.DataTypes),
+  User,
+  JobApplication,
+  Contact,
+  BlogPost,
+  Portfolio,
+  Testimonial,
+  Service,
+  HostingPlan,
+  Subscription,
 };
 
 // Define associations
@@ -57,4 +68,19 @@ Object.keys(models).forEach(modelName => {
   }
 });
 
-export { sequelize, models };
+// Export everything
+export {
+  sequelize,
+  Sequelize,
+  Op,
+  User,
+  JobApplication,
+  Contact,
+  BlogPost,
+  Portfolio,
+  Testimonial,
+  Service,
+  HostingPlan,
+  Subscription,
+  models,
+};

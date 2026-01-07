@@ -1,7 +1,7 @@
 // src/app/dashboard/layout.tsx
 'use client';
 
-import { useAuth } from '@/hooks/useAuth';
+import { useAuth } from '@/hooks/UseAuth';
 import { redirect } from 'next/navigation';
 import DashboardSidebar from '@/components/dashboard/Sidebar';
 import DashboardHeader from '@/components/dashboard/Header';

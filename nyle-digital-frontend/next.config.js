@@ -2,16 +2,34 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
+
+  // swcMinify is now automatic in Next 15, so remove it
+  // swcMinify: true,
+
   images: {
-    domains: ['localhost', 'images.unsplash.com', 'res.cloudinary.com'],
+    // Use remotePatterns instead of deprecated domains
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+      },
+    ],
     formats: ['image/avif', 'image/webp'],
   },
+
   env: {
-    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api',
-    NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
-    NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
+    NEXT_PUBLIC_API_URL:
+      process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api',
+    NEXT_PUBLIC_SITE_URL:
+      process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+    NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY:
+      process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
   },
+
   async headers() {
     return [
       {
@@ -25,7 +43,11 @@ const nextConfig = {
       },
     ];
   },
+
   async rewrites() {
+    // Only proxy if NEXT_PUBLIC_API_URL is defined
+    if (!process.env.NEXT_PUBLIC_API_URL) return [];
+
     return [
       {
         source: '/api/:path*',

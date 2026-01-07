@@ -1,6 +1,6 @@
 // src/app/page.tsx
 import Hero from '@/components/sections/Hero';
-import Services from '@/components/sections/Services';
+import Services from '@/app/services/page';
 import Portfolio from '@/components/sections/Portfolio';
 import Testimonials from '@/components/sections/Testimonials';
 import Stats from '@/components/sections/Stats';

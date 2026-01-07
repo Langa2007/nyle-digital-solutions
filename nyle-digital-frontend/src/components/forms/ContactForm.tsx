@@ -5,9 +5,10 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { contactApi } from '@/lib/api/client';
+import { contactApi, type ContactFormData } from '@/lib/api/client'; // Import the type
 import toast from 'react-hot-toast';
 
+// Create the schema
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
   email: z.string().email('Invalid email address'),
@@ -25,12 +26,17 @@ const contactSchema = z.object({
     'digital_transformation',
     'consulting',
     'other'
-  ]).default('other'),
-  budget: z.enum(['1k-5k', '5k-20k', '20k-50k', '50k+', 'undecided']).default('undecided'),
-  timeline: z.enum(['urgent', '1-3months', '3-6months', '6months+']).default('3-6months'),
+  ]),
+  budget: z.enum(['1k-5k', '5k-20k', '20k-50k', '50k+', 'undecided']),
+  timeline: z.enum(['urgent', '1-3months', '3-6months', '6months+']),
 });
 
-type ContactFormData = z.infer<typeof contactSchema>;
+// Create a type for default values
+type FormDefaults = {
+  serviceType: ContactFormData['serviceType'];
+  budget: ContactFormData['budget'];
+  timeline: ContactFormData['timeline'];
+};
 
 const serviceOptions = [
   { value: 'custom_software', label: 'Custom Software Development' },
@@ -62,6 +68,12 @@ const timelineOptions = [
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   
+  const defaultValues: FormDefaults = {
+    serviceType: 'other',
+    budget: 'undecided',
+    timeline: '3-6months',
+  };
+
   const {
     register,
     handleSubmit,
@@ -69,11 +81,7 @@ export default function ContactForm() {
     formState: { errors },
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
-    defaultValues: {
-      serviceType: 'other',
-      budget: 'undecided',
-      timeline: '3-6months',
-    },
+    defaultValues: defaultValues as ContactFormData,
   });
 
   const onSubmit = async (data: ContactFormData) => {
@@ -81,7 +89,7 @@ export default function ContactForm() {
     try {
       await contactApi.submit(data);
       toast.success('Message sent successfully! We\'ll get back to you soon.');
-      reset();
+      reset(defaultValues);
     } catch (error: any) {
       toast.error(error.response?.data?.message || 'Failed to send message. Please try again.');
     } finally {

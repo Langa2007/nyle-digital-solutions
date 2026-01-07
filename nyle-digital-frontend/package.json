@@ -11,6 +11,8 @@
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
     "@stripe/stripe-js": "^8.6.1",
+    "@tanstack/react-query": "^5.90.16",
+    "@tanstack/react-query-devtools": "^5.91.2",
     "axios": "^1.13.2",
     "date-fns": "^4.1.0",
     "framer-motion": "^12.24.3",
@@ -25,12 +27,16 @@
     "react-intersection-observer": "^10.0.0",
     "react-markdown": "^10.1.0",
     "recharts": "^3.6.0",
+    "root": "github:tanstack/react-query",
     "stripe": "^20.1.0",
     "swr": "^2.3.8",
+    "tailwind-merge": "^3.4.0",
     "zod": "^4.3.5",
     "zustand": "^5.0.9"
   },
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.11",
+    "@tailwindcss/typography": "^0.5.19",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
