@@ -107,7 +107,7 @@ export default function Portfolio() {
                         className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
                       >
                         <ExternalLink className="h-4 w-4 mr-2" />
-                        Live Demo
+                        View
                       </a>
                       <a
                         href={project.githubUrl}

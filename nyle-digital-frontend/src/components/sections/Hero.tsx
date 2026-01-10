@@ -16,7 +16,7 @@ export default function Hero() {
             className="lg:w-1/2"
           >
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-sm font-medium mb-6">
-              🚀 Trusted by 500+ Companies
+               Trusted by 500+ Companies
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
               Transform Your Business with{' '}
