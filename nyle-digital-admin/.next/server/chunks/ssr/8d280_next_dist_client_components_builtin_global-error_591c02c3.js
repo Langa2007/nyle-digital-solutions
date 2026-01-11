@@ -1,0 +1,3 @@
+module.exports=[57367,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(28338);a.n(d("[project]/nyle-digital solutions/nyle-digital-admin/src/node_modules/next/dist/client/components/builtin/global-error.js <module evaluation>"))},17641,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(28338);a.n(d("[project]/nyle-digital solutions/nyle-digital-admin/src/node_modules/next/dist/client/components/builtin/global-error.js"))},16155,a=>{"use strict";a.i(57367);var b=a.i(17641);a.n(b)}];
+
+//# sourceMappingURL=8d280_next_dist_client_components_builtin_global-error_591c02c3.js.map

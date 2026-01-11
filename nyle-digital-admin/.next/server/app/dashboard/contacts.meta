@@ -1,0 +1,18 @@
+{
+  "status": 307,
+  "headers": {
+    "location": "/login",
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/dashboard/layout,_N_T_/dashboard/contacts/layout,_N_T_/dashboard/contacts/page,_N_T_/dashboard/contacts"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/dashboard/contacts/__PAGE__",
+    "/dashboard/contacts",
+    "/dashboard",
+    "/_index",
+    "/_head"
+  ]
+}
