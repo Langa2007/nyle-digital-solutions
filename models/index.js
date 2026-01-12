@@ -1,32 +1,7 @@
 // backend/models/index.js
+import dotenv from 'dotenv';
 import { Sequelize, Op } from 'sequelize';
-import config from '../config/db.js';
 
-const env = process.env.NODE_ENV || 'development';
-const dbConfig = config[env];
-
-let sequelize;
-if (env === 'production' && dbConfig.use_env_variable) {
-  sequelize = new Sequelize(process.env[dbConfig.use_env_variable], {
-    ...dbConfig,
-    logging: dbConfig.logging ? console.log : false,
-  });
-} else {
-  sequelize = new Sequelize(
-    dbConfig.database,
-    dbConfig.username,
-    dbConfig.password,
-    {
-      host: dbConfig.host,
-      port: dbConfig.port,
-      dialect: dbConfig.dialect,
-      logging: dbConfig.logging ? console.log : false,
-      pool: dbConfig.pool,
-    }
-  );
-}
-
-// Import all models
 import userModel from './users.js';
 import jobApplicationModel from './JobApplication.js';
 import contactModel from './contact.js';
@@ -37,7 +12,40 @@ import serviceModel from './Service.js';
 import hostingPlanModel from './HostingPlan.js';
 import subscriptionModel from './Subscription.js';
 
-// Initialize models
+dotenv.config();
+
+/* ===========================
+   Database (Neon FIRST)
+=========================== */
+
+const DATABASE_URL = process.env.DATABASE_URL;
+
+const sequelize = new Sequelize(
+  DATABASE_URL || 'postgres://localhost:5432/nyle_dev',
+  {
+    dialect: 'postgres',
+    logging: false,
+    dialectOptions: DATABASE_URL
+      ? {
+          ssl: {
+            require: true,
+            rejectUnauthorized: false,
+          },
+        }
+      : {},
+    pool: {
+      max: 5,
+      min: 0,
+      acquire: 30000,
+      idle: 10000,
+    },
+  }
+);
+
+/* ===========================
+   Models
+=========================== */
+
 const User = userModel(sequelize, Sequelize.DataTypes);
 const JobApplication = jobApplicationModel(sequelize, Sequelize.DataTypes);
 const Contact = contactModel(sequelize, Sequelize.DataTypes);
@@ -48,7 +56,10 @@ const Service = serviceModel(sequelize, Sequelize.DataTypes);
 const HostingPlan = hostingPlanModel(sequelize, Sequelize.DataTypes);
 const Subscription = subscriptionModel(sequelize, Sequelize.DataTypes);
 
-// Store all models in an object
+/* ===========================
+   Registry
+=========================== */
+
 const models = {
   User,
   JobApplication,
@@ -61,14 +72,20 @@ const models = {
   Subscription,
 };
 
-// Define associations
-Object.keys(models).forEach(modelName => {
-  if (models[modelName].associate) {
-    models[modelName].associate(models);
+/* ===========================
+   Associations
+=========================== */
+
+Object.values(models).forEach(model => {
+  if (typeof model.associate === 'function') {
+    model.associate(models);
   }
 });
 
-// Export everything
+/* ===========================
+   Exports
+=========================== */
+
 export {
   sequelize,
   Sequelize,
@@ -84,3 +101,5 @@ export {
   Subscription,
   models,
 };
+
+export default sequelize;

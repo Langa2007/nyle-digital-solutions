@@ -12,7 +12,7 @@ const dumpFile = path.join(__dirname, "nyle solutions_dump.sql");
 
 // Read from environment
 const LOCAL_DB = process.env.DATABASE_URL_LOCAL;
-const NEON_DB = process.env.DATABASE_URL_NEON;
+const NEON_DB = process.env.DATABASE_URL;
 
 // Validation
 if (!LOCAL_DB || !NEON_DB) {
