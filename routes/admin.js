@@ -3,14 +3,54 @@ import express from 'express';
 import { authenticate, authorize } from '../middleware/auth.js';
 import { Contact, JobApplication, BlogPost, Portfolio, Service } from '../models/index.js';
 import { Op } from 'sequelize';
+import multer from 'multer';
+import { v2 as cloudinary } from 'cloudinary';
+import streamifier from 'streamifier';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const router = express.Router();
 
-// All routes require admin authentication
+// ----------------------
+// Configure Cloudinary
+// ----------------------
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SECRET,
+});
+
+// ----------------------
+// Multer memory storage
+// ----------------------
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
+
+// ----------------------
+// Helper to upload files to Cloudinary
+// ----------------------
+const uploadToCloudinary = (fileBuffer, folder = 'nyle-digital') => {
+  return new Promise((resolve, reject) => {
+    const stream = cloudinary.uploader.upload_stream(
+      { folder },
+      (error, result) => {
+        if (result) resolve(result);
+        else reject(error);
+      }
+    );
+    streamifier.createReadStream(fileBuffer).pipe(stream);
+  });
+};
+
+// ----------------------
+// Middleware: Admin authentication
+// ----------------------
 router.use(authenticate);
 router.use(authorize(['admin', 'staff']));
 
+// ----------------------
 // Dashboard Stats
+// ----------------------
 router.get('/dashboard/stats', async (req, res) => {
   try {
     const [
@@ -46,7 +86,9 @@ router.get('/dashboard/stats', async (req, res) => {
   }
 });
 
+// ----------------------
 // Recent Activity
+// ----------------------
 router.get('/activity/recent', async (req, res) => {
   try {
     const [recentContacts, recentApplications] = await Promise.all([
@@ -75,8 +117,9 @@ router.get('/activity/recent', async (req, res) => {
         timestamp: app.createdAt,
         data: app,
       })),
-    ].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
-     .slice(0, 10);
+    ]
+      .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+      .slice(0, 10);
 
     res.json({ success: true, data: activities });
   } catch (error) {
@@ -84,39 +127,32 @@ router.get('/activity/recent', async (req, res) => {
   }
 });
 
-// File Upload Endpoint
-import multer from 'multer';
-import { CloudinaryStorage } from 'multer-storage-cloudinary';
-import cloudinary from '../config/cloudinary.js';
-
-const storage = new CloudinaryStorage({
-  cloudinary: cloudinary,
-  params: {
-    folder: 'nyle-digital',
-    allowed_formats: ['jpg', 'png', 'jpeg', 'gif', 'webp', 'pdf', 'doc', 'docx'],
-    transformation: [{ width: 1000, height: 1000, crop: 'limit' }],
-  },
-});
-
-const upload = multer({ storage });
-
-router.post('/upload/image', upload.single('image'), (req, res) => {
+// ----------------------
+// File Upload Endpoints
+// ----------------------
+router.post('/upload/image', upload.single('image'), async (req, res) => {
   try {
+    if (!req.file) return res.status(400).json({ success: false, error: 'No file uploaded' });
+
+    const result = await uploadToCloudinary(req.file.buffer, 'nyle-digital');
     res.json({
       success: true,
-      url: req.file.path,
-      public_id: req.file.filename,
+      url: result.secure_url,
+      public_id: result.public_id,
     });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
 });
 
-router.post('/upload/file', upload.single('file'), (req, res) => {
+router.post('/upload/file', upload.single('file'), async (req, res) => {
   try {
+    if (!req.file) return res.status(400).json({ success: false, error: 'No file uploaded' });
+
+    const result = await uploadToCloudinary(req.file.buffer, 'nyle-digital/files');
     res.json({
       success: true,
-      url: req.file.path,
+      url: result.secure_url,
       filename: req.file.originalname,
     });
   } catch (error) {
@@ -124,7 +160,9 @@ router.post('/upload/file', upload.single('file'), (req, res) => {
   }
 });
 
-// Bulk Actions
+// ----------------------
+// Bulk Actions for Contacts
+// ----------------------
 router.post('/contacts/bulk-action', async (req, res) => {
   try {
     const { ids, action } = req.body;
