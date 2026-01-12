@@ -29,7 +29,7 @@ if (env === 'production' && dbConfig.use_env_variable) {
 // Import all models
 import userModel from './users.js';
 import jobApplicationModel from './JobApplication.js';
-import contactModel from './Contact.js';
+import contactModel from './contact.js';
 import blogPostModel from './BlogPost.js';
 import portfolioModel from './Portfolio.js';
 import testimonialModel from './Testimonial.js';
