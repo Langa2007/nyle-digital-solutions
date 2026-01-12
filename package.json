@@ -7,10 +7,11 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "migrate": "node scripts/migrate.js",
+    "migrate": "node script/migrate.js",
     "docker:up": "docker-compose up -d",
     "docker:down": "docker-compose down",
-    "seed": "node scripts/Seed.js"
+    "seed": "node script/Seed.js",
+    "create-admin": "node script/create-admin.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

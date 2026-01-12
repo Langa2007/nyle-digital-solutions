@@ -33,8 +33,9 @@ app.use(
 
 const corsOptions = {
   origin: process.env.FRONTEND_URLS?.split(',') || [
-    'http://localhost:3000',
-    'http://localhost:5173',
+    'https://nyle-digital-solutions.onrender.com',
+    'https://nyle-digital-solutions.vercel.app',
+    'https://nyle-digital-solutions-9t9v.vercel.app'
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],

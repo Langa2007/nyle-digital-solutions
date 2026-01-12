@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { useAuthStore } from '@/lib/store/authStore';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://nyle-digital-solutions.onrender.com/api';
 
 const adminClient = axios.create({
   baseURL: API_BASE_URL,

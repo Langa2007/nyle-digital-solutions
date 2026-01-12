@@ -21,7 +21,7 @@ dotenv.config();
 const DATABASE_URL = process.env.DATABASE_URL;
 
 const sequelize = new Sequelize(
-  DATABASE_URL || 'postgres://localhost:5432/nyle_dev',
+  DATABASE_URL || 'postgresql://neondb_owner:npg_bom31SAqBDNv@ep-bold-cell-a4ofu86m-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require',
   {
     dialect: 'postgres',
     logging: false,
