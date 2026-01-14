@@ -14,140 +14,108 @@ const logger = createLogger('server');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// ---------------- Security Middleware ----------------
+/* ---------------- Helmet ---------------- */
 app.use(
   helmet({
-    contentSecurityPolicy: {
-      directives: {
-        defaultSrc: ["'self'"],
-        styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
-        scriptSrc: ["'self'", "'unsafe-inline'"],
-        fontSrc: ["'self'", 'https://fonts.gstatic.com'],
-        imgSrc: ["'self'", 'data:', 'https:'],
-        connectSrc: ["'self'"],
-      },
-    },
+    crossOriginResourcePolicy: { policy: 'cross-origin' },
     crossOriginEmbedderPolicy: false,
   })
 );
 
-const corsOptions = {
-  origin: process.env.FRONTEND_URLS?.split(',') || [
-    'https://nyle-digital-solutions.onrender.com',
-    'https://nyle-digital-solutions.vercel.app',
-    'https://nyle-digital-solutions-9t9v.vercel.app'
-  ],
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
-  exposedHeaders: ['Content-Range', 'X-Content-Range'],
-};
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
+/* ---------------- CORS (FIXED) ---------------- */
+const allowedOrigins = (process.env.FRONTEND_URLS || '')
+  .split(',')
+  .map(o => o.trim())
+  .filter(Boolean);
 
-// ---------------- Rate Limiters ----------------
-const apiLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 200,
-  standardHeaders: true,
-  legacyHeaders: false,
-  message: { error: 'Too many requests from this IP, please try again later.' },
-});
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // Allow server-to-server, curl, health checks
+      if (!origin) return callback(null, true);
 
-const authLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 20,
-  message: { error: 'Too many authentication attempts, please try again later.' },
-});
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
 
-app.use('/api', apiLimiter);
-app.use('/api/auth', authLimiter);
+      // ❗ DO NOT THROW — just deny quietly
+      return callback(null, false);
+    },
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  })
+);
 
-// ---------------- Body Parsing & Compression ----------------
+// Always respond to preflight
+app.options('*', cors());
+
+/* ---------------- Rate Limiting ---------------- */
+app.use(
+  '/api',
+  rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 200,
+  })
+);
+
+app.use(
+  '/api/auth',
+  rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 20,
+  })
+);
+
+/* ---------------- Middleware ---------------- */
 app.use(compression());
 app.use(cookieParser());
 app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+app.use(express.urlencoded({ extended: true }));
 
-// ---------------- Request Logging ----------------
+/* ---------------- Logger ---------------- */
 app.use((req, res, next) => {
-  logger.info(`${req.method} ${req.url}`, {
-    ip: req.ip,
-    userAgent: req.get('User-Agent'),
-  });
+  logger.info(`${req.method} ${req.originalUrl}`);
   next();
 });
 
-// ---------------- Routes ----------------
+/* ---------------- Routes ---------------- */
 app.use('/api', routes);
 
-// ---------------- Health Check ----------------
+/* ---------------- Health ---------------- */
 app.get('/health', async (req, res) => {
-  let dbStatus = 'disconnected';
+  let db = 'disconnected';
   try {
     await sequelize.authenticate();
-    dbStatus = 'connected';
+    db = 'connected';
   } catch {}
-  res.status(200).json({
+  res.json({
     status: 'healthy',
-    timestamp: new Date().toISOString(),
-    uptime: process.uptime(),
-    database: dbStatus,
+    database: db,
     environment: process.env.NODE_ENV || 'development',
   });
 });
 
-// ---------------- 404 Handler ----------------
-app.use('*', (req, res) => {
-  logger.warn(`404 Not Found: ${req.method} ${req.originalUrl}`);
-  res.status(404).json({
-    error: 'Not Found',
-    message: `Cannot ${req.method} ${req.originalUrl}`,
-    path: req.originalUrl,
-  });
-});
-
-// ---------------- Error Handler ----------------
+/* ---------------- Errors ---------------- */
 app.use(errorHandler);
 
-// ---------------- Start Server ----------------
-async function startServer() {
+/* ---------------- Start ---------------- */
+async function start() {
   try {
     logger.info(
-      `🗄️  Database target: ${
-        process.env.DATABASE_URL ? 'Neon (cloud)' : 'Local PostgreSQL'
-      }`
+      `🗄️ DB: ${process.env.DATABASE_URL ? 'Neon' : 'Local'}`
     );
 
     await sequelize.authenticate();
-    logger.info('✅ PostgreSQL database connected successfully');
+    logger.info(' Database connected');
 
     app.listen(PORT, () => {
-      logger.info(` Server running on port ${PORT}`);
-      logger.info(` Environment: ${process.env.NODE_ENV || 'development'}`);
-      logger.info(
-        ` Health check: ${
-          process.env.NODE_ENV === 'production' ? '/health' : `http://localhost:${PORT}/health`
-        }`
-      );
+      logger.info(` Server running on ${PORT}`);
     });
-  } catch (error) {
-    logger.error(' Server startup failed', error);
+  } catch (err) {
+    logger.error('Startup failed', err);
     process.exit(1);
   }
 }
 
-// ---------------- Graceful Shutdown ----------------
-process.on('SIGTERM', async () => {
-  logger.info('SIGTERM received, shutting down gracefully');
-  await sequelize.close();
-  process.exit(0);
-});
-
-process.on('SIGINT', async () => {
-  logger.info('SIGINT received, shutting down gracefully');
-  await sequelize.close();
-  process.exit(0);
-});
-
-startServer();
+start();
