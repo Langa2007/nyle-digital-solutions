@@ -254,7 +254,7 @@ export default function LoginPage() {
             {/* Back to Main Site */}
             <div className="mt-8 pt-6 border-t border-gray-100">
               <Link
-                href={process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}
+                href={process.env.NEXT_PUBLIC_SITE_URL || 'https://nyle-digital-solutions.vercel.app'}
                 target="_blank"
                 className="flex items-center justify-center text-sm text-gray-600 hover:text-gray-900"
               >
