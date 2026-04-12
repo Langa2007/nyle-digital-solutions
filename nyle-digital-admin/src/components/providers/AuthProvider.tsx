@@ -9,7 +9,7 @@ interface AuthProviderProps {
 }
 
 export function AuthProvider({ children }: AuthProviderProps) {
-  const auth = useAuth();
+  useAuth();
 
   return <>{children}</>;
 }

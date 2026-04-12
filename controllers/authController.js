@@ -11,20 +11,31 @@ const generateToken = (id) => {
   });
 };
 
+const getCookieOptions = () => ({
+  expires: new Date(
+    Date.now() + (process.env.JWT_COOKIE_EXPIRE || 7) * 24 * 60 * 60 * 1000
+  ),
+  httpOnly: true,
+  secure: process.env.NODE_ENV === 'production',
+  sameSite: 'lax',
+});
+
+const getPrimarySiteUrl = () => {
+  const urls = [
+    process.env.NEXT_PUBLIC_SITE_URL,
+    process.env.FRONTEND_URL,
+    ...(process.env.FRONTEND_URLS || '')
+      .split(',')
+      .map((origin) => origin.trim()),
+  ].filter(Boolean);
+
+  return urls[0] || '';
+};
+
 // Send token response
 const sendTokenResponse = (user, statusCode, res) => {
   const token = generateToken(user.id);
-
-  const cookieOptions = {
-    expires: new Date(
-      Date.now() + (process.env.JWT_COOKIE_EXPIRE || 7) * 24 * 60 * 60 * 1000
-    ),
-    httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'strict',
-  };
-
-  res.cookie('token', token, cookieOptions);
+  res.cookie('token', token, getCookieOptions());
 
   res.status(statusCode).json({
     success: true,
@@ -200,8 +211,8 @@ export const updatePassword = async (req, res, next) => {
 export const logout = async (req, res, next) => {
   try {
     res.cookie('token', 'none', {
+      ...getCookieOptions(),
       expires: new Date(Date.now() + 10 * 1000),
-      httpOnly: true,
     });
 
     res.json({
@@ -234,7 +245,10 @@ export const forgotPassword = async (req, res, next) => {
     );
 
     // In production, send email with reset link
-    const resetUrl = `${process.env.FRONTEND_URL}/reset-password/${resetToken}`;
+    const siteUrl = getPrimarySiteUrl();
+    const resetUrl = siteUrl
+      ? `${siteUrl}/reset-password/${resetToken}`
+      : `/reset-password/${resetToken}`;
 
     // For now, just return the token (in production, send email)
     res.json({

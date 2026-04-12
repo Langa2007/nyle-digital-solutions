@@ -12,7 +12,7 @@ export const useAuth = () => {
     if (token && !user) {
       try {
         const response = await adminApi.get('/auth/me');
-        login(response.data, token);
+        login(response.data.data, token);
       } catch (error) {
         logout();
       }

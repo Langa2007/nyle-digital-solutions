@@ -1,12 +1,11 @@
-// src/app/dashboard/layout.tsx
 'use client';
 
 import { useState } from 'react';
+import { redirect } from 'next/navigation';
+import { Loader2 } from 'lucide-react';
 import Sidebar from '@/components/layout/Sidebar';
 import Header from '@/components/layout/Header';
 import { useAuth } from '@/hooks/useAuth';
-import { redirect } from 'next/navigation';
-import { Loader2 } from 'lucide-react';
 
 export default function DashboardLayout({
   children,
@@ -18,7 +17,7 @@ export default function DashboardLayout({
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="flex min-h-screen items-center justify-center bg-[var(--color-admin-bg)]">
         <Loader2 className="h-8 w-8 animate-spin text-blue-600" />
       </div>
     );
@@ -29,16 +28,14 @@ export default function DashboardLayout({
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[var(--color-admin-bg)]">
       <Sidebar open={sidebarOpen} setOpen={setSidebarOpen} />
-      
-      <div className="lg:pl-64">
+
+      <div className="lg:pl-72">
         <Header setSidebarOpen={setSidebarOpen} />
-        
-        <main className="py-6">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {children}
-          </div>
+
+        <main className="px-4 pb-8 pt-6 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">{children}</div>
         </main>
       </div>
     </div>

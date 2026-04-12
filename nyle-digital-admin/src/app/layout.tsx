@@ -1,16 +1,12 @@
-// src/app/layout.tsx
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import './globals.css';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from '../components/providers/AuthProvider';
 import { ReactQueryProvider } from '@/components/providers/ReactQueryProvider';
 
-const inter = Inter({ subsets: ['latin'] });
-
 export const metadata: Metadata = {
-  title: 'Nyle Digital Admin Dashboard',
-  description: 'Administration dashboard for Nyle Digital Solutions',
+  title: 'Nyle Digital Admin',
+  description: 'Admin dashboard for Nyle Digital Solutions',
 };
 
 export default function RootLayout({
@@ -20,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-gray-50`}>
+      <body className="bg-[var(--color-admin-bg)] text-[var(--color-admin-ink)]">
         <ReactQueryProvider>
           <AuthProvider>
             {children}
@@ -29,8 +25,9 @@ export default function RootLayout({
               toastOptions={{
                 duration: 4000,
                 style: {
-                  background: '#363636',
-                  color: '#fff',
+                  background: '#0f172a',
+                  color: '#e2e8f0',
+                  border: '1px solid rgba(148, 163, 184, 0.18)',
                 },
               }}
             />

@@ -1,126 +1,130 @@
-// src/components/sections/Portfolio.tsx
 'use client';
 
+import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
+import { ArrowRight, BadgeCheck } from 'lucide-react';
 
 const projects = [
   {
-    title: 'E-Commerce Platform',
-    category: 'Web Application',
-    description: 'A full-featured e-commerce solution with real-time inventory management.',
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800',
-    tags: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
-    liveUrl: '#',
-    githubUrl: '#',
+    title: 'Commerce Operations Platform',
+    category: 'Web Platform',
+    description:
+      'A multi-role commerce stack with ordering flows, service dashboards, and operational reporting.',
+    image:
+      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800',
+    tags: ['Next.js', 'Node.js', 'PostgreSQL', 'Payments'],
   },
   {
-    title: 'Healthcare Management System',
-    category: 'Enterprise Software',
-    description: 'HIPAA-compliant patient management system for healthcare providers.',
-    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?auto=format&fit=crop&w=800',
-    tags: ['Next.js', 'Python', 'MongoDB', 'AWS'],
-    liveUrl: '#',
-    githubUrl: '#',
+    title: 'Health Services Admin System',
+    category: 'Internal Operations',
+    description:
+      'A scheduling and records platform designed to reduce manual coordination across internal teams.',
+    image:
+      'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?auto=format&fit=crop&w=800',
+    tags: ['React', 'API Services', 'Audit Logs', 'Cloud Hosting'],
   },
   {
-    title: 'Fitness Mobile App',
-    category: 'Mobile Application',
-    description: 'Cross-platform fitness app with workout tracking and social features.',
-    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800',
-    tags: ['React Native', 'Firebase', 'Redux', 'Apple Health'],
-    liveUrl: '#',
-    githubUrl: '#',
+    title: 'Member Experience Mobile Suite',
+    category: 'Mobile Product',
+    description:
+      'Cross-platform product experience with onboarding, notifications, and user account workflows.',
+    image:
+      'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800',
+    tags: ['Mobile UX', 'Notifications', 'Support Tools', 'Analytics'],
   },
   {
-    title: 'FinTech Dashboard',
-    category: 'SaaS Product',
-    description: 'Real-time financial analytics dashboard for investment firms.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800',
-    tags: ['Vue.js', 'D3.js', 'FastAPI', 'Docker'],
-    liveUrl: '#',
-    githubUrl: '#',
+    title: 'Finance Insight Dashboard',
+    category: 'SaaS Delivery',
+    description:
+      'A metrics-focused dashboard that turns fragmented reporting into a single decision layer.',
+    image:
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800',
+    tags: ['Data Flows', 'Role Access', 'Infrastructure', 'Visualization'],
   },
 ];
 
 export default function Portfolio() {
   return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-900">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Featured <span className="text-blue-600">Projects</span>
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            See how we've helped businesses transform with cutting-edge technology solutions.
+    <section className="bg-slate-50/75 py-20 dark:bg-slate-950/40">
+      <div className="section-shell">
+        <div className="mb-14 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-2xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-blue-600 dark:text-blue-300">
+              Selected work
+            </p>
+            <h2 className="mt-4 text-3xl font-semibold text-slate-950 dark:text-white sm:text-4xl">
+              Delivery examples that balance interface quality with backend discipline.
+            </h2>
+          </div>
+          <p className="max-w-xl text-base leading-8 text-slate-600 dark:text-slate-300">
+            Each project card reflects the direction of the redesign: cleaner hierarchy,
+            stronger blue accents, and a clearer connection between user experience and
+            operational systems.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+            <motion.article
+              key={project.title}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, delay: index * 0.08 }}
               viewport={{ once: true }}
               className="group"
             >
-              <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-                <div className="relative overflow-hidden">
+              <div className="glass-panel overflow-hidden rounded-[2rem]">
+                <div className="relative h-72 overflow-hidden">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-blue-600 text-white text-sm font-medium rounded-full">
+                  <div className="absolute inset-x-0 top-0 flex items-center justify-between p-5">
+                    <span className="rounded-full bg-blue-600 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-white">
                       {project.category}
+                    </span>
+                    <span className="rounded-full border border-white/25 bg-slate-950/55 px-3 py-1 text-xs font-medium text-white backdrop-blur">
+                      In production thinking
                     </span>
                   </div>
                 </div>
-                
+
                 <div className="p-8">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  <h3 className="text-2xl font-semibold text-slate-950 dark:text-white">
                     {project.title}
                   </h3>
-                  
-                  <p className="text-gray-600 dark:text-gray-300 mb-6">
+                  <p className="mt-4 text-base leading-8 text-slate-600 dark:text-slate-300">
                     {project.description}
                   </p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tags.map((tag, idx) => (
+
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
                       <span
-                        key={idx}
-                        className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm rounded-full"
+                        key={tag}
+                        className="rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-sm text-slate-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-300"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
-                  
-                  <div className="flex items-center justify-between">
-                    <div className="flex gap-4">
-                      <a
-                        href={project.liveUrl}
-                        className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
-                      >
-                        <ExternalLink className="h-4 w-4 mr-2" />
-                        View
-                      </a>
-                      <a
-                        href={project.githubUrl}
-                        className="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 hover:border-blue-600 dark:hover:border-blue-500 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium rounded-lg transition-colors"
-                      >
-                        <Github className="h-4 w-4 mr-2" />
-                        Code
-                      </a>
+
+                  <div className="mt-7 flex flex-wrap items-center gap-4">
+                    <div className="inline-flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-300">
+                      <BadgeCheck className="h-4 w-4 text-blue-600 dark:text-blue-300" />
+                      Strategy, build, and launch support
                     </div>
+                    <Link
+                      href="/#contact"
+                      className="inline-flex items-center text-sm font-semibold text-blue-700 hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-200"
+                    >
+                      Request a similar build
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
       </div>

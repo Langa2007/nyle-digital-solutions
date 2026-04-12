@@ -1,49 +1,72 @@
-/* src/app/globals.css */
 @import "tailwindcss";
 
+@theme {
+  --color-admin-bg: #f4f8ff;
+  --color-admin-surface: #ffffff;
+  --color-admin-border: rgba(148, 163, 184, 0.22);
+  --color-admin-ink: #0f172a;
+  --color-admin-muted: #64748b;
+  --color-admin-blue: #2563eb;
+}
+
 @layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-gray-50 text-gray-900;
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at top left, rgba(37, 99, 235, 0.14), transparent 30%),
+      linear-gradient(180deg, #eff6ff 0%, #f8fbff 48%, #ffffff 100%);
+    color: var(--color-admin-ink);
   }
 }
 
 @layer components {
+  .admin-shell {
+    @apply border border-slate-200/70 bg-white/80 shadow-[0_24px_60px_-34px_rgba(15,23,42,0.28)] backdrop-blur-xl;
+  }
+
   .btn-primary {
-    @apply px-4 py-2 bg-blue-600 text-white rounded-lg
-      hover:bg-blue-700 focus:outline-none focus:ring-2
-      focus:ring-blue-500 focus:ring-offset-2 transition-colors;
+    @apply inline-flex items-center justify-center rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-blue-600/20 transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
   }
 
   .btn-secondary {
-    @apply px-4 py-2 border border-gray-300 text-gray-700
-      rounded-lg hover:bg-gray-50 focus:outline-none
-      focus:ring-2 focus:ring-gray-500 focus:ring-offset-2;
+    @apply inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-blue-200 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
   }
 
   .input-field {
-    @apply block w-full px-3 py-2 border border-gray-300
-      rounded-lg focus:outline-none focus:ring-2
-      focus:ring-blue-500 focus:border-blue-500;
+    @apply block w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-400 focus:ring-4 focus:ring-blue-100;
   }
 
   .card {
-    @apply bg-white rounded-lg shadow-sm border border-gray-200;
+    @apply rounded-[1.5rem] border border-slate-200/70 bg-white/80 shadow-[0_24px_60px_-34px_rgba(15,23,42,0.28)] backdrop-blur-xl;
   }
 }
 
-/* Scrollbar */
+::selection {
+  background: rgba(37, 99, 235, 0.22);
+  color: #0f172a;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gray-100;
+  background: #e2e8f0;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-400 rounded-full;
+  background: #94a3b8;
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-500;
+  background: #64748b;
 }

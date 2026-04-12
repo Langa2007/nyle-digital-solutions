@@ -12,3 +12,6 @@
 {"level":"info","message":" Environment: production","service":"server","timestamp":"2026-01-12 19:53:58"}
 {"level":"info","message":" Health check: /health","service":"server","timestamp":"2026-01-12 19:53:58"}
 {"level":"info","message":"SIGINT received, shutting down gracefully","service":"server","timestamp":"2026-01-12 19:55:31"}
+{"level":"info","message":"DB: Remote","service":"server","timestamp":"2026-04-12 17:44:48"}
+{"level":"info","message":"Database connected","service":"server","timestamp":"2026-04-12 17:44:56"}
+{"level":"info","message":"Server running on 5000","service":"server","timestamp":"2026-04-12 17:44:56"}

@@ -1,238 +1,164 @@
-// src/app/services/page.tsx
-import ServiceCard from '@/components/sections/ServiceCard';
 import CTASection from '@/components/sections/CTASection';
+import ServiceCard from '@/components/sections/ServiceCard';
 
 const services = [
   {
-    title: 'Custom Software Development',
-    description: 'Tailored software solutions designed specifically for your business needs and workflows.',
-    icon: '💻',
+    title: 'Custom Software Delivery',
+    description:
+      'Business systems designed around your workflows, reporting needs, and customer journeys.',
+    icon: '</>',
     features: [
-      'Requirement Analysis & Planning',
-      'Agile Development Methodology',
-      'Quality Assurance & Testing',
-      'Deployment & Maintenance',
-      'Technical Documentation',
+      'Discovery workshops and scope mapping',
+      'Agile product delivery',
+      'QA, release planning, and documentation',
+      'Post-launch support',
     ],
-    cta: 'Get a Quote',
-    link: '/contact?service=custom_software',
+    cta: 'Discuss your build',
+    link: '/#contact',
   },
   {
-    title: 'Web Applications',
-    description: 'Modern, responsive web applications built with React, Next.js, and Node.js.',
-    icon: '🌐',
+    title: 'Web Platforms',
+    description:
+      'Conversion-ready web applications with fast interfaces, solid APIs, and maintainable architecture.',
+    icon: 'WEB',
     features: [
-      'Frontend Development (React/Next.js)',
-      'Backend API Development',
-      'Database Design & Optimization',
-      'Performance & SEO Optimization',
-      'Progressive Web Apps',
+      'Next.js and React frontend systems',
+      'API and data model design',
+      'Performance and SEO optimisation',
+      'Analytics and conversion setup',
     ],
-    cta: 'View Portfolio',
-    link: '/portfolio?type=web',
+    cta: 'See delivery approach',
+    link: '/#portfolio',
   },
   {
-    title: 'Mobile Apps',
-    description: 'Cross-platform mobile applications using React Native and Flutter.',
-    icon: '📱',
+    title: 'Mobile Products',
+    description:
+      'Cross-platform mobile experiences shaped for launch speed, usability, and scale.',
+    icon: 'APP',
     features: [
-      'iOS & Android Development',
-      'UI/UX Design & Prototyping',
-      'API Integration',
-      'App Store Deployment',
-      'Push Notifications',
+      'iOS and Android delivery',
+      'Product prototyping and UX refinement',
+      'Backend integration',
+      'Release support and monitoring',
     ],
-    cta: 'Learn More',
-    link: '/services/mobile-apps',
+    cta: 'Plan a mobile rollout',
+    link: '/#contact',
   },
   {
-    title: 'Cloud & Infrastructure',
-    description: 'Scalable cloud solutions with AWS, Azure, GCP, and Docker/Kubernetes.',
-    icon: '☁️',
+    title: 'Cloud and Infrastructure',
+    description:
+      'Deployment pipelines, hosting environments, and cloud operations that keep delivery stable.',
+    icon: 'OPS',
     features: [
-      'Cloud Migration Strategy',
-      'VPS Hosting & Management',
-      'Docker & Kubernetes Setup',
-      'CI/CD Pipeline Implementation',
-      '24/7 Server Monitoring',
+      'Cloud migration and hosting setup',
+      'CI/CD pipeline support',
+      'Monitoring and maintenance',
+      'Security hardening',
     ],
-    cta: 'View Plans',
-    link: '/hosting',
+    cta: 'Review cloud readiness',
+    link: '/#impact',
   },
   {
     title: 'Digital Transformation',
-    description: 'Modernize legacy systems and transform your business with cutting-edge technology.',
-    icon: '🔄',
+    description:
+      'Legacy modernisation and process redesign for teams that need better operational flow.',
+    icon: 'FLOW',
     features: [
-      'Legacy System Modernization',
-      'API Development & Integration',
-      'Microservices Architecture',
-      'Digital Strategy Consulting',
-      'Process Automation',
+      'Legacy system assessment',
+      'Workflow automation planning',
+      'Platform integration design',
+      'Change support for internal teams',
     ],
-    cta: 'Start Transformation',
-    link: '/contact?service=digital_transformation',
+    cta: 'Start transformation',
+    link: '/#contact',
   },
   {
-    title: 'Consulting Services',
-    description: 'Expert tech stack advisory, architecture design, and team augmentation.',
-    icon: '🎯',
+    title: 'Product and Architecture Advisory',
+    description:
+      'Senior technical guidance for roadmap choices, platform structure, and delivery recovery.',
+    icon: 'ADV',
     features: [
-      'Tech Stack Advisory',
-      'System Architecture Design',
-      'Team Augmentation',
-      'Project Rescue & Auditing',
-      'Code Review & Optimization',
+      'Architecture reviews',
+      'Roadmap and scope coaching',
+      'Technical due diligence',
+      'Delivery rescue support',
     ],
-    cta: 'Book Consultation',
-    link: '/contact?service=consulting',
+    cta: 'Book an advisory session',
+    link: '/#contact',
   },
 ];
 
 export default function ServicesPage() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-              Our <span className="text-blue-600">Services</span>
-            </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-              Comprehensive technology solutions to transform your business and drive growth.
-            </p>
+      <section className="pb-14 pt-8">
+        <div className="section-shell">
+          <div className="glass-panel rounded-[2rem] px-6 py-10 sm:px-10">
+            <div className="max-w-3xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-blue-600 dark:text-blue-300">
+                Service focus
+              </p>
+              <h1 className="mt-4 text-4xl font-semibold text-slate-950 dark:text-white sm:text-5xl">
+                Delivery lines built to keep product, brand, and operations aligned.
+              </h1>
+              <p className="mt-5 text-lg text-slate-600 dark:text-slate-300">
+                The UI refresh stays blue-forward, but the bigger change is clarity.
+                Each service line now speaks more directly to outcomes, delivery rhythm,
+                and the systems that support growth after launch.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <ServiceCard
-                key={index}
-                {...service}
-              />
+      <section className="pb-16">
+        <div className="section-shell">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
+            {services.map((service) => (
+              <ServiceCard key={service.title} {...service} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Process Section */}
-      <section className="bg-gray-50 dark:bg-gray-900 py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-              Our Process
-            </h2>
-            <p className="text-gray-600 dark:text-gray-300">
-              A systematic approach to ensure successful project delivery
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <section className="pb-16">
+        <div className="section-shell">
+          <div className="grid gap-6 lg:grid-cols-4">
             {[
-              { number: '01', title: 'Discovery', desc: 'Understand your requirements and goals' },
-              { number: '02', title: 'Planning', desc: 'Create detailed roadmap and architecture' },
-              { number: '03', title: 'Development', desc: 'Agile development with regular updates' },
-              { number: '04', title: 'Delivery', desc: 'Deployment, training, and support' },
-            ].map((step, index) => (
-              <div key={index} className="text-center">
-                <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+              {
+                number: '01',
+                title: 'Discovery',
+                desc: 'We define the problem, users, and delivery scope before code work begins.',
+              },
+              {
+                number: '02',
+                title: 'Design',
+                desc: 'Flows, layouts, and service boundaries are tightened before implementation.',
+              },
+              {
+                number: '03',
+                title: 'Delivery',
+                desc: 'Frontend, backend, and admin work move in sync instead of drifting apart.',
+              },
+              {
+                number: '04',
+                title: 'Support',
+                desc: 'We stabilize launch, refine analytics, and support the next release cycle.',
+              },
+            ].map((step) => (
+              <div
+                key={step.number}
+                className="glass-panel rounded-[1.75rem] px-6 py-7 text-left"
+              >
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-600 text-lg font-semibold text-white">
                   {step.number}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                <h2 className="text-xl font-semibold text-slate-950 dark:text-white">
                   {step.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
+                </h2>
+                <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
                   {step.desc}
                 </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-              Flexible Pricing
-            </h2>
-            <p className="text-gray-600 dark:text-gray-300">
-              Choose the plan that fits your needs
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                name: 'Basic',
-                price: '$2,999',
-                period: 'per project',
-                features: ['Up to 5 pages', 'Responsive Design', 'Basic SEO', 'Contact Form', '6 months support'],
-                cta: 'Get Started',
-                popular: false,
-              },
-              {
-                name: 'Professional',
-                price: '$7,999',
-                period: 'per project',
-                features: ['Up to 15 pages', 'Custom Design', 'Advanced SEO', 'CMS Integration', '1 year support', 'API Integration'],
-                cta: 'Get Started',
-                popular: true,
-              },
-              {
-                name: 'Enterprise',
-                price: 'Custom',
-                period: 'tailored pricing',
-                features: ['Unlimited pages', 'Full Customization', 'Enterprise SEO', 'Custom CMS', 'Priority Support', 'Dedicated Team'],
-                cta: 'Contact Sales',
-                popular: false,
-              },
-            ].map((plan, index) => (
-              <div
-                key={index}
-                className={`rounded-2xl border ${plan.popular ? 'border-blue-500 shadow-xl' : 'border-gray-200 dark:border-gray-700'} p-8`}
-              >
-                {plan.popular && (
-                  <div className="inline-block px-4 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold mb-4">
-                    Most Popular
-                  </div>
-                )}
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                  {plan.name}
-                </h3>
-                <div className="mb-6">
-                  <span className="text-4xl font-bold text-gray-900 dark:text-white">
-                    {plan.price}
-                  </span>
-                  <span className="text-gray-600 dark:text-gray-400 ml-2">
-                    {plan.period}
-                  </span>
-                </div>
-                <ul className="space-y-3 mb-8">
-                  {plan.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-gray-600 dark:text-gray-400">
-                      <svg className="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                      </svg>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  className={`w-full py-3 px-6 rounded-lg font-semibold transition-colors ${
-                    plan.popular
-                      ? 'bg-blue-600 hover:bg-blue-700 text-white'
-                      : 'bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-900 dark:text-white'
-                  }`}
-                >
-                  {plan.cta}
-                </button>
               </div>
             ))}
           </div>

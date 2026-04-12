@@ -1,5 +1,5 @@
-// src/components/dashboard/RecentActivity.tsx
-import { Activity, Mail, Briefcase, User, FileText } from 'lucide-react';
+import Link from 'next/link';
+import { Activity, Briefcase, FileText, Mail } from 'lucide-react';
 import { formatDateTime } from '@/lib/utils';
 
 interface ActivityItem {
@@ -13,58 +13,59 @@ interface RecentActivityProps {
   activities: ActivityItem[];
 }
 
+const activityMeta = {
+  contact: {
+    icon: Mail,
+    color: 'bg-blue-50 text-blue-700',
+  },
+  application: {
+    icon: Briefcase,
+    color: 'bg-slate-100 text-slate-700',
+  },
+  blog: {
+    icon: FileText,
+    color: 'bg-cyan-50 text-cyan-700',
+  },
+  portfolio: {
+    icon: Activity,
+    color: 'bg-indigo-50 text-indigo-700',
+  },
+};
+
 export default function RecentActivity({ activities }: RecentActivityProps) {
-  const getIcon = (type: string) => {
-    switch (type) {
-      case 'contact':
-        return Mail;
-      case 'application':
-        return Briefcase;
-      case 'blog':
-        return FileText;
-      case 'portfolio':
-        return FileText;
-      default:
-        return Activity;
-    }
-  };
-
-  const getColor = (type: string) => {
-    switch (type) {
-      case 'contact':
-        return 'text-blue-600 bg-blue-100';
-      case 'application':
-        return 'text-green-600 bg-green-100';
-      case 'blog':
-        return 'text-purple-600 bg-purple-100';
-      case 'portfolio':
-        return 'text-orange-600 bg-orange-100';
-      default:
-        return 'text-gray-600 bg-gray-100';
-    }
-  };
-
   return (
-    <div className="bg-white rounded-xl shadow-sm p-6">
-      <div className="flex items-center justify-between mb-6">
-        <h3 className="text-lg font-semibold text-gray-900">Recent Activity</h3>
-        <Activity className="h-5 w-5 text-gray-400" />
+    <div className="card p-6">
+      <div className="mb-6">
+        <p className="text-sm font-semibold uppercase tracking-[0.24em] text-blue-700">
+          Recent activity
+        </p>
+        <h2 className="mt-2 text-xl font-semibold text-slate-950">
+          Latest movement across the admin
+        </h2>
       </div>
 
       <div className="space-y-4">
         {activities.length > 0 ? (
           activities.map((activity, index) => {
-            const Icon = getIcon(activity.type);
-            const colorClass = getColor(activity.type);
-            
+            const meta =
+              activityMeta[activity.type] || activityMeta.portfolio;
+            const Icon = meta.icon;
+
             return (
-              <div key={index} className="flex items-start">
-                <div className={`flex-shrink-0 h-10 w-10 rounded-lg flex items-center justify-center ${colorClass}`}>
+              <div
+                key={`${activity.type}-${index}`}
+                className="flex gap-4 rounded-[1.5rem] border border-slate-200 bg-slate-50 px-4 py-4"
+              >
+                <div
+                  className={`flex h-11 w-11 items-center justify-center rounded-2xl ${meta.color}`}
+                >
                   <Icon className="h-5 w-5" />
                 </div>
-                <div className="ml-3">
-                  <p className="text-sm font-medium text-gray-900">{activity.message}</p>
-                  <p className="text-xs text-gray-500 mt-1">
+                <div>
+                  <p className="text-sm font-medium leading-6 text-slate-900">
+                    {activity.message}
+                  </p>
+                  <p className="mt-1 text-xs uppercase tracking-[0.18em] text-slate-500">
                     {formatDateTime(activity.timestamp)}
                   </p>
                 </div>
@@ -72,19 +73,19 @@ export default function RecentActivity({ activities }: RecentActivityProps) {
             );
           })
         ) : (
-          <div className="text-center py-4">
-            <p className="text-gray-500">No recent activity</p>
+          <div className="rounded-[1.5rem] border border-dashed border-slate-300 bg-slate-50 px-4 py-8 text-center text-sm text-slate-500">
+            No recent activity yet.
           </div>
         )}
       </div>
 
-      <div className="mt-6 pt-6 border-t border-gray-200">
-        <a
-          href="/dashboard/activity"
-          className="text-sm font-medium text-blue-600 hover:text-blue-500"
+      <div className="mt-6 border-t border-slate-100 pt-5">
+        <Link
+          href="/dashboard/contacts"
+          className="text-sm font-semibold text-blue-700 hover:text-blue-800"
         >
-          View all activity →
-        </a>
+          Review active queues
+        </Link>
       </div>
     </div>
   );

@@ -18,14 +18,25 @@ dotenv.config();
    Database (Neon FIRST)
 =========================== */
 
-const DATABASE_URL = process.env.DATABASE_URL;
+const DATABASE_URL =
+  process.env.NODE_ENV === 'production'
+    ? process.env.DATABASE_URL
+    : process.env.DATABASE_URL_LOCAL || process.env.DATABASE_URL;
+
+if (!DATABASE_URL) {
+  throw new Error(
+    'Missing database connection string. Set DATABASE_URL or DATABASE_URL_LOCAL in .env.'
+  );
+}
+
+const isRemoteDatabase = process.env.NODE_ENV === 'production';
 
 const sequelize = new Sequelize(
-  DATABASE_URL || 'postgresql://neondb_owner:npg_bom31SAqBDNv@ep-bold-cell-a4ofu86m-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require',
+  DATABASE_URL,
   {
     dialect: 'postgres',
     logging: false,
-    dialectOptions: DATABASE_URL
+    dialectOptions: isRemoteDatabase
       ? {
           ssl: {
             require: true,

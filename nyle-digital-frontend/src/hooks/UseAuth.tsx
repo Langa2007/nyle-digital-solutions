@@ -39,7 +39,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const token = localStorage.getItem('token');
       if (token) {
         const response = await authApi.me();
-        setUser(response.data);
+        setUser(response.data.data);
       }
     } catch (error) {
       localStorage.removeItem('token');

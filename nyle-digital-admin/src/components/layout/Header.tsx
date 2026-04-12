@@ -1,95 +1,97 @@
-// src/components/layout/Header.tsx
 'use client';
 
-import { Bell, Menu, Search, User } from 'lucide-react';
+import { Bell, Menu, Search } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
-import { useState } from 'react';
 
 interface HeaderProps {
   setSidebarOpen: (open: boolean) => void;
 }
 
+const titles: Record<string, { title: string; subtitle: string }> = {
+  '/dashboard': {
+    title: 'Operations dashboard',
+    subtitle: 'Track content, inbound activity, and service operations from one place.',
+  },
+  '/dashboard/contacts': {
+    title: 'Contacts',
+    subtitle: 'Review inbound leads and respond with better context.',
+  },
+  '/dashboard/applications': {
+    title: 'Applications',
+    subtitle: 'Follow candidate flow and status changes clearly.',
+  },
+  '/dashboard/blog': {
+    title: 'Blog',
+    subtitle: 'Create and refine public-facing content.',
+  },
+  '/dashboard/portfolio': {
+    title: 'Portfolio',
+    subtitle: 'Curate work examples and delivery proof points.',
+  },
+  '/dashboard/services': {
+    title: 'Services',
+    subtitle: 'Keep service messaging aligned with what the team delivers.',
+  },
+};
+
 export default function Header({ setSidebarOpen }: HeaderProps) {
+  const pathname = usePathname();
   const { user } = useAuth();
-  const [showUserMenu, setShowUserMenu] = useState(false);
+  const current = titles[pathname] || titles['/dashboard'];
 
   return (
-    <header className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
-      <button
-        type="button"
-        className="-m-2.5 p-2.5 text-gray-700 lg:hidden"
-        onClick={() => setSidebarOpen(true)}
-      >
-        <span className="sr-only">Open sidebar</span>
-        <Menu className="h-6 w-6" aria-hidden="true" />
-      </button>
-
-      {/* Separator */}
-      <div className="h-6 w-px bg-gray-200 lg:hidden" />
-
-      <div className="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
-        {/* Search */}
-        <div className="relative flex flex-1">
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <Search className="h-5 w-5 text-gray-400" />
-          </div>
-          <input
-            type="search"
-            placeholder="Search..."
-            className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          />
-        </div>
-
-        {/* Right side */}
-        <div className="flex items-center gap-x-4 lg:gap-x-6">
-          {/* Notifications */}
-          <button title= "Notifications"
-           className="relative p-1.5 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg">
-            <Bell className="h-5 w-5" />
-            <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+    <header className="sticky top-0 z-30 px-4 pt-4 sm:px-6 lg:px-8">
+      <div className="admin-shell flex flex-col gap-4 rounded-[1.75rem] px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <div className="flex items-start gap-3">
+          <button
+            type="button"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 text-slate-600 hover:border-blue-200 hover:text-blue-700 lg:hidden"
+            onClick={() => setSidebarOpen(true)}
+          >
+            <span className="sr-only">Open sidebar</span>
+            <Menu className="h-5 w-5" aria-hidden="true" />
           </button>
 
-          {/* User menu */}
-          <div className="relative">
-            <button
-              onClick={() => setShowUserMenu(!showUserMenu)}
-              className="flex items-center space-x-3 hover:bg-gray-50 rounded-lg p-2"
-            >
-              <div className="h-8 w-8 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-full flex items-center justify-center">
-                <span className="text-white font-medium text-sm">
-                  {user?.firstName?.[0]}
-                  {user?.lastName?.[0]}
-                </span>
-              </div>
-              <div className="hidden lg:block text-left">
-                <p className="text-sm font-medium text-gray-900">
-                  {user?.firstName} {user?.lastName}
-                </p>
-                <p className="text-xs text-gray-500">{user?.role}</p>
-              </div>
-            </button>
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.26em] text-blue-700">
+              {current.title}
+            </p>
+            <p className="mt-2 max-w-2xl text-sm leading-7 text-slate-500">
+              {current.subtitle}
+            </p>
+          </div>
+        </div>
 
-            {/* Dropdown */}
-            {showUserMenu && (
-              <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-50">
-                <a
-                  href="/dashboard/settings"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  Settings
-                </a>
-                <a
-                  href="/dashboard/profile"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  Profile
-                </a>
-                <div className="border-t border-gray-100 my-1"></div>
-                <button className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50">
-                  Sign out
-                </button>
-              </div>
-            )}
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+          <div className="relative">
+            <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+            <input
+              type="search"
+              placeholder="Search the admin..."
+              className="input-field min-w-[16rem] pl-10 pr-4 py-2.5"
+            />
+          </div>
+
+          <button
+            title="Notifications"
+            className="relative inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 hover:border-blue-200 hover:text-blue-700"
+          >
+            <Bell className="h-5 w-5" />
+            <span className="absolute right-3 top-3 h-2 w-2 rounded-full bg-blue-600" />
+          </button>
+
+          <div className="flex items-center gap-3 rounded-full border border-slate-200 bg-white px-3 py-2">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-cyan-400 text-sm font-semibold text-white">
+              {user?.firstName?.[0]}
+              {user?.lastName?.[0]}
+            </div>
+            <div className="pr-1">
+              <p className="text-sm font-semibold text-slate-900">
+                {user?.firstName} {user?.lastName}
+              </p>
+              <p className="text-xs text-slate-500">{user?.role}</p>
+            </div>
           </div>
         </div>
       </div>
