@@ -1,7 +1,9 @@
 const path = require('path');
-const dotenv = require('dotenv');
-
-dotenv.config({ path: path.resolve(__dirname, '../.env') });
+try {
+  require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
+} catch (e) {
+  // Gracefully handle missing dotenv or .env file
+}
 
 const apiUrl = (process.env.NEXT_PUBLIC_API_URL || process.env.BACKEND_URL || '').replace(/\/$/, '');
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || '';
