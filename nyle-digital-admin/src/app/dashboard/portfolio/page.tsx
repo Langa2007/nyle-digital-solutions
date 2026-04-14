@@ -64,6 +64,8 @@ const columns = [
             target="_blank"
             rel="noopener noreferrer"
             className="p-1 text-blue-600 hover:bg-blue-50 rounded"
+            title="View live project"
+            aria-label="View live project"
           >
             <Globe className="h-4 w-4" />
           </a>
@@ -74,6 +76,8 @@ const columns = [
             target="_blank"
             rel="noopener noreferrer"
             className="p-1 text-gray-600 hover:bg-gray-50 rounded"
+            title="View GitHub repository"
+            aria-label="View GitHub repository"
           >
             <Github className="h-4 w-4" />
           </a>
@@ -106,11 +110,14 @@ export default function PortfolioPage() {
 
   const { data: portfolio, isLoading } = useQuery({
     queryKey: ['portfolio', { search, page }],
-    queryFn: () => adminApi.getPortfolioItems({
-      search,
-      page,
-      limit: 10,
-    }),
+    queryFn: () =>
+      adminApi
+        .getPortfolioItems({
+          search,
+          page,
+          limit: 10,
+        })
+        .then((res) => res.data.data),
   });
 
   return (
@@ -150,9 +157,9 @@ export default function PortfolioPage() {
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {[
-          { label: 'Total Projects', value: portfolio?.data?.length || 0 },
-          { label: 'Featured', value: portfolio?.data?.filter((p: any) => p.featured).length || 0 },
-          { label: 'Categories', value: new Set(portfolio?.data?.map((p: any) => p.category)).size || 0 },
+          { label: 'Total Projects', value: portfolio?.length || 0 },
+          { label: 'Featured', value: portfolio?.filter((p: any) => p.featured).length || 0 },
+          { label: 'Categories', value: new Set(portfolio?.map((p: any) => p.category)).size || 0 },
         ].map((stat) => (
           <div key={stat.label} className="bg-white rounded-lg border border-gray-200 p-6">
             <p className="text-sm text-gray-600">{stat.label}</p>
@@ -165,11 +172,11 @@ export default function PortfolioPage() {
       <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
         <DataTable
           columns={columns}
-          data={portfolio?.data || []}
+          data={portfolio || []}
           loading={isLoading}
           pagination={{
             currentPage: page,
-            totalPages: Math.ceil((portfolio?.data?.length || 0) / 10),
+            totalPages: Math.ceil((portfolio?.length || 0) / 10),
             onPageChange: setPage,
           }}
         />

@@ -86,11 +86,14 @@ export default function ServicesPage() {
 
   const { data: services, isLoading } = useQuery({
     queryKey: ['services', { search, page }],
-    queryFn: () => adminApi.getServices({
-      search,
-      page,
-      limit: 10,
-    }),
+    queryFn: () =>
+      adminApi
+        .getServices({
+          search,
+          page,
+          limit: 10,
+        })
+        .then((res) => res.data.data),
   });
 
   return (
@@ -130,9 +133,9 @@ export default function ServicesPage() {
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {[
-          { label: 'Total Services', value: services?.data?.length || 0 },
-          { label: 'Active', value: services?.data?.filter((s: any) => s.active).length || 0 },
-          { label: 'Categories', value: new Set(services?.data?.map((s: any) => s.category)).size || 0 },
+          { label: 'Total Services', value: services?.length || 0 },
+          { label: 'Active', value: services?.filter((s: any) => s.active).length || 0 },
+          { label: 'Categories', value: new Set(services?.map((s: any) => s.category)).size || 0 },
         ].map((stat) => (
           <div key={stat.label} className="bg-white rounded-lg border border-gray-200 p-6">
             <p className="text-sm text-gray-600">{stat.label}</p>
@@ -145,11 +148,11 @@ export default function ServicesPage() {
       <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
         <DataTable
           columns={columns}
-          data={services?.data || []}
+          data={services || []}
           loading={isLoading}
           pagination={{
             currentPage: page,
-            totalPages: Math.ceil((services?.data?.length || 0) / 10),
+            totalPages: Math.ceil((services?.length || 0) / 10),
             onPageChange: setPage,
           }}
         />
