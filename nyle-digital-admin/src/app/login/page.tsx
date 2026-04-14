@@ -26,9 +26,8 @@ const loginSchema = z.object({
 type LoginFormData = z.infer<typeof loginSchema>;
 
 const securityNotes = [
-  'Single admin environment contract with shared root .env values',
+  'Single admin environment shared',
   'Frontend and admin both proxy backend requests through /api',
-  'Refined blue-first UI with cleaner hierarchy and calmer spacing',
 ];
 
 export default function LoginPage() {
@@ -78,11 +77,6 @@ export default function LoginPage() {
               <h1 className="mt-8 max-w-xl text-4xl font-semibold leading-tight">
                 Nyle Digital admin, refined for calmer operations.
               </h1>
-              <p className="mt-5 max-w-xl text-base leading-8 text-blue-100/85">
-                The visual update keeps the blue brand language intact while giving
-                the login and dashboard flow stronger hierarchy, better spacing, and
-                tighter alignment with the backend contract.
-              </p>
             </div>
 
             <div className="space-y-4">
@@ -188,11 +182,6 @@ export default function LoginPage() {
                   {!isLoading && <ArrowRight className="ml-2 h-4 w-4" />}
                 </button>
               </form>
-
-              <div className="mt-8 rounded-[1.5rem] border border-blue-100 bg-blue-50 px-5 py-4 text-sm leading-7 text-slate-600">
-                Shared environment values now control the admin-to-backend connection,
-                so the panel follows the same deployment target as the public frontend.
-              </div>
 
               <div className="mt-8 border-t border-slate-100 pt-6">
                 <Link
