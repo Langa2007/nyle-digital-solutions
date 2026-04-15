@@ -3,36 +3,36 @@ import { Briefcase, FileText, Palette, Server, Users } from 'lucide-react';
 
 const actions = [
   {
-    title: 'Review contacts',
-    description: 'Check inbound leads and respond with more context.',
+    title: 'Contacts',
+    description: 'View and manage business inquiries.',
     icon: Users,
     color: 'from-blue-600 to-cyan-400',
     href: '/dashboard/contacts',
   },
   {
-    title: 'Check applications',
-    description: 'Follow candidate progress and update statuses.',
+    title: 'Applications',
+    description: 'Review job applications and hire talent.',
     icon: Briefcase,
     color: 'from-slate-900 to-slate-700',
     href: '/dashboard/applications',
   },
   {
-    title: 'Edit blog',
-    description: 'Refine public-facing content and announcements.',
+    title: 'Blog',
+    description: 'Create and publish blog articles.',
     icon: FileText,
     color: 'from-blue-500 to-indigo-500',
     href: '/dashboard/blog',
   },
   {
-    title: 'Update portfolio',
-    description: 'Keep case studies and work examples current.',
+    title: 'Portfolio',
+    description: 'Showcase your best projects and work.',
     icon: Palette,
     color: 'from-cyan-500 to-blue-500',
     href: '/dashboard/portfolio',
   },
   {
-    title: 'Tune services',
-    description: 'Align service messaging with current delivery lines.',
+    title: 'Services',
+    description: 'Update your service offerings and pricing.',
     icon: Server,
     color: 'from-slate-800 to-blue-700',
     href: '/dashboard/services',
@@ -47,7 +47,7 @@ export default function QuickActions() {
           Quick actions
         </p>
         <h2 className="mt-2 text-xl font-semibold text-slate-950">
-          Jump straight into the active admin areas
+          Manage your business
         </h2>
       </div>
 

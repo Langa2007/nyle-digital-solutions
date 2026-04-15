@@ -5,9 +5,9 @@ import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle2, Play, ShieldCheck, Sparkles } from 'lucide-react';
 
 const deliverySignals = [
-  'Product discovery that clarifies scope fast',
-  'Engineering teams that ship across web, mobile, and cloud',
-  'Operational support that keeps launch momentum intact',
+  'Expert teams delivering excellence from day one',
+  'Scalable solutions across web, mobile, and cloud',
+  'Complete support from launch through success',
 ];
 
 export default function Hero() {
@@ -23,18 +23,15 @@ export default function Hero() {
           >
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-200/80 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700 dark:border-blue-400/20 dark:bg-blue-500/10 dark:text-blue-200">
               <Sparkles className="h-4 w-4" />
-              Blue-touch digital delivery for ambitious teams
+              Custom software that drives real business results
             </div>
 
             <h1 className="max-w-4xl text-5xl font-semibold tracking-tight text-slate-950 dark:text-white sm:text-6xl">
-              Modern products, cloud systems, and business software that move at
-              your pace.
+              Scalable software solutions built for growth, delivered on time, every time.
             </h1>
 
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300">
-              Nyle Digital designs, builds, and supports digital platforms with a
-              sharper operating rhythm. We keep the brand feel clean and blue-led,
-              while making the delivery experience clearer for clients and internal teams.
+              We transform your vision into powerful software. From cutting-edge web and mobile apps to enterprise systems, we deliver solutions that accelerate your business and impress your users.
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">

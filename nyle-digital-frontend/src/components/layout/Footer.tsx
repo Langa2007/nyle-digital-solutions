@@ -47,9 +47,7 @@ export default function Footer() {
             </div>
 
             <p className="mt-6 max-w-2xl text-base leading-8 text-slate-600 dark:text-slate-300">
-              The refreshed experience keeps the blue brand language, but gives it
-              more structure, clearer navigation, and stronger alignment between the
-              public site, backend services, and admin workflows.
+              We build custom software solutions that help businesses grow. From web apps to complex systems, we deliver quality code and exceptional service.
             </p>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
@@ -70,11 +68,10 @@ export default function Footer() {
 
               <div className="rounded-[1.5rem] border border-blue-200/80 bg-blue-50 px-5 py-5 text-slate-900 dark:border-blue-400/20 dark:bg-blue-500/10 dark:text-white">
                 <p className="text-xs font-semibold uppercase tracking-[0.26em] text-blue-700 dark:text-blue-200">
-                  Delivery note
+                  Get Started
                 </p>
                 <p className="mt-3 text-base leading-7 text-slate-700 dark:text-slate-200">
-                  Shared environment config now drives the frontend, backend, and admin
-                  routing path from one root `.env`.
+                  Have a project in mind? Let's discuss your ideas and bring your vision to life.
                 </p>
               </div>
             </div>

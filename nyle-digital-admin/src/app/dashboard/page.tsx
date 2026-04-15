@@ -56,23 +56,21 @@ export default function DashboardPage() {
           <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.28em] text-blue-200">
-                Admin overview
+                Dashboard
               </p>
               <h1 className="mt-4 text-3xl font-semibold">
-                A tighter control surface for content, leads, and delivery operations.
+                Manage your content, leads, and business operations.
               </h1>
               <p className="mt-4 max-w-2xl text-sm leading-7 text-blue-100/85">
-                The dashboard now leans into a cleaner blue-forward hierarchy while
-                keeping the operational view simple. Shared environment routing also
-                keeps the admin and public frontend pointed at the same backend target.
+                Control your website content, track leads and applications, and manage all your business information in one place.
               </p>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-3">
               {[
-                { label: 'API target', value: 'Shared' },
-                { label: 'Routing style', value: '/api proxy' },
-                { label: 'UI rhythm', value: 'Refined' },
+                { label: 'Contacts', value: stats?.data?.contacts?.total || 0 },
+                { label: 'Applications', value: stats?.data?.applications?.total || 0 },
+                { label: 'Blog Posts', value: stats?.data?.blog?.total || 0 },
               ].map((item) => (
                 <div
                   key={item.label}
@@ -100,21 +98,7 @@ export default function DashboardPage() {
         <RecentActivity activities={recentActivity?.data || []} />
       </section>
 
-      <section className="card flex flex-col gap-4 p-6 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.24em] text-blue-700">
-            Team note
-          </p>
-          <p className="mt-2 text-sm leading-7 text-slate-600">
-            The dashboard navigation now only surfaces live sections, which keeps the
-            admin synced with the routes that actually exist today.
-          </p>
-        </div>
-        <div className="inline-flex items-center rounded-full bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-700">
-          Active routes only
-          <ArrowRight className="ml-2 h-4 w-4" />
-        </div>
-      </section>
+
     </div>
   );
 }

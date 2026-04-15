@@ -18,30 +18,30 @@ export default function CTASection() {
             <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.28em] text-blue-200">
-                  Ready when you are
+                  Ready to grow?
                 </p>
                 <h2 className="mt-4 text-3xl font-semibold text-white sm:text-4xl">
-                  Bring the public site, backend, and admin experience into one cleaner delivery flow.
+                  Let's talk about your next software project.
                 </h2>
                 <p className="mt-5 max-w-2xl text-base leading-8 text-blue-100/85">
-                  The refreshed interface is only one layer. We can also help refine
-                  integrations, operations, and release discipline so the product feels
-                  coherent to both customers and your internal team.
+                  Whether you need a new app, a system upgrade, or expert team extension, we're here to help you succeed. Get in touch today and let's build something amazing together.
                 </p>
 
                 <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                   <Link
-                    href="mailto:contact@nyledigital.com"
-                    className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-blue-700 hover:bg-blue-50"
+                    href="https://wa.me/254700000000?text=Hi%20Nyle%20Digital%2C%20I%27d%20like%20to%20discuss%20a%20software%20project."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center rounded-full bg-green-500 px-6 py-3 text-sm font-semibold text-white hover:bg-green-600"
                   >
-                    Start the conversation
+                    Chat on WhatsApp
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                   <Link
-                    href="/#services"
+                    href="mailto:contact@nyledigital.com"
                     className="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10"
                   >
-                    Revisit service lines
+                    Email us
                   </Link>
                 </div>
               </div>
@@ -69,11 +69,10 @@ export default function CTASection() {
 
                 <div className="rounded-[1.75rem] border border-blue-300/20 bg-blue-400/10 px-5 py-5 text-blue-50">
                   <p className="text-xs font-semibold uppercase tracking-[0.26em] text-blue-200">
-                    Operating principle
+                    Why choose us?
                   </p>
                   <p className="mt-3 text-sm leading-7 text-blue-100/90">
-                    One environment source of truth, fewer broken routes, and a calmer
-                    UI hierarchy across every surface.
+                    Experienced team, proven process, reliable delivery. We focus on your success and build software that works.
                   </p>
                 </div>
               </div>
