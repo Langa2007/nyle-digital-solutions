@@ -29,7 +29,7 @@ export default function CTASection() {
 
                 <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                   <Link
-                    href="https://wa.me/254700000000?text=Hi%20Nyle%20Digital%2C%20I%27d%20like%20to%20discuss%20a%20software%20project."
+                    href="https://wa.me/254704521408?text=Hi%20Nyle%20Digital%2C%20I%27d%20like%20to%20discuss%20a%20software%20project."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center rounded-full bg-green-500 px-6 py-3 text-sm font-semibold text-white hover:bg-green-600"
@@ -62,7 +62,7 @@ export default function CTASection() {
                     <Phone className="h-5 w-5 text-blue-200" />
                     <div>
                       <p className="text-sm text-blue-100/80">Phone</p>
-                      <p className="font-medium">+254 700 000 000</p>
+                      <p className="font-medium">+254 704 521 408</p>
                     </div>
                   </div>
                 </div>

@@ -94,7 +94,7 @@ export default function LoginPage() {
 
         <div className="flex items-center justify-center bg-[var(--color-admin-bg)] px-4 py-10 sm:px-8">
           <div className="w-full max-w-md">
-            <Link href="/" className="mb-10 inline-flex items-center gap-3">
+            <Link href={process.env.NEXT_PUBLIC_SITE_URL || "/"} className="mb-10 inline-flex items-center gap-3">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-400 text-white shadow-lg shadow-blue-600/20">
                 <Shield className="h-6 w-6" />
               </div>
