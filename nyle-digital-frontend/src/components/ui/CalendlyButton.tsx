@@ -1,6 +1,12 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
+
+// Dynamically import PopupModal with SSR disabled to prevent build-time errors
+const PopupModal = dynamic(() => import('react-calendly').then((mod) => mod.PopupModal), {
+  ssr: false,
+});
 
 interface CalendlyButtonProps {
   className?: string;
@@ -23,10 +29,18 @@ const logToBackend = async (level: string, message: string, meta?: any) => {
 };
 
 export default function CalendlyButton({ className, children }: CalendlyButtonProps) {
-  const onClick = async () => {
-    const url = process.env.NEXT_PUBLIC_CALENDLY_URL;
-    
-    console.log('[Calendly] Button clicked. URL:', url);
+  const [isOpen, setIsOpen] = useState(false);
+  const [rootElement, setRootElement] = useState<HTMLElement | null>(null);
+
+  useEffect(() => {
+    // Set the root element only after the component mounts on the client
+    setRootElement(document.body);
+  }, []);
+
+  const url = process.env.NEXT_PUBLIC_CALENDLY_URL || '';
+
+  const handleOpen = async () => {
+    console.log('[Calendly] Clicked. URL:', url);
 
     if (!url || url.includes('YOUR_USER')) {
       const msg = 'Calendly URL is missing or unconfigured.';
@@ -35,36 +49,23 @@ export default function CalendlyButton({ className, children }: CalendlyButtonPr
       return;
     }
 
-    try {
-      // Import dynamically inside the handler to ensure we get the named exports correctly
-      const CalendlyModule = await import('react-calendly');
-      
-      // Some versions of the library or build tools might put named exports under .default
-      const openPopupWidget = CalendlyModule.openPopupWidget || (CalendlyModule as any).default?.openPopupWidget;
-
-      if (openPopupWidget) {
-        openPopupWidget({
-          url,
-          rootElement: document.body,
-        });
-        await logToBackend('info', 'Calendly popup opened successfully', { url });
-      } else {
-        const msg = 'openPopupWidget is missing in library exports';
-        // Log the keys to see what is available
-        const keys = Object.keys(CalendlyModule);
-        console.error(msg, keys);
-        await logToBackend('error', msg, { availableKeys: keys });
-      }
-    } catch (err: any) {
-      const msg = `Failed to load or open Calendly: ${err.message}`;
-      console.error(msg);
-      await logToBackend('error', msg, { stack: err.stack });
-    }
+    setIsOpen(true);
+    await logToBackend('info', 'Calendly modal triggered', { url });
   };
 
   return (
-    <button onClick={onClick} className={className}>
-      {children}
-    </button>
+    <>
+      <button onClick={handleOpen} className={className}>
+        {children}
+      </button>
+      {rootElement && (
+        <PopupModal
+          url={url}
+          onModalClose={() => setIsOpen(false)}
+          open={isOpen}
+          rootElement={rootElement}
+        />
+      )}
+    </>
   );
 }
