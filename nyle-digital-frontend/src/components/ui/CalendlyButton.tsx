@@ -11,7 +11,6 @@ export default function CalendlyButton({ className, children }: CalendlyButtonPr
   const [calendly, setCalendly] = useState<any>(null);
 
   useEffect(() => {
-    // Dynamically import react-calendly only on the client
     import('react-calendly').then((mod) => {
       setCalendly(mod);
     });
@@ -19,8 +18,10 @@ export default function CalendlyButton({ className, children }: CalendlyButtonPr
 
   const onClick = () => {
     const url = process.env.NEXT_PUBLIC_CALENDLY_URL;
+    
     if (!url || url.includes('YOUR_USER')) {
-      alert('Please configure your Calendly URL in the .env file.');
+      console.warn('Calendly URL is not configured. Please add NEXT_PUBLIC_CALENDLY_URL to your environment variables.');
+      // Optionally fallback to a contact link if needed, but staying silent for now to avoid bad UX
       return;
     }
 
@@ -29,8 +30,6 @@ export default function CalendlyButton({ className, children }: CalendlyButtonPr
         url,
         rootElement: document.body,
       });
-    } else if (!calendly) {
-      console.warn('Calendly is still loading...');
     }
   };
 
