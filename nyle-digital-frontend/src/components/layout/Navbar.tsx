@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useTheme } from 'next-themes';
 import { Menu, Moon, Sun, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
+import CalendlyButton from '../ui/CalendlyButton';
 
 const navigation = [
   { name: 'Services', href: '/#services' },
@@ -84,12 +85,9 @@ export default function Navbar() {
                 </button>
               )}
 
-              <Link
-                href="/#contact"
-                className="hidden rounded-full bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 hover:bg-blue-700 lg:inline-flex"
-              >
-                Start a Project
-              </Link>
+              <CalendlyButton className="hidden rounded-full bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 hover:bg-blue-700 lg:inline-flex">
+                Book a Call
+              </CalendlyButton>
 
               <button
                 onClick={() => setMobileMenuOpen((open) => !open)}
@@ -124,13 +122,11 @@ export default function Navbar() {
                     {item.name}
                   </Link>
                 ))}
-                <Link
-                  href="/#contact"
-                  className="block rounded-2xl bg-blue-600 px-4 py-3 text-center text-sm font-semibold text-white hover:bg-blue-700"
-                  onClick={() => setMobileMenuOpen(false)}
+                <CalendlyButton
+                  className="block w-full rounded-2xl bg-blue-600 px-4 py-3 text-center text-sm font-semibold text-white hover:bg-blue-700"
                 >
-                  Start a Project
-                </Link>
+                  Book a Call
+                </CalendlyButton>
               </div>
             </motion.div>
           )}

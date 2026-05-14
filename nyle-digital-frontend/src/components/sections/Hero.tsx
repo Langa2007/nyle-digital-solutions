@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle2, Play, ShieldCheck, Sparkles } from 'lucide-react';
+import CalendlyButton from '../ui/CalendlyButton';
 
 const deliverySignals = [
   'Expert teams delivering excellence from day one',
@@ -35,13 +36,10 @@ export default function Hero() {
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <Link
-                href="/#contact"
-                className="inline-flex items-center justify-center rounded-full bg-blue-600 px-7 py-4 text-sm font-semibold text-white shadow-lg shadow-blue-600/25 hover:bg-blue-700"
-              >
+              <CalendlyButton className="inline-flex items-center justify-center rounded-full bg-blue-600 px-7 py-4 text-sm font-semibold text-white shadow-lg shadow-blue-600/25 hover:bg-blue-700">
                 Book a Discovery Call
                 <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
+              </CalendlyButton>
               <Link
                 href="/#portfolio"
                 className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white/80 px-7 py-4 text-sm font-semibold text-slate-700 hover:border-blue-200 hover:text-blue-700 dark:border-white/10 dark:bg-white/5 dark:text-slate-100 dark:hover:border-blue-400/30 dark:hover:text-blue-200"

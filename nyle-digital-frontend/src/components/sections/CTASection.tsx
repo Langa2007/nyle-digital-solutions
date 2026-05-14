@@ -2,7 +2,8 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, Mail, Phone } from 'lucide-react';
+import { ArrowRight, Calendar, Mail, Phone } from 'lucide-react';
+import CalendlyButton from '../ui/CalendlyButton';
 
 export default function CTASection() {
   return (
@@ -28,20 +29,18 @@ export default function CTASection() {
                 </p>
 
                 <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+                  <CalendlyButton className="inline-flex items-center justify-center rounded-full bg-blue-500 px-8 py-4 text-base font-semibold text-white shadow-xl shadow-blue-500/25 hover:bg-blue-600">
+                    Book a Discovery Call
+                    <Calendar className="ml-2 h-5 w-5" />
+                  </CalendlyButton>
                   <Link
                     href="https://wa.me/254704521408?text=Hi%20Nyle%20Digital%2C%20I%27d%20like%20to%20discuss%20a%20software%20project."
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center rounded-full bg-green-500 px-6 py-3 text-sm font-semibold text-white hover:bg-green-600"
+                    className="inline-flex items-center justify-center rounded-full bg-slate-800 px-6 py-4 text-sm font-semibold text-white hover:bg-slate-700"
                   >
-                    Chat on WhatsApp
+                    WhatsApp us
                     <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                  <Link
-                    href="mailto:contact@nyledigital.com"
-                    className="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10"
-                  >
-                    Email us
                   </Link>
                 </div>
               </div>

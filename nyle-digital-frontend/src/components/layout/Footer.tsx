@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { ArrowUpRight, Github, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
+import { ArrowUpRight, Calendar, Github, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
+import CalendlyButton from '../ui/CalendlyButton';
 
 const siteLinks = [
   { name: 'Services', href: '/#services' },
@@ -73,6 +74,9 @@ export default function Footer() {
                 <p className="mt-3 text-base leading-7 text-slate-700 dark:text-slate-200">
                   Have a project in mind? Let's discuss your ideas and bring your vision to life.
                 </p>
+                <CalendlyButton className="mt-4 inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-300 dark:hover:text-blue-200">
+                  Book a Call now →
+                </CalendlyButton>
               </div>
             </div>
           </div>
