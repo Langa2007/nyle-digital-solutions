@@ -7,6 +7,7 @@ import portfolioRoutes from './portfolio.js';
 import serviceRoutes from './services.js';
 import authRoutes from './auth.js';
 import admin from './admin.js';
+import logRoutes from './logRoutes.js';
 
 const router = express.Router();
 
@@ -28,5 +29,6 @@ router.use('/portfolio', portfolioRoutes);
 router.use('/services', serviceRoutes);
 router.use('/auth', authRoutes);
 router.use('/admin', admin);
+router.use('/logs', logRoutes);
 
 export default router;
