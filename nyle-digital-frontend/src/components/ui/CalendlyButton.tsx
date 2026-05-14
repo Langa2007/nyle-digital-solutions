@@ -1,7 +1,6 @@
 'use client';
 
-import React from 'react';
-import { openPopupWidget } from 'react-calendly';
+import React, { useEffect, useState } from 'react';
 
 interface CalendlyButtonProps {
   className?: string;
@@ -9,6 +8,15 @@ interface CalendlyButtonProps {
 }
 
 export default function CalendlyButton({ className, children }: CalendlyButtonProps) {
+  const [calendly, setCalendly] = useState<any>(null);
+
+  useEffect(() => {
+    // Dynamically import react-calendly only on the client
+    import('react-calendly').then((mod) => {
+      setCalendly(mod);
+    });
+  }, []);
+
   const onClick = () => {
     const url = process.env.NEXT_PUBLIC_CALENDLY_URL;
     if (!url || url.includes('YOUR_USER')) {
@@ -16,11 +24,13 @@ export default function CalendlyButton({ className, children }: CalendlyButtonPr
       return;
     }
 
-    if (typeof window !== 'undefined') {
-      openPopupWidget({
+    if (calendly && calendly.openPopupWidget) {
+      calendly.openPopupWidget({
         url,
         rootElement: document.body,
       });
+    } else if (!calendly) {
+      console.warn('Calendly is still loading...');
     }
   };
 
