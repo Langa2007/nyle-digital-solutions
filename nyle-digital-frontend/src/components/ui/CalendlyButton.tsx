@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 interface CalendlyButtonProps {
   className?: string;
@@ -18,23 +18,14 @@ const logToBackend = async (level: string, message: string, meta?: any) => {
       body: JSON.stringify({ level, message, meta, source: 'frontend' }),
     });
   } catch (err) {
-    // Fail silently to avoid blocking UX
+    // Fail silently
   }
 };
 
 export default function CalendlyButton({ className, children }: CalendlyButtonProps) {
-  const [calendly, setCalendly] = useState<any>(null);
-
-  useEffect(() => {
-    import('react-calendly').then((mod) => {
-      setCalendly(mod);
-    });
-  }, []);
-
   const onClick = async () => {
     const url = process.env.NEXT_PUBLIC_CALENDLY_URL;
     
-    // Immediate console log for local debugging
     console.log('[Calendly] Button clicked. URL:', url);
 
     if (!url || url.includes('YOUR_USER')) {
@@ -44,22 +35,30 @@ export default function CalendlyButton({ className, children }: CalendlyButtonPr
       return;
     }
 
-    if (calendly && calendly.openPopupWidget) {
-      try {
-        calendly.openPopupWidget({
+    try {
+      // Import dynamically inside the handler to ensure we get the named exports correctly
+      const CalendlyModule = await import('react-calendly');
+      
+      // Some versions of the library or build tools might put named exports under .default
+      const openPopupWidget = CalendlyModule.openPopupWidget || (CalendlyModule as any).default?.openPopupWidget;
+
+      if (openPopupWidget) {
+        openPopupWidget({
           url,
           rootElement: document.body,
         });
         await logToBackend('info', 'Calendly popup opened successfully', { url });
-      } catch (err: any) {
-        const msg = `Failed to open Calendly popup: ${err.message}`;
-        console.error(msg);
-        await logToBackend('error', msg, { stack: err.stack });
+      } else {
+        const msg = 'openPopupWidget is missing in library exports';
+        // Log the keys to see what is available
+        const keys = Object.keys(CalendlyModule);
+        console.error(msg, keys);
+        await logToBackend('error', msg, { availableKeys: keys });
       }
-    } else {
-      const msg = calendly ? 'openPopupWidget is missing in library' : 'Calendly library not loaded yet';
-      console.warn(msg);
-      await logToBackend('warn', msg);
+    } catch (err: any) {
+      const msg = `Failed to load or open Calendly: ${err.message}`;
+      console.error(msg);
+      await logToBackend('error', msg, { stack: err.stack });
     }
   };
 
