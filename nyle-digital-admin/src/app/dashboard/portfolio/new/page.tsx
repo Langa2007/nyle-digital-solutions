@@ -2,9 +2,10 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { ChevronLeft, Upload } from 'lucide-react';
+import { ChevronLeft, Upload, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import { adminApi } from '@/lib/api/adminClient';
+import ImageCropper from '@/components/ui/ImageCropper';
 
 export default function NewPortfolioPage() {
   const router = useRouter();
@@ -21,6 +22,9 @@ export default function NewPortfolioPage() {
     results: '',
   });
 
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [showCropper, setShowCropper] = useState(false);
+
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
@@ -35,9 +39,26 @@ export default function NewPortfolioPage() {
     const file = e.target.files?.[0];
     if (!file) return;
 
+    if (file.size > 10 * 1024 * 1024) {
+      alert('File size exceeds 10MB limit (max 10MB)');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      setSelectedImage(reader.result as string);
+      setShowCropper(true);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const onCropComplete = async (croppedBlob: Blob) => {
+    setShowCropper(false);
+    setIsLoading(true);
+
     try {
       const formDataToSend = new FormData();
-      formDataToSend.append('file', file);
+      formDataToSend.append('file', croppedBlob, 'project-image.jpg');
 
       const response = await adminApi.post('/admin/upload/image', formDataToSend, {
         headers: {
@@ -53,6 +74,8 @@ export default function NewPortfolioPage() {
     } catch (error) {
       console.error('Image upload failed:', error);
       alert('Failed to upload image');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -171,6 +194,11 @@ export default function NewPortfolioPage() {
                     alt="Project"
                     className="h-full w-full object-cover"
                   />
+                  {isLoading && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/20 backdrop-blur-[2px]">
+                      <Loader2 className="h-8 w-8 animate-spin text-white" />
+                    </div>
+                  )}
                 </div>
                 <label className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-slate-300 px-4 py-2 text-sm hover:bg-slate-50">
                   <Upload className="h-4 w-4" />
@@ -252,6 +280,15 @@ export default function NewPortfolioPage() {
           </div>
         </form>
       </div>
+
+      {showCropper && selectedImage && (
+        <ImageCropper
+          image={selectedImage}
+          onCropComplete={onCropComplete}
+          onCancel={() => setShowCropper(false)}
+          aspectRatio={16 / 9}
+        />
+      )}
     </div>
   );
 }

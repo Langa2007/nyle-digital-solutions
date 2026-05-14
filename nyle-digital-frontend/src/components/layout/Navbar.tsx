@@ -34,16 +34,15 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
-      <div className="section-shell pt-4">
-        <div
-          className={`rounded-[1.75rem] border transition-all duration-300 ${
-            scrolled
-              ? 'border-white/50 bg-white/80 shadow-[0_24px_60px_-30px_rgba(15,23,42,0.45)] backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/75'
-              : 'border-transparent bg-transparent'
-          }`}
-        >
-          <nav className="flex items-center justify-between px-4 py-3 sm:px-6">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? 'border-b border-slate-200/60 bg-white/80 shadow-sm backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/80'
+          : 'border-b border-transparent bg-transparent'
+      }`}
+    >
+      <div className="w-full px-4 sm:px-6 lg:px-8">
+        <nav className="flex items-center justify-between py-4">
             <Link href="/" className="flex items-center gap-3">
               <div className="blue-glow flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-400 text-lg font-semibold text-white">
                 N
@@ -104,39 +103,38 @@ export default function Navbar() {
                 )}
               </button>
             </div>
-          </nav>
+        </nav>
 
-          <AnimatePresence>
-            {mobileMenuOpen && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                className="overflow-hidden lg:hidden"
-              >
-                <div className="space-y-2 px-4 pb-4 sm:px-6">
-                  {navigation.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className="block rounded-2xl bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="overflow-hidden lg:hidden"
+            >
+              <div className="space-y-2 pb-6">
+                {navigation.map((item) => (
                   <Link
-                    href="/#contact"
-                    className="block rounded-2xl bg-blue-600 px-4 py-3 text-center text-sm font-semibold text-white hover:bg-blue-700"
+                    key={item.name}
+                    href={item.href}
+                    className="block rounded-2xl bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    Start a Project
+                    {item.name}
                   </Link>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+                ))}
+                <Link
+                  href="/#contact"
+                  className="block rounded-2xl bg-blue-600 px-4 py-3 text-center text-sm font-semibold text-white hover:bg-blue-700"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Start a Project
+                </Link>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </header>
   );
