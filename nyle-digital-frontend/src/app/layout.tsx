@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/providers/theme-provider';
 import { Toaster } from 'react-hot-toast';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import CookieConsent from '@/components/ui/CookieConsent';
 import { ReactQueryProvider } from '@/components/providers/react-query-provider';
 
 const geistSans = localFont({
@@ -74,6 +75,7 @@ export default function RootLayout({
               <Navbar />
               <main className="flex-grow">{children}</main>
               <Footer />
+              <CookieConsent />
             </div>
             <Toaster
               position="top-right"

@@ -14,10 +14,7 @@ const apiClient = axios.create({
 // Request interceptor
 apiClient.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
+    // Authentication is handled via HTTP-only cookies
     return config;
   },
   (error) => {
@@ -31,8 +28,6 @@ apiClient.interceptors.response.use(
   async (error) => {
     if (error.response?.status === 401) {
       if (typeof window !== 'undefined') {
-        localStorage.removeItem('token');
-
         if (window.location.pathname.startsWith('/dashboard')) {
           window.location.href = '/';
         }

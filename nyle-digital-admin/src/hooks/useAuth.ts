@@ -6,41 +6,48 @@ import { adminApi } from '@/lib/api/adminClient';
 
 export const useAuth = () => {
   const router = useRouter();
-  const { user, token, isAuthenticated, login, logout, updateUser } = useAuthStore();
+  const { user, isAuthenticated, login, logout, updateUser } = useAuthStore();
 
   const checkAuth = async () => {
-    if (token && !user) {
-      try {
-        const response = await adminApi.get('/auth/me');
-        login(response.data.data, token);
-      } catch (error) {
+    try {
+      const response = await adminApi.get('/auth/me');
+      if (response.data.success) {
+        login(response.data.data);
+      } else {
         logout();
       }
+    } catch (error) {
+      logout();
     }
   };
 
   useEffect(() => {
     checkAuth();
-  }, [token]);
+  }, []);
 
   const handleLogin = async (email: string, password: string) => {
     const response = await adminApi.post('/auth/login', { email, password });
-    const { token, user } = response.data;
-    login(user, token);
+    const { user } = response.data;
+    login(user);
   };
 
-  const handleLogout = () => {
-    logout();
-    router.push('/login');
+  const handleLogout = async () => {
+    try {
+      await adminApi.post('/auth/logout');
+    } catch (error) {
+      console.error('Logout error:', error);
+    } finally {
+      logout();
+      router.push('/login');
+    }
   };
 
   return {
     user,
-    token,
     isAuthenticated,
     login: handleLogin,
     logout: handleLogout,
     updateUser,
-    loading: token && !user,
+    loading: !user && isAuthenticated, // Slight adjustment for initial load
   };
 };

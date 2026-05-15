@@ -36,13 +36,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const checkAuth = async () => {
     try {
-      const token = localStorage.getItem('token');
-      if (token) {
-        const response = await authApi.me();
+      const response = await authApi.me();
+      if (response.data.success) {
         setUser(response.data.data);
+      } else {
+        setUser(null);
       }
     } catch (error) {
-      localStorage.removeItem('token');
+      setUser(null);
     } finally {
       setLoading(false);
     }
@@ -51,9 +52,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const login = async (email: string, password: string) => {
     try {
       const response = await authApi.login({ email, password });
-      const { token, user } = response.data;
+      const { user } = response.data;
       
-      localStorage.setItem('token', token);
       setUser(user);
       router.push('/dashboard');
     } catch (error) {
@@ -64,9 +64,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const register = async (data: any) => {
     try {
       const response = await authApi.register(data);
-      const { token, user } = response.data;
+      const { user } = response.data;
       
-      localStorage.setItem('token', token);
       setUser(user);
       router.push('/dashboard');
     } catch (error) {
@@ -80,7 +79,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     } catch (error) {
       console.error('Logout error:', error);
     } finally {
-      localStorage.removeItem('token');
       setUser(null);
       router.push('/login');
     }

@@ -1,6 +1,5 @@
 // src/lib/store/authStore.ts
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
 
 interface User {
   id: string;
@@ -14,36 +13,23 @@ interface User {
 
 interface AuthState {
   user: User | null;
-  token: string | null;
-  nylepayToken: string | null;
   isAuthenticated: boolean;
-  login: (user: User, token: string) => void;
+  login: (user: User) => void;
   logout: () => void;
   updateUser: (user: Partial<User>) => void;
-  setNylepayToken: (token: string | null) => void;
 }
 
-export const useAuthStore = create<AuthState>()(
-  persist(
-    (set) => ({
-      user: null,
-      token: null,
-      nylepayToken: null,
-      isAuthenticated: false,
-      login: (user, token) =>
-        set({ user, token, isAuthenticated: true }),
-      logout: () =>
-        set({ user: null, token: null, nylepayToken: null, isAuthenticated: false }),
-      updateUser: (updatedUser) =>
-        set((state) => ({
-          user: state.user ? { ...state.user, ...updatedUser } : null,
-        })),
-      setNylepayToken: (nylepayToken) => set({ nylepayToken }),
-    }),
-    {
-      name: 'auth-storage',
-    }
-  )
-);
+export const useAuthStore = create<AuthState>()((set) => ({
+  user: null,
+  isAuthenticated: false,
+  login: (user) =>
+    set({ user, isAuthenticated: true }),
+  logout: () =>
+    set({ user: null, isAuthenticated: false }),
+  updateUser: (updatedUser) =>
+    set((state) => ({
+      user: state.user ? { ...state.user, ...updatedUser } : null,
+    })),
+}));
 
 export const store = useAuthStore;

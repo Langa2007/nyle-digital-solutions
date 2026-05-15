@@ -15,10 +15,7 @@ const adminClient = axios.create({
 // Request interceptor
 adminClient.interceptors.request.use(
   (config) => {
-    const token = useAuthStore.getState().token;
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
+    // Auth handled by HTTP-only cookies
     return config;
   },
   (error) => {
