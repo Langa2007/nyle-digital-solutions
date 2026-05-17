@@ -7,8 +7,8 @@ import CalendlyButton from '../ui/CalendlyButton';
 
 export default function CTASection() {
   return (
-    <section className="py-20">
-      <div className="section-shell">
+    <section className="section-atmosphere py-20">
+      <div className="section-shell relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -71,9 +71,15 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <div className="relative flex min-h-screen flex-col overflow-hidden">
+            <div className="site-frame relative flex min-h-screen flex-col overflow-hidden">
+              <div className="site-backdrop" aria-hidden="true">
+                <div className="site-grid" />
+                <div className="site-beam site-beam-one" />
+                <div className="site-beam site-beam-two" />
+                <div className="site-noise" />
+              </div>
               <Navbar />
-              <main className="flex-grow">{children}</main>
+              <main className="relative z-10 flex-grow">{children}</main>
               <Footer />
               <CookieConsent />
             </div>

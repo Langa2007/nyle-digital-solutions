@@ -38,8 +38,8 @@ const stats = [
 
 export default function Stats() {
   return (
-    <section className="py-20 bg-white dark:bg-gray-900">
-      <div className="container mx-auto px-4">
+    <section className="section-atmosphere py-20">
+      <div className="section-shell relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Our <span className="text-blue-600">Impact</span> in Numbers
@@ -57,7 +57,7 @@ export default function Stats() {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="text-center"
+              className="glass-panel rounded-[1.75rem] px-4 py-8 text-center"
             >
               <div className="inline-flex p-4 rounded-2xl bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 mb-4">
                 {stat.icon}

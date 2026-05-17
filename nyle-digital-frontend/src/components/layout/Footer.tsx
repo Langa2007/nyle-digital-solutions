@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowUpRight, Calendar, Github, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
+import { ArrowUpRight, Github, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
 import CalendlyButton from '../ui/CalendlyButton';
 
 const siteLinks = [
@@ -29,8 +29,8 @@ export default function Footer() {
   const adminUrl = process.env.NEXT_PUBLIC_ADMIN_URL;
 
   return (
-    <footer className="border-t border-white/10 bg-slate-950 text-slate-300">
-      <div className="section-shell py-14">
+    <footer className="footer-atmosphere z-10">
+      <div className="section-shell relative z-10 py-14">
         <div className="grid gap-10 lg:grid-cols-[1.25fr_0.75fr]">
           <div className="glass-panel rounded-[2rem] px-6 py-8 sm:px-8">
             <div className="flex items-center gap-3">
@@ -75,7 +75,8 @@ export default function Footer() {
                   Have a project in mind? Let's discuss your ideas and bring your vision to life.
                 </p>
                 <CalendlyButton className="mt-4 inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-300 dark:hover:text-blue-200">
-                  Book a Call now →
+                  Book a Call now
+                  <ArrowUpRight className="ml-2 h-4 w-4" />
                 </CalendlyButton>
               </div>
             </div>
@@ -111,7 +112,7 @@ export default function Footer() {
               ) : null}
             </div>
 
-            <div className="flex items-center justify-between rounded-[2rem] border border-white/10 bg-slate-900 px-6 py-5">
+            <div className="flex items-center justify-between rounded-[2rem] border border-white/10 bg-slate-900/80 px-6 py-5 backdrop-blur-xl">
               <p className="text-sm text-slate-400">
                 &copy; {currentYear} Nyle Digital Solutions
               </p>

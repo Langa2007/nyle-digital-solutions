@@ -59,11 +59,14 @@
   body {
     @apply bg-background text-foreground;
     background-image:
-      radial-gradient(circle at top left, rgba(37, 99, 235, 0.18), transparent 34%),
-      radial-gradient(circle at top right, rgba(14, 165, 233, 0.12), transparent 28%),
-      linear-gradient(180deg, rgba(15, 23, 42, 0.04), rgba(15, 23, 42, 0));
+      linear-gradient(180deg, rgba(248, 250, 252, 0.98), rgba(239, 246, 255, 0.92) 46%, rgba(248, 250, 252, 0.98));
     background-attachment: fixed;
     font-family: var(--font-geist-sans), sans-serif;
+  }
+
+  .dark body {
+    background-image:
+      linear-gradient(180deg, rgba(2, 6, 23, 1), rgba(15, 23, 42, 0.96) 44%, rgba(2, 6, 23, 1));
   }
 
   a,
@@ -85,6 +88,131 @@
     box-shadow:
       0 24px 80px -30px rgba(37, 99, 235, 0.45),
       inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  }
+
+  .site-frame {
+    background:
+      linear-gradient(120deg, rgba(37, 99, 235, 0.1), transparent 24%),
+      linear-gradient(240deg, rgba(13, 148, 136, 0.09), transparent 26%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(239, 246, 255, 0.28));
+  }
+
+  .dark .site-frame {
+    background:
+      linear-gradient(120deg, rgba(37, 99, 235, 0.18), transparent 24%),
+      linear-gradient(240deg, rgba(13, 148, 136, 0.14), transparent 28%),
+      linear-gradient(180deg, rgba(2, 6, 23, 0.12), rgba(15, 23, 42, 0.36));
+  }
+
+  .site-backdrop {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .site-grid {
+    position: absolute;
+    inset: -20% -8%;
+    background-image:
+      linear-gradient(rgba(37, 99, 235, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(37, 99, 235, 0.1) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8), transparent 78%);
+    transform: perspective(900px) rotateX(58deg) translateY(-18%);
+    transform-origin: top;
+  }
+
+  .dark .site-grid {
+    background-image:
+      linear-gradient(rgba(96, 165, 250, 0.12) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(45, 212, 191, 0.1) 1px, transparent 1px);
+  }
+
+  .site-beam {
+    position: absolute;
+    left: 50%;
+    height: 140vh;
+    width: 36rem;
+    background: linear-gradient(180deg, transparent, rgba(37, 99, 235, 0.16), rgba(20, 184, 166, 0.1), transparent);
+    filter: blur(26px);
+    opacity: 0.78;
+    transform-origin: top;
+  }
+
+  .site-beam-one {
+    top: -18vh;
+    transform: translateX(-88%) rotate(24deg);
+  }
+
+  .site-beam-two {
+    top: 24vh;
+    transform: translateX(8%) rotate(-28deg);
+    background: linear-gradient(180deg, transparent, rgba(251, 191, 36, 0.12), rgba(59, 130, 246, 0.12), transparent);
+  }
+
+  .site-noise {
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(15, 23, 42, 0.035) 0 1px, transparent 1px 3px),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.46), rgba(255, 255, 255, 0.08));
+    opacity: 0.42;
+    mix-blend-mode: multiply;
+  }
+
+  .dark .site-noise {
+    background-image:
+      repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 3px),
+      linear-gradient(180deg, rgba(2, 6, 23, 0.24), rgba(2, 6, 23, 0.62));
+    mix-blend-mode: screen;
+  }
+
+  .section-atmosphere {
+    @apply relative overflow-hidden;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.26), rgba(239, 246, 255, 0.16)),
+      linear-gradient(120deg, rgba(37, 99, 235, 0.08), transparent 34%),
+      linear-gradient(260deg, rgba(13, 148, 136, 0.08), transparent 34%);
+  }
+
+  .dark .section-atmosphere {
+    background:
+      linear-gradient(180deg, rgba(15, 23, 42, 0.34), rgba(2, 6, 23, 0.18)),
+      linear-gradient(120deg, rgba(37, 99, 235, 0.12), transparent 34%),
+      linear-gradient(260deg, rgba(13, 148, 136, 0.11), transparent 34%);
+  }
+
+  .section-atmosphere::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(115deg, transparent 0 42%, rgba(37, 99, 235, 0.1) 42% 43%, transparent 43% 100%),
+      linear-gradient(65deg, transparent 0 58%, rgba(13, 148, 136, 0.1) 58% 59%, transparent 59% 100%);
+    opacity: 0.7;
+  }
+
+  .footer-atmosphere {
+    @apply relative overflow-hidden border-t border-white/10 text-slate-300;
+    background:
+      linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(2, 6, 23, 0.98)),
+      linear-gradient(120deg, rgba(37, 99, 235, 0.3), transparent 36%),
+      linear-gradient(260deg, rgba(13, 148, 136, 0.22), transparent 34%);
+  }
+
+  .footer-atmosphere::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(96, 165, 250, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(45, 212, 191, 0.06) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), transparent 78%);
+    transform: perspective(900px) rotateX(60deg) translateY(-22%);
+    transform-origin: top;
   }
 
   .nyle-scene-shell {

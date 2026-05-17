@@ -41,8 +41,8 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="py-20 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-900 dark:to-gray-800">
-      <div className="container mx-auto px-4">
+    <section className="section-atmosphere py-20">
+      <div className="section-shell relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             What Our <span className="text-blue-600">Clients Say</span>
@@ -61,7 +61,7 @@ export default function Testimonials() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <div className="relative h-full bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div className="glass-panel relative h-full rounded-[1.75rem] p-8 transition-shadow duration-300 hover:shadow-xl">
                 <Quote className="absolute top-6 right-6 h-8 w-8 text-blue-200 dark:text-blue-900" />
                 
                 <div className="flex items-center mb-6">

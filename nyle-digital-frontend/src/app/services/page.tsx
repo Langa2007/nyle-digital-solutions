@@ -91,8 +91,8 @@ const services = [
 export default function ServicesPage() {
   return (
     <div className="min-h-screen">
-      <section className="pb-14 pt-8">
-        <div className="section-shell">
+      <section className="section-atmosphere pb-14 pt-8">
+        <div className="section-shell relative z-10">
           <div className="glass-panel rounded-[2rem] px-6 py-10 sm:px-10">
             <div className="max-w-3xl">
               <p className="text-sm font-semibold uppercase tracking-[0.28em] text-blue-600 dark:text-blue-300">
@@ -111,8 +111,8 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="pb-16">
-        <div className="section-shell">
+      <section className="section-atmosphere pb-16">
+        <div className="section-shell relative z-10">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
             {services.map((service) => (
               <ServiceCard key={service.title} {...service} />
@@ -121,8 +121,8 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="pb-16">
-        <div className="section-shell">
+      <section className="section-atmosphere pb-16">
+        <div className="section-shell relative z-10">
           <div className="grid gap-6 lg:grid-cols-4">
             {[
               {

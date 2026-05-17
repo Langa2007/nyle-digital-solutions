@@ -42,8 +42,8 @@ const blogPosts = [
 
 export default function BlogSection() {
   return (
-    <section className="py-20">
-      <div className="section-shell">
+    <section className="section-atmosphere py-20">
+      <div className="section-shell relative z-10">
         <div className="mb-12 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
             <p className="text-sm font-semibold uppercase tracking-[0.28em] text-blue-600 dark:text-blue-300">
