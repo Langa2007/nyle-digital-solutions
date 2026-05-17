@@ -86,6 +86,114 @@
       0 24px 80px -30px rgba(37, 99, 235, 0.45),
       inset 0 1px 0 rgba(255, 255, 255, 0.15);
   }
+
+  .nyle-scene-shell {
+    transform-style: preserve-3d;
+  }
+
+  .nyle-core {
+    position: absolute;
+    inset: 23% 18%;
+    transform-style: preserve-3d;
+  }
+
+  .nyle-core-face {
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 2rem;
+    background:
+      linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.9)),
+      radial-gradient(circle at 22% 18%, rgba(34, 211, 238, 0.25), transparent 34%);
+    box-shadow:
+      0 34px 90px -38px rgba(15, 23, 42, 0.72),
+      inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  }
+
+  .nyle-core-front {
+    padding: 1.5rem;
+    transform: translateZ(48px);
+  }
+
+  .nyle-core-side {
+    background: linear-gradient(145deg, rgba(30, 64, 175, 0.55), rgba(13, 148, 136, 0.32));
+    transform: translateZ(-48px) rotateY(180deg);
+  }
+
+  .nyle-orbit {
+    position: absolute;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 9999px;
+    transform-style: preserve-3d;
+  }
+
+  .nyle-orbit-one {
+    inset: 12%;
+    animation: nyleOrbitSpin 18s linear infinite;
+  }
+
+  .nyle-orbit-two {
+    inset: 19% 8%;
+    border-color: rgba(20, 184, 166, 0.23);
+    transform: rotateX(62deg) rotateZ(-20deg);
+    animation: nyleOrbitSpinReverse 22s linear infinite;
+  }
+
+  .nyle-orbit-three {
+    inset: 30% 3%;
+    border-color: rgba(251, 191, 36, 0.2);
+    transform: rotateX(72deg) rotateZ(26deg);
+    animation: nyleOrbitSpin 26s linear infinite;
+  }
+
+  .nyle-orbit-node,
+  .nyle-flow-card {
+    position: absolute;
+    z-index: 2;
+    transform-style: preserve-3d;
+  }
+
+  .nyle-flow-card {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 9999px;
+    background: rgba(15, 23, 42, 0.76);
+    padding: 0.75rem 1rem;
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 600;
+    box-shadow: 0 18px 50px -28px rgba(15, 23, 42, 0.78);
+    backdrop-filter: blur(16px);
+  }
+}
+
+@keyframes nyleOrbitSpin {
+  0% {
+    transform: rotateX(64deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(64deg) rotateZ(360deg);
+  }
+}
+
+@keyframes nyleOrbitSpinReverse {
+  0% {
+    transform: rotateX(62deg) rotateZ(360deg);
+  }
+  100% {
+    transform: rotateX(62deg) rotateZ(0deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nyle-orbit,
+  .nyle-orbit-one,
+  .nyle-orbit-two,
+  .nyle-orbit-three {
+    animation: none;
+  }
 }
 
 ::selection {
