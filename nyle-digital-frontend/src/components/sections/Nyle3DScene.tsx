@@ -1,135 +1,181 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { Canvas, useFrame } from '@react-three/fiber';
 import {
-  Boxes,
-  Cloud,
-  Code2,
-  Database,
-  Smartphone,
-  Workflow,
-} from 'lucide-react';
+  Environment,
+  Float,
+  Html,
+  Line,
+  MeshDistortMaterial,
+  PresentationControls,
+  Sparkles,
+} from '@react-three/drei';
+import { Code2, Database, Globe2, ShieldCheck } from 'lucide-react';
+import { useMemo, useRef } from 'react';
+import * as THREE from 'three';
 
-const orbitNodes = [
-  {
-    label: 'Web',
-    icon: Code2,
-    className: 'left-[4%] top-[18%]',
-    accent: 'from-blue-500 to-cyan-300',
-  },
-  {
-    label: 'Mobile',
-    icon: Smartphone,
-    className: 'right-[4%] top-[20%]',
-    accent: 'from-teal-400 to-emerald-300',
-  },
-  {
-    label: 'Cloud',
-    icon: Cloud,
-    className: 'bottom-[16%] left-[11%]',
-    accent: 'from-amber-300 to-orange-400',
-  },
-  {
-    label: 'Data',
-    icon: Database,
-    className: 'bottom-[13%] right-[12%]',
-    accent: 'from-fuchsia-400 to-rose-300',
-  },
+const serviceNodes = [
+  { label: 'WebGL UI', icon: Code2, position: [-2.6, 1.2, 0.8] },
+  { label: 'Cloud Mesh', icon: Globe2, position: [2.5, 1.05, 0.4] },
+  { label: 'Secure Data', icon: Database, position: [-2.2, -1.25, 0.2] },
+  { label: 'Launch Ops', icon: ShieldCheck, position: [2.1, -1.3, 0.7] },
 ];
+
+function CoreSystem() {
+  const core = useRef<THREE.Group>(null);
+  const ring = useRef<THREE.Mesh>(null);
+  const points = useMemo(
+    () => serviceNodes.map((node) => new THREE.Vector3(...node.position)),
+    [],
+  );
+
+  useFrame(({ clock }) => {
+    if (core.current) {
+      core.current.rotation.y = clock.elapsedTime * 0.22;
+      core.current.rotation.x = Math.sin(clock.elapsedTime * 0.55) * 0.08;
+    }
+
+    if (ring.current) {
+      ring.current.rotation.z = clock.elapsedTime * 0.35;
+    }
+  });
+
+  return (
+    <group>
+      <group ref={core}>
+        <mesh castShadow receiveShadow>
+          <icosahedronGeometry args={[1.1, 3]} />
+          <MeshDistortMaterial
+            color="#2563eb"
+            distort={0.22}
+            speed={1.2}
+            metalness={0.55}
+            roughness={0.22}
+            emissive="#0f172a"
+            emissiveIntensity={0.18}
+          />
+        </mesh>
+        <mesh ref={ring} rotation={[Math.PI / 2, 0, 0]}>
+          <torusGeometry args={[1.64, 0.012, 16, 160]} />
+          <meshStandardMaterial color="#67e8f9" emissive="#0891b2" emissiveIntensity={1.2} />
+        </mesh>
+        <mesh rotation={[1.1, 0.3, 0.4]}>
+          <torusGeometry args={[1.92, 0.01, 16, 160]} />
+          <meshStandardMaterial color="#fbbf24" emissive="#d97706" emissiveIntensity={0.75} />
+        </mesh>
+      </group>
+
+      {serviceNodes.map((node, index) => {
+        const Icon = node.icon;
+        const position = new THREE.Vector3(...node.position);
+
+        return (
+          <Float
+            key={node.label}
+            speed={1.25 + index * 0.2}
+            floatIntensity={0.45}
+            rotationIntensity={0.12}
+          >
+            <group position={position}>
+              <mesh castShadow>
+                <boxGeometry args={[0.42, 0.42, 0.42]} />
+                <meshStandardMaterial
+                  color={index % 2 === 0 ? '#22d3ee' : '#14b8a6'}
+                  emissive={index % 2 === 0 ? '#0891b2' : '#0f766e'}
+                  emissiveIntensity={0.55}
+                  metalness={0.35}
+                  roughness={0.25}
+                />
+              </mesh>
+              <Html center distanceFactor={7.8} transform>
+                <div className="nyle-3d-label">
+                  <Icon className="h-4 w-4" />
+                  <span>{node.label}</span>
+                </div>
+              </Html>
+            </group>
+          </Float>
+        );
+      })}
+
+      {points.map((point, index) => (
+        <Line
+          key={index}
+          points={[new THREE.Vector3(0, 0, 0), point]}
+          color={index % 2 === 0 ? '#7dd3fc' : '#5eead4'}
+          transparent
+          opacity={0.48}
+          lineWidth={1}
+        />
+      ))}
+    </group>
+  );
+}
+
+function PlatformDeck() {
+  return (
+    <group position={[0, -2.05, -0.2]}>
+      <mesh receiveShadow>
+        <cylinderGeometry args={[3.7, 4.35, 0.22, 8]} />
+        <meshStandardMaterial
+          color="#0f172a"
+          metalness={0.45}
+          roughness={0.34}
+          emissive="#082f49"
+          emissiveIntensity={0.28}
+        />
+      </mesh>
+      <mesh position={[0, 0.14, 0]}>
+        <torusGeometry args={[3.38, 0.014, 16, 160]} />
+        <meshStandardMaterial color="#38bdf8" emissive="#0284c7" emissiveIntensity={1.1} />
+      </mesh>
+      {Array.from({ length: 8 }).map((_, index) => {
+        const angle = (Math.PI * 2 * index) / 8;
+        return (
+          <mesh
+            key={index}
+            position={[Math.cos(angle) * 2.75, 0.26, Math.sin(angle) * 2.75]}
+            rotation={[0, -angle, 0]}
+          >
+            <boxGeometry args={[0.18, 0.08, 0.72]} />
+            <meshStandardMaterial color="#1e293b" emissive="#2563eb" emissiveIntensity={0.35} />
+          </mesh>
+        );
+      })}
+    </group>
+  );
+}
 
 export default function Nyle3DScene() {
   return (
-    <div className="relative mx-auto aspect-square w-full max-w-[540px] [perspective:1200px]">
-      <motion.div
-        initial={{ opacity: 0, rotateX: 18, rotateY: -18, y: 28 }}
-        animate={{ opacity: 1, rotateX: 0, rotateY: 0, y: 0 }}
-        transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-        className="nyle-scene-shell absolute inset-0"
+    <div className="relative mx-auto aspect-square w-full max-w-[620px] overflow-visible">
+      <Canvas
+        shadows
+        camera={{ position: [0, 0.55, 6.4], fov: 43 }}
+        dpr={[1, 1.8]}
+        gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
       >
-        <div className="nyle-orbit nyle-orbit-one" />
-        <div className="nyle-orbit nyle-orbit-two" />
-        <div className="nyle-orbit nyle-orbit-three" />
-
-        <motion.div
-          animate={{ rotateY: [0, 12, 0, -12, 0], rotateX: [0, -5, 3, 0] }}
-          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-          className="nyle-core"
+        <ambientLight intensity={0.65} />
+        <directionalLight position={[4, 6, 5]} intensity={2.6} castShadow />
+        <pointLight position={[-3, 2.2, 2]} color="#22d3ee" intensity={55} distance={8} />
+        <pointLight position={[3, -1.5, 3]} color="#fbbf24" intensity={32} distance={7} />
+        <Environment preset="city" />
+        <Sparkles count={72} scale={[5.8, 4.4, 3.8]} size={2.2} speed={0.42} color="#93c5fd" />
+        <PresentationControls
+          global
+          cursor
+          speed={1.35}
+          zoom={0.92}
+          rotation={[0, -0.18, 0]}
+          polar={[-0.32, 0.32]}
+          azimuth={[-0.45, 0.45]}
         >
-          <div className="nyle-core-face nyle-core-front">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold uppercase tracking-[0.28em] text-cyan-100">
-                Nyle OS
-              </span>
-              <span className="rounded-full bg-emerald-400/15 px-3 py-1 text-xs font-medium text-emerald-100">
-                Live
-              </span>
-            </div>
-            <div className="mt-8 flex items-center gap-4">
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 text-cyan-100">
-                <Boxes className="h-8 w-8" />
-              </div>
-              <div>
-                <p className="text-3xl font-semibold text-white">Build</p>
-                <p className="mt-1 text-sm text-slate-300">Launch-ready platforms</p>
-              </div>
-            </div>
-            <div className="mt-8 space-y-3">
-              {['Discovery', 'Design', 'Delivery'].map((step, index) => (
-                <div key={step} className="flex items-center gap-3">
-                  <span className="h-2.5 w-2.5 rounded-full bg-cyan-300" />
-                  <div className="h-2 flex-1 rounded-full bg-white/10">
-                    <motion.div
-                      initial={{ width: '20%' }}
-                      animate={{ width: `${72 + index * 8}%` }}
-                      transition={{
-                        duration: 1.2,
-                        delay: 0.25 + index * 0.15,
-                        ease: 'easeOut',
-                      }}
-                      className="h-full rounded-full bg-gradient-to-r from-cyan-300 via-blue-400 to-emerald-300"
-                    />
-                  </div>
-                  <span className="w-16 text-right text-xs text-slate-300">{step}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="nyle-core-face nyle-core-side" />
-        </motion.div>
-
-        <motion.div
-          animate={{ y: [0, -10, 0] }}
-          transition={{ duration: 4.8, repeat: Infinity, ease: 'easeInOut' }}
-          className="nyle-flow-card left-[15%] top-[7%]"
-        >
-          <Workflow className="h-5 w-5 text-amber-200" />
-          <span>Automation</span>
-        </motion.div>
-
-        {orbitNodes.map((node, index) => {
-          const Icon = node.icon;
-
-          return (
-            <motion.div
-              key={node.label}
-              animate={{ y: [0, index % 2 === 0 ? -12 : 12, 0] }}
-              transition={{
-                duration: 4.5 + index * 0.35,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-              className={`nyle-orbit-node ${node.className}`}
-            >
-              <div className={`rounded-2xl bg-gradient-to-br ${node.accent} p-[1px]`}>
-                <div className="flex items-center gap-2 rounded-2xl bg-slate-950/88 px-4 py-3 text-white backdrop-blur">
-                  <Icon className="h-5 w-5" />
-                  <span className="text-sm font-semibold">{node.label}</span>
-                </div>
-              </div>
-            </motion.div>
-          );
-        })}
-      </motion.div>
+          <Float speed={1.15} floatIntensity={0.25} rotationIntensity={0.12}>
+            <CoreSystem />
+            <PlatformDeck />
+          </Float>
+        </PresentationControls>
+      </Canvas>
     </div>
   );
 }

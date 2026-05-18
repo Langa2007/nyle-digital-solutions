@@ -1,300 +1,225 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { Float, Line, Sparkles, Stars } from '@react-three/drei';
 import { useTheme } from 'next-themes';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import * as THREE from 'three';
 
-interface Particle {
-  x: number;
-  y: number;
-  z: number;
-  size: number;
-  vx: number;
-  vy: number;
-  vz: number;
-  color: string;
+function useMountedTheme() {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
+  return mounted ? resolvedTheme : 'dark';
+}
+
+function CircuitGrid({ isDark }: { isDark: boolean }) {
+  const group = useRef<THREE.Group>(null);
+  const lines = useMemo(() => {
+    const rows: THREE.Vector3[][] = [];
+    const size = 18;
+    const step = 1.6;
+
+    for (let i = -size; i <= size; i += 2) {
+      rows.push([
+        new THREE.Vector3(-size, 0, i * step),
+        new THREE.Vector3(size, 0, i * step),
+      ]);
+      rows.push([
+        new THREE.Vector3(i * step, 0, -size),
+        new THREE.Vector3(i * step, 0, size),
+      ]);
+    }
+
+    return rows;
+  }, []);
+
+  useFrame(({ clock, mouse }) => {
+    if (!group.current) return;
+    group.current.position.z = ((clock.elapsedTime * 1.5) % 3.2) - 1.6;
+    group.current.rotation.x = THREE.MathUtils.lerp(
+      group.current.rotation.x,
+      -1.05 + mouse.y * 0.05,
+      0.04,
+    );
+    group.current.rotation.z = THREE.MathUtils.lerp(
+      group.current.rotation.z,
+      mouse.x * 0.035,
+      0.04,
+    );
+  });
+
+  return (
+    <group ref={group} position={[0, -4.2, -7]}>
+      {lines.map((points, index) => (
+        <Line
+          key={index}
+          points={points}
+          color={isDark ? '#38bdf8' : '#2563eb'}
+          transparent
+          opacity={index % 3 === 0 ? 0.18 : 0.08}
+          lineWidth={0.65}
+        />
+      ))}
+    </group>
+  );
+}
+
+function DataConstellation({ isDark }: { isDark: boolean }) {
+  const group = useRef<THREE.Group>(null);
+  const nodes = useMemo(
+    () =>
+      Array.from({ length: 34 }, (_, index) => {
+        const angle = index * 0.86;
+        const radius = 3.4 + (index % 7) * 0.36;
+        return new THREE.Vector3(
+          Math.cos(angle) * radius,
+          Math.sin(index * 1.71) * 1.8,
+          Math.sin(angle) * radius - 4.5,
+        );
+      }),
+    [],
+  );
+
+  useFrame(({ clock, mouse }) => {
+    if (!group.current) return;
+    group.current.rotation.y = clock.elapsedTime * 0.035 + mouse.x * 0.16;
+    group.current.rotation.x = mouse.y * 0.08;
+  });
+
+  return (
+    <group ref={group} position={[0, 0.4, -2]}>
+      {nodes.map((node, index) => (
+        <Float
+          key={`node-${index}`}
+          speed={1.2 + (index % 4) * 0.15}
+          rotationIntensity={0.2}
+          floatIntensity={0.55}
+        >
+          <mesh position={node}>
+            <icosahedronGeometry args={[index % 5 === 0 ? 0.08 : 0.045, 1]} />
+            <meshStandardMaterial
+              color={index % 4 === 0 ? '#fbbf24' : isDark ? '#67e8f9' : '#1d4ed8'}
+              emissive={index % 4 === 0 ? '#b45309' : '#0ea5e9'}
+              emissiveIntensity={isDark ? 0.9 : 0.35}
+              roughness={0.32}
+            />
+          </mesh>
+        </Float>
+      ))}
+      {nodes.slice(0, -1).map((node, index) => (
+        <Line
+          key={`link-${index}`}
+          points={[node, nodes[index + 1]]}
+          color={isDark ? '#7dd3fc' : '#2563eb'}
+          transparent
+          opacity={0.16}
+          lineWidth={0.45}
+        />
+      ))}
+    </group>
+  );
+}
+
+function FloatingGeometry({ isDark }: { isDark: boolean }) {
+  const group = useRef<THREE.Group>(null);
+
+  useFrame(({ clock, mouse }) => {
+    if (!group.current) return;
+    group.current.rotation.y = clock.elapsedTime * 0.06 + mouse.x * 0.2;
+    group.current.rotation.x = Math.sin(clock.elapsedTime * 0.3) * 0.08;
+  });
+
+  return (
+    <group ref={group}>
+      <Float speed={1.1} floatIntensity={0.8} rotationIntensity={0.25}>
+        <mesh position={[-4.9, 2.7, -5.5]} rotation={[0.7, 0.1, 0.4]}>
+          <torusKnotGeometry args={[0.62, 0.14, 120, 12]} />
+          <meshStandardMaterial
+            color="#22d3ee"
+            emissive="#0891b2"
+            emissiveIntensity={isDark ? 0.6 : 0.24}
+            metalness={0.35}
+            roughness={0.2}
+          />
+        </mesh>
+      </Float>
+      <Float speed={1.35} floatIntensity={0.7} rotationIntensity={0.45}>
+        <mesh position={[5.2, 1.6, -6.2]} rotation={[0.4, 0.8, 0.2]}>
+          <octahedronGeometry args={[0.86, 0]} />
+          <meshStandardMaterial
+            color="#3b82f6"
+            emissive="#1d4ed8"
+            emissiveIntensity={isDark ? 0.7 : 0.25}
+            metalness={0.5}
+            roughness={0.24}
+          />
+        </mesh>
+      </Float>
+      <Float speed={0.95} floatIntensity={0.55} rotationIntensity={0.32}>
+        <mesh position={[3.6, -2.2, -4.8]} rotation={[0.2, 0.9, 0.8]}>
+          <dodecahedronGeometry args={[0.52, 0]} />
+          <meshStandardMaterial
+            color="#14b8a6"
+            emissive="#0f766e"
+            emissiveIntensity={isDark ? 0.55 : 0.2}
+            roughness={0.28}
+          />
+        </mesh>
+      </Float>
+    </group>
+  );
+}
+
+function Scene({ isDark }: { isDark: boolean }) {
+  return (
+    <>
+      <color attach="background" args={[isDark ? '#020617' : '#f8fafc']} />
+      <fog attach="fog" args={[isDark ? '#020617' : '#eff6ff', 8, 26]} />
+      <ambientLight intensity={isDark ? 0.5 : 0.85} />
+      <directionalLight position={[4, 6, 3]} intensity={isDark ? 1.8 : 1.15} />
+      <pointLight position={[-5, 2, -2]} color="#22d3ee" intensity={90} distance={12} />
+      <pointLight position={[5, -1, -3]} color="#fbbf24" intensity={36} distance={9} />
+      <Stars
+        radius={42}
+        depth={24}
+        count={isDark ? 900 : 280}
+        factor={isDark ? 2.2 : 1.1}
+        saturation={0.6}
+        fade
+        speed={0.25}
+      />
+      <Sparkles
+        count={52}
+        scale={[11, 4.5, 9]}
+        size={isDark ? 2.2 : 1.3}
+        speed={0.35}
+        color={isDark ? '#93c5fd' : '#2563eb'}
+        opacity={isDark ? 0.5 : 0.24}
+      />
+      <CircuitGrid isDark={isDark} />
+      <DataConstellation isDark={isDark} />
+      <FloatingGeometry isDark={isDark} />
+    </>
+  );
 }
 
 export default function Nyle3DBackground() {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const { resolvedTheme } = useTheme();
-
-  // Mouse and scroll variables tracking
-  const mouseRef = useRef({ x: 0, y: 0, targetX: 0, targetY: 0 });
-  const scrollRef = useRef({ y: 0, targetY: 0 });
-  const particlesRef = useRef<Particle[]>([]);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    let animationId: number;
-    let time = 0;
-
-    // Handles viewport resizing
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    // Initializing 3D floating particles
-    const initParticles = () => {
-      const list: Particle[] = [];
-      const particleCount = 42;
-      for (let i = 0; i < particleCount; i++) {
-        list.push({
-          x: (Math.random() - 0.5) * 600,
-          y: (Math.random() - 0.5) * 400,
-          z: Math.random() * 600,
-          size: Math.random() * 2 + 1,
-          vx: (Math.random() - 0.5) * 0.4,
-          vy: (Math.random() - 0.5) * 0.4,
-          vz: -Math.random() * 0.6 - 0.2, // Drifting towards camera
-          color: i % 2 === 0 ? 'rgba(34, 211, 238,' : 'rgba(99, 102, 241,',
-        });
-      }
-      particlesRef.current = list;
-    };
-    initParticles();
-
-    // Mouse tilt tracking
-    const handleMouseMove = (e: MouseEvent) => {
-      // Normalize mouse positions to range [-1, 1]
-      mouseRef.current.targetX = (e.clientX / window.innerWidth) * 2 - 1;
-      mouseRef.current.targetY = (e.clientY / window.innerHeight) * 2 - 1;
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-
-    // Scroll speed enhancement tracking
-    const handleScroll = () => {
-      scrollRef.current.targetY = window.scrollY;
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    // 3D Engine Loop
-    const render = () => {
-      time += 0.008;
-
-      // Smooth interpolation/damping for mouse and scroll movement (lerp)
-      const mouse = mouseRef.current;
-      mouse.x += (mouse.targetX - mouse.x) * 0.05;
-      mouse.y += (mouse.targetY - mouse.y) * 0.05;
-
-      const scroll = scrollRef.current;
-      scroll.y += (scroll.targetY - scroll.y) * 0.06;
-
-      // Clear with zero background to let layout theme background show through
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      const isDark = resolvedTheme === 'dark';
-      const width = canvas.width;
-      const height = canvas.height;
-
-      // Projection Configuration
-      const fov = 380;
-      const maxDepth = 600;
-      const tiltX = mouse.x * 0.12; // tilt camera Y based on mouse X
-      const tiltY = mouse.y * 0.08 + scroll.y * 0.0005; // tilt camera X based on mouse Y + scroll
-
-      const project = (x3d: number, y3d: number, z3d: number) => {
-        // Rotate around Y-axis (tiltX)
-        let x1 = x3d * Math.cos(tiltX) - z3d * Math.sin(tiltX);
-        let z1 = x3d * Math.sin(tiltX) + z3d * Math.cos(tiltX);
-
-        // Rotate around X-axis (tiltY)
-        let y2 = y3d * Math.cos(tiltY) - z1 * Math.sin(tiltY);
-        let z2 = y3d * Math.sin(tiltY) + z1 * Math.cos(tiltY);
-
-        if (z2 <= 20) return null;
-
-        const scale = fov / z2;
-        return {
-          x: width / 2 + x1 * scale,
-          y: height / 2 + y2 * scale,
-          depth: z2,
-        };
-      };
-
-      // 1. Draw 3D Perspective Undulating Wave Grid
-      const draw3DGrid = () => {
-        const gridSpacing = 40;
-        const gridWidth = 400;
-        const speedMultiplier = 1 + (scroll.y * 0.002);
-        const camOffsetZ = (time * 18 * speedMultiplier) % gridSpacing;
-
-        const getGridY = (x: number, z: number) => {
-          // Double sine wave representing technological pulse waves
-          return 160 + 
-            Math.sin(x * 0.006 + time * 1.5) * 16 + 
-            Math.cos(z * 0.008 - time * 1.0) * 16;
-        };
-
-        const gridColor = isDark ? 'rgba(6, 182, 212, ' : 'rgba(37, 99, 235, ';
-        const minorColor = isDark ? 'rgba(59, 130, 246, ' : 'rgba(13, 148, 136, ';
-
-        // Lateral lines (horizontal segments)
-        for (let z = gridSpacing; z < maxDepth; z += gridSpacing) {
-          const currentZ = z - camOffsetZ;
-          if (currentZ <= 0) continue;
-
-          ctx.beginPath();
-          let firstPoint = true;
-
-          for (let x = -gridWidth; x <= gridWidth; x += 20) {
-            const y = getGridY(x, currentZ);
-            const pt = project(x, y, currentZ);
-
-            if (pt) {
-              if (firstPoint) {
-                ctx.moveTo(pt.x, pt.y);
-                firstPoint = false;
-              } else {
-                ctx.lineTo(pt.x, pt.y);
-              }
-            }
-          }
-
-          const depthFade = 1 - currentZ / maxDepth;
-          ctx.strokeStyle = `${gridColor}${depthFade * (isDark ? 0.15 : 0.08)})`;
-          ctx.lineWidth = 1;
-          ctx.stroke();
-        }
-
-        // Longitudinal lines (vertical segments extending into Z depth)
-        for (let x = -gridWidth; x <= gridWidth; x += gridSpacing) {
-          ctx.beginPath();
-          let firstPoint = true;
-
-          for (let z = gridSpacing; z < maxDepth; z += 15) {
-            const currentZ = z - camOffsetZ;
-            if (currentZ <= 0) continue;
-
-            const y = getGridY(x, currentZ);
-            const pt = project(x, y, currentZ);
-
-            if (pt) {
-              if (firstPoint) {
-                ctx.moveTo(pt.x, pt.y);
-                firstPoint = false;
-              } else {
-                ctx.lineTo(pt.x, pt.y);
-              }
-            }
-          }
-
-          const depthFade = 0.5;
-          ctx.strokeStyle = `${minorColor}${depthFade * (isDark ? 0.06 : 0.04)})`;
-          ctx.lineWidth = 0.8;
-          ctx.stroke();
-        }
-      };
-
-      draw3DGrid();
-
-      // 2. Draw 3D Floating Constellation Mesh
-      const particles = particlesRef.current;
-      const projectedList: { x: number; y: number; depth: number; particle: Particle }[] = [];
-
-      particles.forEach((p) => {
-        // Move particle forward in Z space, speed up slightly during fast scrolls
-        const scrollBoost = scroll.y * 0.005;
-        p.z += p.vz * (1 + scrollBoost);
-        p.x += p.vx;
-        p.y += p.vy;
-
-        // Wrap particles back to far plane if they pass the camera
-        if (p.z <= 10) {
-          p.z = maxDepth;
-          p.x = (Math.random() - 0.5) * 600;
-          p.y = (Math.random() - 0.5) * 400;
-        }
-
-        const pt = project(p.x, p.y, p.z);
-        if (pt) {
-          projectedList.push({
-            x: pt.x,
-            y: pt.y,
-            depth: pt.depth,
-            particle: p,
-          });
-        }
-      });
-
-      // Draw constellation connections (based on 3D distance proximity)
-      ctx.lineWidth = 0.6;
-      for (let i = 0; i < projectedList.length; i++) {
-        for (let j = i + 1; j < projectedList.length; j++) {
-          const pi = projectedList[i];
-          const pj = projectedList[j];
-
-          // Compute 3D distance
-          const dx = pi.particle.x - pj.particle.x;
-          const dy = pi.particle.y - pj.particle.y;
-          const dz = pi.particle.z - pj.particle.z;
-          const dist3d = Math.sqrt(dx * dx + dy * dy + dz * dz);
-
-          if (dist3d < 110) {
-            const opacity = (1 - dist3d / 110) * (1 - pi.depth / maxDepth) * (1 - pj.depth / maxDepth);
-            ctx.strokeStyle = isDark
-              ? `rgba(147, 197, 253, ${opacity * 0.15})`
-              : `rgba(59, 130, 246, ${opacity * 0.1})`;
-            ctx.beginPath();
-            ctx.moveTo(pi.x, pi.y);
-            ctx.lineTo(pj.x, pj.y);
-            ctx.stroke();
-          }
-        }
-      }
-
-      // Render individual particle nodes
-      projectedList.forEach(({ x, y, depth, particle: p }) => {
-        const depthFade = 1 - depth / maxDepth;
-        const finalSize = p.size * (fov / depth) * 0.5;
-
-        // Glow radial gradient
-        const gradient = ctx.createRadialGradient(x, y, 0, x, y, finalSize * 3);
-        const colorPrefix = p.color;
-        
-        gradient.addColorStop(0, `${colorPrefix}${depthFade * (isDark ? 0.9 : 0.7)})`);
-        gradient.addColorStop(0.3, `${colorPrefix}${depthFade * (isDark ? 0.4 : 0.3)})`);
-        gradient.addColorStop(1, `${colorPrefix}0)`);
-
-        ctx.fillStyle = gradient;
-        ctx.beginPath();
-        ctx.arc(x, y, finalSize * 3, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Solid core
-        ctx.fillStyle = isDark
-          ? `rgba(255, 255, 255, ${depthFade * 0.8})`
-          : `rgba(37, 99, 235, ${depthFade * 0.9})`;
-        ctx.beginPath();
-        ctx.arc(x, y, finalSize * 0.7, 0, Math.PI * 2);
-        ctx.fill();
-      });
-
-      animationId = requestAnimationFrame(render);
-    };
-
-    render();
-
-    return () => {
-      cancelAnimationFrame(animationId);
-      window.removeEventListener('resize', resizeCanvas);
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [resolvedTheme]);
+  const resolvedTheme = useMountedTheme();
+  const isDark = resolvedTheme === 'dark';
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="fixed inset-0 -z-20 h-full w-full pointer-events-none"
-      aria-hidden="true"
-    />
+    <div className="pointer-events-none fixed inset-0 -z-20">
+      <Canvas
+        camera={{ position: [0, 0.2, 8.2], fov: 52 }}
+        dpr={[1, 1.7]}
+        gl={{ antialias: true, alpha: false, powerPreference: 'high-performance' }}
+      >
+        <Scene isDark={isDark} />
+      </Canvas>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_10%,rgba(37,99,235,0.20),transparent_28%),radial-gradient(circle_at_86%_28%,rgba(20,184,166,0.16),transparent_28%),linear-gradient(180deg,rgba(248,250,252,0.28),rgba(248,250,252,0.72)_68%,rgba(248,250,252,0.98))] dark:bg-[radial-gradient(circle_at_16%_10%,rgba(37,99,235,0.22),transparent_30%),radial-gradient(circle_at_84%_24%,rgba(20,184,166,0.16),transparent_28%),linear-gradient(180deg,rgba(2,6,23,0.16),rgba(2,6,23,0.72)_72%,rgba(2,6,23,0.98))]" />
+    </div>
   );
 }

@@ -1,10 +1,15 @@
 'use client';
 
+import { useRef } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 import { ArrowRight, CheckCircle2, Play, Sparkles } from 'lucide-react';
 import CalendlyButton from '../ui/CalendlyButton';
 import Nyle3DScene from './Nyle3DScene';
+
+gsap.registerPlugin(useGSAP);
 
 const deliverySignals = [
   'Expert teams delivering excellence from day one',
@@ -13,15 +18,33 @@ const deliverySignals = [
 ];
 
 export default function Hero() {
+  const heroRef = useRef<HTMLElement | null>(null);
+
+  useGSAP(
+    () => {
+      gsap.from('.hero-copy > *', {
+        opacity: 0,
+        y: 24,
+        rotateX: -12,
+        transformOrigin: '50% 100%',
+        stagger: 0.08,
+        duration: 0.9,
+        ease: 'power3.out',
+      });
+    },
+    { scope: heroRef },
+  );
+
   return (
-    <section className="relative overflow-hidden pb-24 pt-36 sm:pt-40">
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(37,99,235,0.24),_transparent_34%),radial-gradient(circle_at_82%_16%,_rgba(20,184,166,0.16),_transparent_24%),radial-gradient(circle_at_58%_88%,_rgba(251,191,36,0.12),_transparent_30%),linear-gradient(180deg,_rgba(255,255,255,0.92),_rgba(239,246,255,0.72)_36%,_rgba(255,255,255,0.96))] dark:bg-[radial-gradient(circle_at_top_left,_rgba(37,99,235,0.28),_transparent_34%),radial-gradient(circle_at_80%_12%,_rgba(20,184,166,0.14),_transparent_24%),radial-gradient(circle_at_58%_88%,_rgba(251,191,36,0.08),_transparent_30%),linear-gradient(180deg,_rgba(2,6,23,0.96),_rgba(15,23,42,0.92)_38%,_rgba(2,6,23,0.98))]" />
+    <section ref={heroRef} className="relative overflow-hidden pb-24 pt-36 sm:pt-40">
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,_rgba(248,250,252,0.58),_rgba(239,246,255,0.30)_42%,_rgba(248,250,252,0.68))] dark:bg-[linear-gradient(180deg,_rgba(2,6,23,0.44),_rgba(15,23,42,0.22)_42%,_rgba(2,6,23,0.72))]" />
       <div className="section-shell">
         <div className="grid items-center gap-14 lg:grid-cols-[1.1fr_0.9fr]">
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55 }}
+            className="hero-copy [transform-style:preserve-3d]"
           >
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-200/80 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700 dark:border-blue-400/20 dark:bg-blue-500/10 dark:text-blue-200">
               <Sparkles className="h-4 w-4" />
@@ -70,7 +93,7 @@ export default function Hero() {
               ].map((item) => (
                 <div
                   key={item.label}
-                  className="glass-panel rounded-3xl px-5 py-5 text-center"
+                  className="glass-panel rounded-3xl px-5 py-5 text-center [transform:translateZ(0)] hover:[transform:translateY(-6px)_rotateX(5deg)]"
                 >
                   <p className="text-2xl font-semibold text-slate-950 dark:text-white">
                     {item.value}
@@ -87,9 +110,9 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.97 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.65 }}
-            className="relative min-h-[420px] lg:min-h-[560px]"
+            className="relative min-h-[420px] [perspective:1200px] lg:min-h-[560px]"
           >
-            <div className="absolute -inset-10 -z-10 rounded-[3rem] bg-[conic-gradient(from_130deg,_rgba(37,99,235,0.18),_rgba(20,184,166,0.14),_rgba(251,191,36,0.12),_rgba(37,99,235,0.18))] blur-3xl" />
+            <div className="absolute -inset-10 -z-10 rounded-[3rem] bg-[conic-gradient(from_130deg,_rgba(37,99,235,0.22),_rgba(20,184,166,0.18),_rgba(251,191,36,0.13),_rgba(37,99,235,0.22))] blur-3xl" />
             <Nyle3DScene />
           </motion.div>
         </div>

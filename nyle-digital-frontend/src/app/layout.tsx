@@ -7,6 +7,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import CookieConsent from '@/components/ui/CookieConsent';
 import { ReactQueryProvider } from '@/components/providers/react-query-provider';
+import SmoothScrollProvider from '@/components/providers/SmoothScrollProvider';
 
 import Nyle3DBackground from '@/components/ui/Nyle3DBackground';
 
@@ -73,13 +74,15 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <div className="site-frame relative flex min-h-screen flex-col overflow-hidden">
-              <Nyle3DBackground />
-              <Navbar />
-              <main className="relative z-10 flex-grow">{children}</main>
-              <Footer />
-              <CookieConsent />
-            </div>
+            <SmoothScrollProvider>
+              <div className="site-frame relative flex min-h-screen flex-col overflow-hidden">
+                <Nyle3DBackground />
+                <Navbar />
+                <main className="relative z-10 flex-grow">{children}</main>
+                <Footer />
+                <CookieConsent />
+              </div>
+            </SmoothScrollProvider>
             <Toaster
               position="top-right"
               toastOptions={{
