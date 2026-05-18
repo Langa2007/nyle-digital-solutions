@@ -8,6 +8,8 @@ import Footer from '@/components/layout/Footer';
 import CookieConsent from '@/components/ui/CookieConsent';
 import { ReactQueryProvider } from '@/components/providers/react-query-provider';
 
+import Nyle3DBackground from '@/components/ui/Nyle3DBackground';
+
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
   variable: '--font-geist-sans',
@@ -72,12 +74,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <div className="site-frame relative flex min-h-screen flex-col overflow-hidden">
-              <div className="site-backdrop" aria-hidden="true">
-                <div className="site-grid" />
-                <div className="site-beam site-beam-one" />
-                <div className="site-beam site-beam-two" />
-                <div className="site-noise" />
-              </div>
+              <Nyle3DBackground />
               <Navbar />
               <main className="relative z-10 flex-grow">{children}</main>
               <Footer />

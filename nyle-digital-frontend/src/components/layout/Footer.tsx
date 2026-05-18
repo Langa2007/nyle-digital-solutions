@@ -29,7 +29,7 @@ export default function Footer() {
   const adminUrl = process.env.NEXT_PUBLIC_ADMIN_URL;
 
   return (
-    <footer className="footer-atmosphere z-10">
+    <footer className="footer-atmosphere z-20">
       <div className="section-shell relative z-10 py-14">
         <div className="grid gap-10 lg:grid-cols-[1.25fr_0.75fr]">
           <div className="glass-panel rounded-[2rem] px-6 py-8 sm:px-8">
