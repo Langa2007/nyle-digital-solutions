@@ -8,12 +8,12 @@ import { AnimatePresence, motion } from 'framer-motion';
 import CalendlyButton from '../ui/CalendlyButton';
 
 const navigation = [
+  { name: 'Home', href: '/' },
   { name: 'Services', href: '/#services' },
   { name: 'Impact', href: '/#impact' },
   { name: 'Work', href: '/#portfolio' },
   { name: 'Testimonials', href: '/#testimonials' },
   { name: 'Insights', href: '/#insights' },
-  { name: '3D Sandbox', href: '/3d-sandbox' },
   { name: 'Contact', href: '/#contact' },
 ];
 
