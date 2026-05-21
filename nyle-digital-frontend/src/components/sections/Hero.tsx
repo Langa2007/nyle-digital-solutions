@@ -112,7 +112,9 @@ export default function Hero() {
             transition={{ duration: 0.65 }}
             className="relative min-h-[420px] [perspective:1200px] lg:min-h-[560px]"
           >
-            <div className="absolute -inset-10 -z-10 rounded-[3rem] bg-[conic-gradient(from_130deg,_rgba(37,99,235,0.22),_rgba(20,184,166,0.18),_rgba(251,191,36,0.13),_rgba(37,99,235,0.22))] blur-3xl" />
+            {/* Layered glow halos matching the crystal tower palette */}
+            <div className="absolute -inset-12 -z-10 rounded-[3rem] bg-[conic-gradient(from_200deg,_rgba(34,211,238,0.28),_rgba(167,139,250,0.22),_rgba(251,191,36,0.16),_rgba(52,211,153,0.18),_rgba(34,211,238,0.28))] blur-3xl animate-[spin_18s_linear_infinite]" />
+            <div className="absolute -inset-6 -z-10 rounded-[3rem] bg-[radial-gradient(ellipse_at_center,_rgba(34,211,238,0.14)_0%,_rgba(167,139,250,0.08)_55%,_transparent_80%)] blur-2xl" />
             <Nyle3DScene />
           </motion.div>
         </div>
