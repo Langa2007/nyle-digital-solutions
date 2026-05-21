@@ -58,15 +58,23 @@
 
   body {
     @apply bg-background text-foreground;
+    background-color: #f0f9ff;
     background-image:
-      linear-gradient(180deg, rgba(248, 250, 252, 0.98), rgba(239, 246, 255, 0.92) 46%, rgba(248, 250, 252, 0.98));
+      radial-gradient(ellipse 90% 60% at 10% 5%, rgba(59, 130, 246, 0.09) 0%, transparent 55%),
+      radial-gradient(ellipse 80% 55% at 90% 15%, rgba(139, 92, 246, 0.07) 0%, transparent 50%),
+      radial-gradient(ellipse 70% 50% at 50% 90%, rgba(16, 185, 129, 0.06) 0%, transparent 50%),
+      linear-gradient(180deg, #f0f9ff, #eff6ff 45%, #f8fafc);
     background-attachment: fixed;
     font-family: var(--font-geist-sans), sans-serif;
   }
 
   .dark body {
+    background-color: #020617;
     background-image:
-      linear-gradient(180deg, rgba(2, 6, 23, 1), rgba(15, 23, 42, 0.96) 44%, rgba(2, 6, 23, 1));
+      radial-gradient(ellipse 90% 60% at 10% 5%, rgba(34, 211, 238, 0.10) 0%, transparent 55%),
+      radial-gradient(ellipse 80% 55% at 90% 15%, rgba(167, 139, 250, 0.09) 0%, transparent 50%),
+      radial-gradient(ellipse 70% 50% at 50% 90%, rgba(52, 211, 153, 0.07) 0%, transparent 50%),
+      linear-gradient(180deg, #020617, #0f172a 45%, #020617);
   }
 
   a,
@@ -134,23 +142,36 @@
   .site-beam {
     position: absolute;
     left: 50%;
-    height: 140vh;
-    width: 36rem;
-    background: linear-gradient(180deg, transparent, rgba(37, 99, 235, 0.16), rgba(20, 184, 166, 0.1), transparent);
-    filter: blur(26px);
-    opacity: 0.78;
+    height: 160vh;
+    filter: blur(40px);
     transform-origin: top;
+    animation: auroraBeamPulse 10s ease-in-out infinite;
   }
 
   .site-beam-one {
-    top: -18vh;
-    transform: translateX(-88%) rotate(24deg);
+    top: -22vh;
+    width: 42rem;
+    background: linear-gradient(180deg, transparent 0%, rgba(34, 211, 238, 0.30) 30%, rgba(37, 99, 235, 0.20) 65%, transparent 100%);
+    transform: translateX(-95%) rotate(22deg);
+    animation-delay: 0s;
   }
 
   .site-beam-two {
-    top: 24vh;
-    transform: translateX(8%) rotate(-28deg);
-    background: linear-gradient(180deg, transparent, rgba(251, 191, 36, 0.12), rgba(59, 130, 246, 0.12), transparent);
+    top: 22vh;
+    width: 38rem;
+    background: linear-gradient(180deg, transparent 0%, rgba(167, 139, 250, 0.25) 30%, rgba(251, 191, 36, 0.16) 65%, transparent 100%);
+    transform: translateX(15%) rotate(-24deg);
+    animation-delay: -5s;
+  }
+
+  .site-beam-three {
+    top: 58vh;
+    left: 30%;
+    width: 30rem;
+    background: linear-gradient(180deg, transparent 0%, rgba(52, 211, 153, 0.20) 35%, rgba(34, 211, 238, 0.14) 70%, transparent 100%);
+    transform: translateX(-50%) rotate(8deg);
+    animation-delay: -2.5s;
+    animation-duration: 13s;
   }
 
   .site-noise {
@@ -173,17 +194,17 @@
   .section-atmosphere {
     @apply relative overflow-hidden;
     background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(239, 246, 255, 0.18)),
-      linear-gradient(120deg, rgba(37, 99, 235, 0.08), transparent 34%),
-      linear-gradient(260deg, rgba(13, 148, 136, 0.08), transparent 34%);
+      radial-gradient(ellipse 65% 45% at 12% 18%, rgba(59, 130, 246, 0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 55% 40% at 90% 80%, rgba(16, 185, 129, 0.06) 0%, transparent 55%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.20), rgba(240, 249, 255, 0.06));
     transform-style: preserve-3d;
   }
 
   .dark .section-atmosphere {
     background:
-      linear-gradient(180deg, rgba(15, 23, 42, 0.34), rgba(2, 6, 23, 0.18)),
-      linear-gradient(120deg, rgba(37, 99, 235, 0.12), transparent 34%),
-      linear-gradient(260deg, rgba(13, 148, 136, 0.11), transparent 34%);
+      radial-gradient(ellipse 65% 45% at 12% 18%, rgba(34, 211, 238, 0.09) 0%, transparent 60%),
+      radial-gradient(ellipse 55% 40% at 90% 80%, rgba(52, 211, 153, 0.07) 0%, transparent 55%),
+      linear-gradient(180deg, rgba(15, 23, 42, 0.12), rgba(2, 6, 23, 0.05));
   }
 
   .section-atmosphere::before {
@@ -191,10 +212,10 @@
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(115deg, transparent 0 42%, rgba(37, 99, 235, 0.1) 42% 43%, transparent 43% 100%),
-      linear-gradient(65deg, transparent 0 58%, rgba(13, 148, 136, 0.1) 58% 59%, transparent 59% 100%);
-    opacity: 0.48;
-    transform: translateZ(-1px);
+      linear-gradient(115deg, transparent 0 42%, rgba(37, 99, 235, 0.06) 42% 43%, transparent 43% 100%),
+      linear-gradient(65deg, transparent 0 58%, rgba(13, 148, 136, 0.06) 58% 59%, transparent 59% 100%);
+    opacity: 0.55;
+    pointer-events: none;
   }
 
   .section-atmosphere::after {
@@ -202,15 +223,15 @@
     pointer-events: none;
     position: absolute;
     inset: auto 0 0;
-    height: 45%;
+    height: 50%;
     background-image:
-      linear-gradient(rgba(37, 99, 235, 0.14) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(20, 184, 166, 0.12) 1px, transparent 1px);
-    background-size: 56px 56px;
-    mask-image: linear-gradient(0deg, rgba(0, 0, 0, 0.42), transparent 78%);
-    transform: perspective(900px) rotateX(64deg) translateY(28%);
+      linear-gradient(rgba(37, 99, 235, 0.09) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(20, 184, 166, 0.08) 1px, transparent 1px);
+    background-size: 52px 52px;
+    mask-image: linear-gradient(0deg, rgba(0, 0, 0, 0.32), transparent 82%);
+    transform: perspective(900px) rotateX(60deg) translateY(28%);
     transform-origin: bottom;
-    opacity: 0.34;
+    opacity: 0.28;
   }
 
   .footer-atmosphere {
@@ -351,6 +372,14 @@
   100% {
     transform: rotateX(62deg) rotateZ(0deg);
   }
+}
+
+@keyframes auroraBeamPulse {
+  0%   { opacity: 0;    scaleY: 0.95; }
+  20%  { opacity: 0.78; }
+  50%  { opacity: 0.92; }
+  80%  { opacity: 0.62; }
+  100% { opacity: 0;    scaleY: 0.95; }
 }
 
 @media (prefers-reduced-motion: reduce) {
