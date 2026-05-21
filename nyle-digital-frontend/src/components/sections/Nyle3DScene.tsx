@@ -126,7 +126,7 @@ interface SatelliteProps {
   color: string;
   emissive: string;
   label: string;
-  icon: React.ElementType;
+  icon: React.ComponentType<{ className?: string }>;
   size: number;
 }
 
