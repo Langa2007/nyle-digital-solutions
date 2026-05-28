@@ -1,12 +1,22 @@
+'use client';
+
 import CTASection from '@/components/sections/CTASection';
 import ServiceCard from '@/components/sections/ServiceCard';
+import {
+  CloudCog,
+  Code2,
+  Layers3,
+  Network,
+  PanelsTopLeft,
+  Smartphone,
+} from 'lucide-react';
 
 const services = [
   {
     title: 'Custom Software Delivery',
     description:
       'Business systems designed around your workflows, reporting needs, and customer journeys.',
-    icon: '</>',
+    icon: Code2,
     features: [
       'Discovery workshops and scope mapping',
       'Agile product delivery',
@@ -20,7 +30,7 @@ const services = [
     title: 'Web Platforms',
     description:
       'Conversion-ready web applications with fast interfaces, solid APIs, and maintainable architecture.',
-    icon: 'WEB',
+    icon: PanelsTopLeft,
     features: [
       'Next.js and React frontend systems',
       'API and data model design',
@@ -34,7 +44,7 @@ const services = [
     title: 'Mobile Products',
     description:
       'Cross-platform mobile experiences shaped for launch speed, usability, and scale.',
-    icon: 'APP',
+    icon: Smartphone,
     features: [
       'iOS and Android delivery',
       'Product prototyping and UX refinement',
@@ -48,7 +58,7 @@ const services = [
     title: 'Cloud and Infrastructure',
     description:
       'Deployment pipelines, hosting environments, and cloud operations that keep delivery stable.',
-    icon: 'OPS',
+    icon: CloudCog,
     features: [
       'Cloud migration and hosting setup',
       'CI/CD pipeline support',
@@ -62,7 +72,7 @@ const services = [
     title: 'Digital Transformation',
     description:
       'Legacy modernisation and process redesign for teams that need better operational flow.',
-    icon: 'FLOW',
+    icon: Network,
     features: [
       'Legacy system assessment',
       'Workflow automation planning',
@@ -76,7 +86,7 @@ const services = [
     title: 'Product and Architecture Advisory',
     description:
       'Senior technical guidance for roadmap choices, platform structure, and delivery recovery.',
-    icon: 'ADV',
+    icon: Layers3,
     features: [
       'Architecture reviews',
       'Roadmap and scope coaching',
@@ -88,23 +98,22 @@ const services = [
   },
 ];
 
-export default function ServicesPage() {
+export default function ServicesPage({ embedded = false }: { embedded?: boolean } = {}) {
   return (
-    <div className="min-h-screen">
+    <div className={embedded ? '' : 'min-h-screen'}>
       <section className="section-atmosphere pb-14 pt-8">
         <div className="section-shell relative z-10">
-          <div className="glass-panel rounded-[2rem] px-6 py-10 sm:px-10">
-            <div className="max-w-3xl">
+          <div className="glass-panel relative overflow-hidden rounded-lg px-6 py-10 sm:px-10">
+            <div className="absolute inset-y-0 right-0 hidden w-1/2 bg-[linear-gradient(120deg,transparent,rgba(34,211,238,0.12),transparent)] lg:block" />
+            <div className="relative max-w-3xl">
               <p className="text-sm font-semibold uppercase tracking-[0.28em] text-blue-600 dark:text-blue-300">
                 Service focus
               </p>
               <h1 className="mt-4 text-4xl font-semibold text-slate-950 dark:text-white sm:text-5xl">
-                Delivery lines built to keep product, brand, and operations aligned.
+                Delivery lines built for product velocity, brand clarity, and resilient operations.
               </h1>
-              <p className="mt-5 text-lg text-slate-600 dark:text-slate-300">
-                The UI refresh stays blue-forward, but the bigger change is clarity.
-                Each service line now speaks more directly to outcomes, delivery rhythm,
-                and the systems that support growth after launch.
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300">
+                Choose a focused delivery lane or bring us into the whole system. Each engagement connects interface design, engineering, cloud, and post-launch support.
               </p>
             </div>
           </div>
@@ -148,9 +157,9 @@ export default function ServicesPage() {
             ].map((step) => (
               <div
                 key={step.number}
-                className="glass-panel rounded-[1.75rem] px-6 py-7 text-left"
+                className="glass-panel rounded-lg px-6 py-7 text-left"
               >
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-600 text-lg font-semibold text-white">
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-lg bg-blue-600 text-lg font-semibold text-white shadow-lg shadow-blue-600/25">
                   {step.number}
                 </div>
                 <h2 className="text-xl font-semibold text-slate-950 dark:text-white">
@@ -165,7 +174,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <CTASection />
+      {!embedded && <CTASection />}
     </div>
   );
 }

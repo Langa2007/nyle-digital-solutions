@@ -63,7 +63,7 @@ export default function BlogSection() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {blogPosts.map((post, index) => (
             <motion.article
               key={post.title}
@@ -73,13 +73,14 @@ export default function BlogSection() {
               viewport={{ once: true }}
               className="group"
             >
-              <div className="glass-panel overflow-hidden rounded-[2rem]">
+              <div className="glass-panel h-full overflow-hidden rounded-lg transition-transform duration-300 group-hover:-translate-y-1">
                 <div className="relative h-56 overflow-hidden">
                   <img
                     src={post.image}
                     alt={post.title}
                     className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/10 to-transparent" />
                   <div className="absolute left-5 top-5">
                     <span className="rounded-full bg-blue-600 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-white">
                       {post.category}
@@ -112,7 +113,7 @@ export default function BlogSection() {
                     </span>
                     <Link
                       href="/#contact"
-                      className="inline-flex items-center text-sm font-semibold text-blue-700 hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-200"
+                      className="inline-flex min-h-11 items-center text-sm font-semibold text-blue-700 hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:text-blue-300 dark:hover:text-blue-200 dark:focus:ring-offset-slate-950"
                     >
                       Continue the conversation
                       <ArrowRight className="ml-2 h-4 w-4" />

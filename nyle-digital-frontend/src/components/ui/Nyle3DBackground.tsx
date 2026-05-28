@@ -228,38 +228,40 @@ function HexFloor({ isDark }: { isDark: boolean }) {
   );
 }
 
-// ─── Floating Orbs (soft ambient light sources) ──────────────────────────────
-function AmbientOrbs({ isDark }: { isDark: boolean }) {
-  const o1 = useRef<THREE.Mesh>(null);
-  const o2 = useRef<THREE.Mesh>(null);
-  const o3 = useRef<THREE.Mesh>(null);
+function SignalPrisms({ isDark }: { isDark: boolean }) {
+  const p1 = useRef<THREE.Mesh>(null);
+  const p2 = useRef<THREE.Mesh>(null);
+  const p3 = useRef<THREE.Mesh>(null);
 
   useFrame(({ clock }) => {
     const t = clock.elapsedTime;
-    if (o1.current) {
-      o1.current.position.set(
+    if (p1.current) {
+      p1.current.position.set(
         Math.sin(t * 0.22) * 7,
         Math.cos(t * 0.18) * 3 + 1,
         -5 + Math.sin(t * 0.14) * 2,
       );
+      p1.current.rotation.y = t * 0.18;
     }
-    if (o2.current) {
-      o2.current.position.set(
+    if (p2.current) {
+      p2.current.position.set(
         Math.cos(t * 0.17) * 8,
         Math.sin(t * 0.25) * 3 - 1,
         -4 + Math.cos(t * 0.19) * 2,
       );
+      p2.current.rotation.x = t * 0.16;
     }
-    if (o3.current) {
-      o3.current.position.set(
+    if (p3.current) {
+      p3.current.position.set(
         Math.sin(t * 0.13 + 2) * 6,
         Math.cos(t * 0.21 + 1) * 4,
         -7 + Math.sin(t * 0.11) * 3,
       );
+      p3.current.rotation.z = -t * 0.14;
     }
   });
 
-  const orbMat = (color: string, emissive: string) => (
+  const prismMat = (color: string, emissive: string) => (
     <meshStandardMaterial
       color={color}
       emissive={emissive}
@@ -271,17 +273,17 @@ function AmbientOrbs({ isDark }: { isDark: boolean }) {
 
   return (
     <>
-      <mesh ref={o1}>
-        <sphereGeometry args={[1.8, 16, 16]} />
-        {orbMat('#22d3ee', '#0891b2')}
+      <mesh ref={p1} scale={[1.8, 0.16, 1.8]}>
+        <octahedronGeometry args={[1, 0]} />
+        {prismMat('#22d3ee', '#0891b2')}
       </mesh>
-      <mesh ref={o2}>
-        <sphereGeometry args={[2.2, 16, 16]} />
-        {orbMat('#a78bfa', '#7c3aed')}
+      <mesh ref={p2} scale={[2.3, 0.12, 1.2]}>
+        <boxGeometry args={[1, 1, 1]} />
+        {prismMat('#a78bfa', '#7c3aed')}
       </mesh>
-      <mesh ref={o3}>
-        <sphereGeometry args={[1.4, 16, 16]} />
-        {orbMat('#34d399', '#059669')}
+      <mesh ref={p3} scale={[1.4, 0.18, 1.4]}>
+        <octahedronGeometry args={[1, 0]} />
+        {prismMat('#34d399', '#059669')}
       </mesh>
     </>
   );
@@ -330,7 +332,7 @@ function Scene({ isDark }: { isDark: boolean }) {
       <CrystalShards isDark={isDark} />
       <ConstellationWeb isDark={isDark} />
       <HexFloor isDark={isDark} />
-      <AmbientOrbs isDark={isDark} />
+      <SignalPrisms isDark={isDark} />
     </>
   );
 }

@@ -11,7 +11,7 @@ export default function Home() {
     <>
       <Hero />
       <div id="services" className="scroll-mt-28">
-        <Services />
+        <Services embedded />
       </div>
       <div id="impact" className="scroll-mt-28">
         <Stats />

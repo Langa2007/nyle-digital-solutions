@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, BadgeCheck, Image } from 'lucide-react';
+import { ArrowRight, BadgeCheck, Image, Layers3 } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 
@@ -41,7 +41,7 @@ export default function Portfolio() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {projects && projects.length > 0 ? (
             projects.map((project: any, index: number) => (
               <motion.article
@@ -52,8 +52,8 @@ export default function Portfolio() {
                 viewport={{ once: true }}
                 className="group"
               >
-                <div className="glass-panel overflow-hidden rounded-[2rem]">
-                  <div className="relative h-72 overflow-hidden bg-slate-100">
+                <div className="glass-panel overflow-hidden rounded-lg transition-transform duration-300 group-hover:-translate-y-1">
+                  <div className="relative h-72 overflow-hidden bg-slate-100 dark:bg-slate-900">
                     {project.featuredImage ? (
                       <img
                         src={project.featuredImage}
@@ -61,10 +61,11 @@ export default function Portfolio() {
                         className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                       />
                     ) : (
-                      <div className="h-full w-full flex items-center justify-center bg-gradient-to-br from-slate-200 to-slate-300">
+                      <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-slate-100 via-blue-50 to-cyan-50 dark:from-slate-900 dark:via-slate-800 dark:to-blue-950">
                         <Image className="h-12 w-12 text-slate-400" />
                       </div>
                     )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/10 to-transparent" />
                     <div className="absolute inset-x-0 top-0 flex items-center justify-between p-5">
                       <span className="rounded-full bg-blue-600 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-white">
                         {project.category || 'Project'}
@@ -75,7 +76,7 @@ export default function Portfolio() {
                     </div>
                   </div>
 
-                  <div className="p-8">
+                  <div className="p-7">
                     <h3 className="text-2xl font-semibold text-slate-950 dark:text-white">
                       {project.title}
                     </h3>
@@ -98,12 +99,12 @@ export default function Portfolio() {
 
                     <div className="mt-7 flex flex-wrap items-center gap-4">
                       <div className="inline-flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-300">
-                        <BadgeCheck className="h-4 w-4 text-blue-600 dark:text-blue-300" />
+                        <BadgeCheck className="h-4 w-4 text-blue-600 dark:text-blue-300" aria-hidden="true" />
                         Delivered and thriving
                       </div>
                       <Link
                         href="/#contact"
-                        className="inline-flex items-center text-sm font-semibold text-blue-700 hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-200"
+                        className="inline-flex min-h-11 items-center text-sm font-semibold text-blue-700 hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:text-blue-300 dark:hover:text-blue-200 dark:focus:ring-offset-slate-950"
                       >
                         Build something similar
                         <ArrowRight className="ml-2 h-4 w-4" />
@@ -114,8 +115,18 @@ export default function Portfolio() {
               </motion.article>
             ))
           ) : (
-            <div className="col-span-full rounded-[2rem] border border-slate-200 bg-slate-50 p-12 text-center">
-              <p className="text-slate-600">Loading portfolio projects...</p>
+            <div className="col-span-full glass-panel rounded-lg p-10">
+              <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
+                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-lg bg-blue-600 text-white shadow-lg shadow-blue-600/25">
+                  <Layers3 className="h-6 w-6" />
+                </div>
+                <h3 className="text-2xl font-semibold text-slate-950 dark:text-white">
+                  Portfolio feed is warming up
+                </h3>
+                <p className="mt-3 text-base leading-7 text-slate-600 dark:text-slate-300">
+                  Recent work loads from the API. When the backend is connected, this area becomes a live case-study grid.
+                </p>
+              </div>
             </div>
           )}
         </div>

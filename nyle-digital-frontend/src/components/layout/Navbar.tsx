@@ -45,26 +45,26 @@ export default function Navbar() {
     >
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <nav className="flex items-center justify-between py-4">
-            <Link href="/" className="flex items-center gap-3">
-              <div className="blue-glow flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-400 text-lg font-semibold text-white">
-                N
-              </div>
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.28em] text-blue-600 dark:text-blue-300">
-                  Nyle Digital
-                </p>
-                <p className="text-sm text-slate-600 dark:text-slate-300">
-                  Product systems and cloud delivery
-                </p>
-              </div>
-            </Link>
+          <Link href="/" className="flex items-center gap-3">
+            <div className="blue-glow flex h-11 w-11 items-center justify-center rounded-lg bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-400 text-lg font-semibold text-white">
+              N
+            </div>
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-blue-600 dark:text-blue-300">
+                Nyle Digital
+              </p>
+              <p className="text-sm text-slate-600 dark:text-slate-300">
+                Product systems and cloud delivery
+              </p>
+            </div>
+          </Link>
 
             <div className="hidden items-center gap-2 lg:flex">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="rounded-full px-4 py-2 text-sm font-medium text-slate-600 hover:bg-blue-50 hover:text-blue-700 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-blue-200"
+                  className="rounded-lg px-4 py-2 text-sm font-medium text-slate-600 hover:bg-blue-50 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-blue-200 dark:focus:ring-offset-slate-950"
                 >
                   {item.name}
                 </Link>
@@ -75,7 +75,7 @@ export default function Navbar() {
               {mounted && (
                 <button
                   onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200/80 bg-white/80 text-slate-700 shadow-sm hover:border-blue-200 hover:text-blue-700 dark:border-white/10 dark:bg-slate-900/70 dark:text-slate-200"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-slate-200/80 bg-white/80 text-slate-700 shadow-sm hover:border-blue-200 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:border-white/10 dark:bg-slate-900/70 dark:text-slate-200 dark:focus:ring-offset-slate-950"
                   aria-label="Toggle theme"
                 >
                   {theme === 'dark' ? (
@@ -86,13 +86,13 @@ export default function Navbar() {
                 </button>
               )}
 
-              <CalendlyButton className="hidden rounded-full bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 hover:bg-blue-700 lg:inline-flex">
+              <CalendlyButton className="hidden rounded-full bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-slate-950 lg:inline-flex">
                 Book a Call
               </CalendlyButton>
 
               <button
                 onClick={() => setMobileMenuOpen((open) => !open)}
-                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200/80 bg-white/80 text-slate-700 shadow-sm dark:border-white/10 dark:bg-slate-900/70 dark:text-slate-200 lg:hidden"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-slate-200/80 bg-white/80 text-slate-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:border-white/10 dark:bg-slate-900/70 dark:text-slate-200 dark:focus:ring-offset-slate-950 lg:hidden"
                 aria-label="Toggle menu"
               >
                 {mobileMenuOpen ? (
@@ -117,14 +117,14 @@ export default function Navbar() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="block rounded-2xl bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                    className="block rounded-lg bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.name}
                   </Link>
                 ))}
                 <CalendlyButton
-                  className="block w-full rounded-2xl bg-blue-600 px-4 py-3 text-center text-sm font-semibold text-white hover:bg-blue-700"
+                  className="block w-full rounded-lg bg-blue-600 px-4 py-3 text-center text-sm font-semibold text-white hover:bg-blue-700"
                 >
                   Book a Call
                 </CalendlyButton>

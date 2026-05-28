@@ -32,9 +32,9 @@ export default function Footer() {
     <footer className="footer-atmosphere z-20">
       <div className="section-shell relative z-10 py-14">
         <div className="grid gap-10 lg:grid-cols-[1.25fr_0.75fr]">
-          <div className="glass-panel rounded-[2rem] px-6 py-8 sm:px-8">
+          <div className="glass-panel rounded-lg px-6 py-8 sm:px-8">
             <div className="flex items-center gap-3">
-              <div className="blue-glow flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-400 text-lg font-semibold text-white">
+              <div className="blue-glow flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-400 text-lg font-semibold text-white">
                 N
               </div>
               <div>
@@ -52,7 +52,7 @@ export default function Footer() {
             </p>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-[1.5rem] border border-slate-200/70 bg-white/80 px-5 py-5 dark:border-white/10 dark:bg-white/5">
+              <div className="rounded-lg border border-slate-200/70 bg-white/80 px-5 py-5 dark:border-white/10 dark:bg-white/5">
                 <div className="flex items-center gap-3 text-sm text-slate-700 dark:text-slate-200">
                   <Mail className="h-4 w-4 text-blue-600 dark:text-blue-300" />
                   contact@nyledigital.com
@@ -67,7 +67,7 @@ export default function Footer() {
                 </div>
               </div>
 
-              <div className="rounded-[1.5rem] border border-blue-200/80 bg-blue-50 px-5 py-5 text-slate-900 dark:border-blue-400/20 dark:bg-blue-500/10 dark:text-white">
+              <div className="rounded-lg border border-blue-200/80 bg-blue-50 px-5 py-5 text-slate-900 dark:border-blue-400/20 dark:bg-blue-500/10 dark:text-white">
                 <p className="text-xs font-semibold uppercase tracking-[0.26em] text-blue-700 dark:text-blue-200">
                   Get Started
                 </p>
@@ -83,7 +83,7 @@ export default function Footer() {
           </div>
 
           <div className="grid gap-6">
-            <div className="glass-panel rounded-[2rem] px-6 py-8">
+            <div className="glass-panel rounded-lg px-6 py-8">
               <h2 className="text-lg font-semibold text-slate-950 dark:text-white">
                 Explore
               </h2>
@@ -92,7 +92,7 @@ export default function Footer() {
                   <Link
                     key={link.name}
                     href={link.href}
-                    className="rounded-2xl px-4 py-3 text-sm font-medium text-slate-600 hover:bg-blue-50 hover:text-blue-700 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-blue-200"
+                    className="rounded-lg px-4 py-3 text-sm font-medium text-slate-600 hover:bg-blue-50 hover:text-blue-700 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-blue-200"
                   >
                     {link.name}
                   </Link>
@@ -112,7 +112,7 @@ export default function Footer() {
               ) : null}
             </div>
 
-            <div className="flex items-center justify-between rounded-[2rem] border border-white/10 bg-slate-900/80 px-6 py-5 backdrop-blur-xl">
+            <div className="flex items-center justify-between rounded-lg border border-white/10 bg-slate-900/80 px-6 py-5 backdrop-blur-xl">
               <p className="text-sm text-slate-400">
                 &copy; {currentYear} Nyle Digital Solutions
               </p>
