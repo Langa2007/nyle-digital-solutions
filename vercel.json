@@ -1,8 +1,0 @@
-{
-  "version": 2,
-  "framework": "nextjs",
-  "buildCommand": "if [ -d vantech-frontend ]; then FRONTEND_DIR=vantech-frontend; elif [ -d vantech-software-solutions-frontend ]; then FRONTEND_DIR=vantech-software-solutions-frontend; else echo 'Frontend directory not found' && exit 1; fi && cd \"$FRONTEND_DIR\" && npm install && npm run build && cd .. && rm -rf .next && cp -R \"$FRONTEND_DIR/.next\" .next",
-  "outputDirectory": ".next",
-  "installCommand": "if [ -d vantech-frontend ]; then FRONTEND_DIR=vantech-frontend; elif [ -d vantech-software-solutions-frontend ]; then FRONTEND_DIR=vantech-software-solutions-frontend; else echo 'Frontend directory not found' && exit 1; fi && cd \"$FRONTEND_DIR\" && npm install",
-  "devCommand": "if [ -d vantech-frontend ]; then FRONTEND_DIR=vantech-frontend; elif [ -d vantech-software-solutions-frontend ]; then FRONTEND_DIR=vantech-software-solutions-frontend; else echo 'Frontend directory not found' && exit 1; fi && cd \"$FRONTEND_DIR\" && npm run dev"
-}
