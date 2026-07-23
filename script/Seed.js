@@ -130,7 +130,7 @@ async function seed() {
         clientName: 'Sarah Johnson',
         clientCompany: 'TechCorp Inc.',
         clientRole: 'CTO',
-        content: 'Nyle Digital transformed our legacy systems into modern microservices. Their expertise exceeded our expectations.',
+        content: 'Vantech Software transformed our legacy systems into modern microservices. Their expertise exceeded our expectations.',
         rating: 5,
         project: 'Digital Transformation',
         featured: true,

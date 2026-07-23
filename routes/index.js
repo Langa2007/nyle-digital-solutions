@@ -14,7 +14,7 @@ const router = express.Router();
 // Health check
 router.get('/', (req, res) => {
   res.json({
-    message: 'Nyle Digital Solutions API',
+    message: 'Vantech Software Solutions API',
     version: '1.0.0',
     documentation: '/api/docs',
     status: 'operational',

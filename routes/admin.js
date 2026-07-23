@@ -29,7 +29,7 @@ const upload = multer({ storage });
 // ----------------------
 // Helper to upload files to Cloudinary
 // ----------------------
-const uploadToCloudinary = (fileBuffer, folder = 'nyle-digital') => {
+const uploadToCloudinary = (fileBuffer, folder = 'vantech-software-solutions') => {
   return new Promise((resolve, reject) => {
     const stream = cloudinary.uploader.upload_stream(
       { folder },
@@ -134,7 +134,7 @@ router.post('/upload/image', upload.single('image'), async (req, res) => {
   try {
     if (!req.file) return res.status(400).json({ success: false, error: 'No file uploaded' });
 
-    const result = await uploadToCloudinary(req.file.buffer, 'nyle-digital');
+    const result = await uploadToCloudinary(req.file.buffer, 'vantech-software-solutions');
     res.json({
       success: true,
       url: result.secure_url,
@@ -149,7 +149,7 @@ router.post('/upload/file', upload.single('file'), async (req, res) => {
   try {
     if (!req.file) return res.status(400).json({ success: false, error: 'No file uploaded' });
 
-    const result = await uploadToCloudinary(req.file.buffer, 'nyle-digital/files');
+    const result = await uploadToCloudinary(req.file.buffer, 'vantech-software-solutions/files');
     res.json({
       success: true,
       url: result.secure_url,

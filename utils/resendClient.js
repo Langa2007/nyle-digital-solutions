@@ -6,7 +6,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export async function sendEmail(to, subject, html, from = null) {
   try {
     const { data, error } = await resend.emails.send({
-      from: from || process.env.EMAIL_FROM || 'Nyle Digital <noreply@nyledigital.com>',
+      from: from || process.env.EMAIL_FROM || 'Vantech Software Solutions <noreply@vantechsoftwares.com>',
       to: Array.isArray(to) ? to : [to],
       subject,
       html,
@@ -40,7 +40,7 @@ export async function sendContactConfirmation(contactData) {
     <body>
       <div class="container">
         <div class="header">
-          <h1>Nyle Digital Solutions</h1>
+          <h1>Vantech Software Solutions</h1>
         </div>
         <div class="content">
           <h2>Thank You for Contacting Us!</h2>
@@ -57,10 +57,10 @@ export async function sendContactConfirmation(contactData) {
           
           <p>If you have any immediate questions, please don't hesitate to reply to this email.</p>
           
-          <p>Best regards,<br>The Nyle Digital Team</p>
+          <p>Best regards,<br>The Vantech Software Solutions Team</p>
         </div>
         <div class="footer">
-          <p>&copy; ${new Date().getFullYear()} Nyle Digital Solutions. All rights reserved.</p>
+          <p>&copy; ${new Date().getFullYear()} Vantech Software Solutions. All rights reserved.</p>
           <p>123 Tech Street, San Francisco, CA 94107</p>
         </div>
       </div>
@@ -68,7 +68,7 @@ export async function sendContactConfirmation(contactData) {
     </html>
   `;
 
-  return sendEmail(contactData.email, 'Thank You for Contacting Nyle Digital', html);
+  return sendEmail(contactData.email, 'Thank You for Contacting Vantech Software Solutions', html);
 }
 
 export async function sendJobApplicationConfirmation(applicationData) {
@@ -94,7 +94,7 @@ export async function sendJobApplicationConfirmation(applicationData) {
           <p>Our HR team will review your application and contact you if you're shortlisted for the next round.</p>
           <p>This process typically takes 1-2 weeks.</p>
           <p>Best of luck!</p>
-          <p>Best regards,<br>Nyle Digital HR Team</p>
+          <p>Best regards,<br>Vantech Software Solutions HR Team</p>
         </div>
       </div>
     </body>
@@ -105,7 +105,7 @@ export async function sendJobApplicationConfirmation(applicationData) {
 }
 
 export async function sendAdminNotification(subject, message) {
-  const adminEmail = process.env.EMAIL_ADMIN || 'admin@nyledigital.com';
+  const adminEmail = process.env.EMAIL_ADMIN || 'admin@vantechsoftwares.com';
   
   const html = `
     <div style="font-family: Arial, sans-serif; padding: 20px; background: #f3f4f6; border-radius: 8px;">
@@ -114,7 +114,7 @@ export async function sendAdminNotification(subject, message) {
       <div style="background: white; padding: 20px; border-radius: 4px; margin: 20px 0;">
         ${message}
       </div>
-      <p style="color: #6b7280; font-size: 12px;">This is an automated notification from Nyle Digital Solutions.</p>
+      <p style="color: #6b7280; font-size: 12px;">This is an automated notification from Vantech Software Solutions.</p>
     </div>
   `;
 

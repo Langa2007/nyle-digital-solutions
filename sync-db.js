@@ -8,7 +8,7 @@ dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const dumpFile = path.join(__dirname, "nyle solutions_dump.sql");
+const dumpFile = path.join(__dirname, "vantech software solutions_dump.sql");
 
 // Read from environment
 const LOCAL_DB = process.env.DATABASE_URL_LOCAL;

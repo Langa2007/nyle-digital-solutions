@@ -26,7 +26,7 @@ END $$;
 INSERT INTO users (id, email, password, "firstName", "lastName", role, "isEmailVerified", status, "createdAt", "updatedAt")
 VALUES (
     uuid_generate_v4(),
-    'admin@nyledigital.com',
+    'admin@vantechsoftwares.com',
     '$2a$10$YourHashedPasswordHere', -- Use bcrypt to hash 'Admin123!'
     'System',
     'Administrator',

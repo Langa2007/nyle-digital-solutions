@@ -1,7 +1,7 @@
 // utils/logger.js
 import winston from 'winston';
 
-export const createLogger = (service = 'nyle-digital') => {
+export const createLogger = (service = 'vantech-software-solutions') => {
   const format = winston.format.combine(
     winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
     winston.format.errors({ stack: true }),
