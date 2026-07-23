@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "framework": "nextjs",
+  "buildCommand": "cd vantech-frontend && npm install && npm run build",
+  "outputDirectory": "vantech-frontend/.next",
+  "installCommand": "cd vantech-frontend && npm install",
+  "devCommand": "cd vantech-frontend && npm run dev"
+}

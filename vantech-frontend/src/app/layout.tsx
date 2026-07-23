@@ -24,7 +24,8 @@ const geistMono = localFont({
 });
 
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || 'https://vantech-software-solutions.vercel.app';
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://vantechsoftwares.vercel.app');
 
 export const metadata: Metadata = {
   title: 'Vantech Software Solutions | Software, Cloud and Product Delivery',
