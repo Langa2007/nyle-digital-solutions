@@ -80,6 +80,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="icon" href="/vantech-favicon.png" type="image/png" />
+        <link rel="shortcut icon" href="/vantech-favicon.png" />
+        <link rel="apple-touch-icon" href="/vantech-favicon.png" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-slate-950 font-sans text-slate-100 antialiased`}
       >
