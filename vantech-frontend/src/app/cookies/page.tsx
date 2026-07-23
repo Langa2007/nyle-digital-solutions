@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Cookies from '../../../node_modules/@types/js-cookie';
+import Cookies from 'js-cookie';
 import { motion } from 'framer-motion';
 import { Shield, ShieldCheck, PieChart, Target, Info, Check } from 'lucide-react';
 import toast from 'react-hot-toast';
