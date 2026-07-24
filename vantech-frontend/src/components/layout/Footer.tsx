@@ -37,7 +37,7 @@ export default function Footer() {
             <div className="flex items-center gap-3">
               <div className="blue-glow flex h-14 w-14 items-center justify-center overflow-hidden rounded-lg bg-white ring-1 ring-slate-200/70 dark:ring-white/10">
                 <Image
-                  src="/vantech-logo.png"
+                  src="/vantech-favicon.png"
                   alt="Vantech Softwares logo"
                   width={112}
                   height={112}

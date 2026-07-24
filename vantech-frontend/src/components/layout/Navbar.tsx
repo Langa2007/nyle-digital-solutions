@@ -49,7 +49,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-3">
             <div className="blue-glow flex h-12 w-12 items-center justify-center overflow-hidden rounded-lg bg-white ring-1 ring-slate-200/70 dark:ring-white/10">
               <Image
-                src="/vantech-logo.png"
+                src="/vantech-favicon.png"
                 alt="Vantech Softwares logo"
                 width={96}
                 height={96}

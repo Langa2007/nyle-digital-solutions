@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     siteName: 'Vantech Software Solutions',
     images: [
       {
-        url: '/vantech-logo.png',
+        url: '/vantech-favicon.png',
         width: 400,
         height: 400,
         alt: 'Vantech Softwares logo',
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     description:
       'Digital products, cloud systems, and business platforms designed for teams that need momentum.',
     creator: '@vantechsoftwares',
-    images: ['/vantech-logo.png'],
+    images: ['/vantech-favicon.png'],
   },
   alternates: {
     canonical: '/',
