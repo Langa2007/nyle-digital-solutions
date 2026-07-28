@@ -7,6 +7,11 @@ import { ReactQueryProvider } from '@/components/providers/ReactQueryProvider';
 export const metadata: Metadata = {
   title: 'Vantech Software Solutions Admin',
   description: 'Admin dashboard for Vantech Software Solutions',
+  icons: {
+    icon: [{ url: '/vantech-favicon.png', type: 'image/png' }],
+    shortcut: '/vantech-favicon.png',
+    apple: '/vantech-favicon.png',
+  },
 };
 
 export default function RootLayout({
