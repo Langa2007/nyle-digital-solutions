@@ -41,7 +41,7 @@ export default function Testimonials() {
       <div className="section-shell relative z-10">
         <div className="mb-14 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-blue-600 dark:text-blue-300">
+            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-blue-600 dark:text-amber-200">
               Client confidence
             </p>
             <h2 className="mt-4 text-3xl font-semibold text-slate-950 dark:text-white sm:text-4xl">
@@ -63,8 +63,8 @@ export default function Testimonials() {
               viewport={{ once: true }}
             >
               <div className="glass-panel relative h-full overflow-hidden rounded-lg p-6 transition-transform duration-300 hover:-translate-y-1">
-                <div className="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/80 to-transparent" />
-                <Quote className="absolute right-5 top-5 h-8 w-8 text-blue-200 dark:text-blue-900" />
+                <div className="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/80 to-transparent dark:via-amber-300/80" />
+                <Quote className="absolute right-5 top-5 h-8 w-8 text-blue-200 dark:text-amber-900" />
                 
                 <div className="mb-6 flex items-center">
                 
@@ -75,7 +75,7 @@ export default function Testimonials() {
                     <p className="text-sm text-slate-600 dark:text-slate-400">
                       {testimonial.role}
                     </p>
-                    <p className="text-sm text-blue-600 dark:text-blue-400">
+                    <p className="text-sm text-blue-600 dark:text-amber-300">
                       {testimonial.company}
                     </p>
                   </div>

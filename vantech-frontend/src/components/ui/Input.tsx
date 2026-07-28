@@ -14,7 +14,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="w-full">
         {label && (
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label className="block text-sm font-medium text-gray-700 dark:text-stone-300 mb-2">
             {label}
           </label>
         )}
@@ -33,8 +33,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
               icon ? 'pl-11' : '',
               error
                 ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
-                : 'border-gray-300 dark:border-gray-600 focus:ring-blue-500 focus:border-blue-500',
-              'bg-white dark:bg-gray-800 text-gray-900 dark:text-white',
+                : 'border-gray-300 dark:border-stone-600 focus:ring-primary focus:border-primary',
+              'bg-white dark:bg-stone-900 text-gray-900 dark:text-white',
               'disabled:opacity-50 disabled:cursor-not-allowed',
               className
             )}
@@ -43,7 +43,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         </div>
         
         {(error || helperText) && (
-          <p className={cn('mt-1 text-sm', error ? 'text-red-600' : 'text-gray-500 dark:text-gray-400')}>
+          <p className={cn('mt-1 text-sm', error ? 'text-red-600' : 'text-gray-500 dark:text-stone-400')}>
             {error || helperText}
           </p>
         )}

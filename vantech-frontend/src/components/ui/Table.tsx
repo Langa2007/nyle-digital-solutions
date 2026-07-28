@@ -20,7 +20,7 @@ interface TableCellProps extends React.TdHTMLAttributes<HTMLTableCellElement> {
 
 const Table = ({ className, striped = true, hoverable = true, ...props }: TableProps) => {
   return (
-    <div className="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
+    <div className="overflow-x-auto rounded-lg border border-gray-200 dark:border-stone-700">
       <table
         className={cn(
           'w-full text-sm',
@@ -35,7 +35,7 @@ const Table = ({ className, striped = true, hoverable = true, ...props }: TableP
 };
 
 const TableHeader = ({ className, ...props }: TableHeaderProps) => (
-  <thead className={cn('bg-gray-50 dark:bg-gray-800', className)} {...props} />
+  <thead className={cn('bg-gray-50 dark:bg-stone-900', className)} {...props} />
 );
 
 const TableBody = ({ className, ...props }: TableBodyProps) => (
@@ -46,7 +46,7 @@ const TableRow = ({ className, hoverable = true, ...props }: TableRowProps) => (
   <tr
     className={cn(
       'transition-colors',
-      hoverable && 'hover:bg-gray-50 dark:hover:bg-gray-800',
+      hoverable && 'hover:bg-gray-50 dark:hover:bg-stone-800',
       className
     )}
     {...props}
@@ -56,7 +56,7 @@ const TableRow = ({ className, hoverable = true, ...props }: TableRowProps) => (
 const TableHead = ({ className, ...props }: TableCellProps) => (
   <th
     className={cn(
-      'px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider',
+      'px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-stone-400 uppercase tracking-wider',
       className
     )}
     {...props}
@@ -72,7 +72,7 @@ const TableCell = ({ className, header = false, ...props }: TableCellProps) => {
         'px-6 py-4 whitespace-nowrap text-sm',
         header
           ? 'text-gray-900 dark:text-white font-medium'
-          : 'text-gray-700 dark:text-gray-300',
+          : 'text-gray-700 dark:text-stone-300',
         className
       )}
       {...props}

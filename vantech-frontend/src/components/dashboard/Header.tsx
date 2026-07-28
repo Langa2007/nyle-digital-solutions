@@ -8,7 +8,7 @@ export default function DashboardHeader() {
   const { user } = useAuth();
 
   return (
-    <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+    <header className="bg-white dark:bg-stone-900 border-b border-gray-200 dark:border-stone-700">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Search */}
@@ -20,7 +20,7 @@ export default function DashboardHeader() {
               <input
                 type="search"
                 placeholder="Search projects, documents..."
-                className="block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-stone-600 rounded-lg bg-gray-50 dark:bg-stone-800 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
               />
             </div>
           </div>
@@ -29,7 +29,7 @@ export default function DashboardHeader() {
           <div className="flex items-center space-x-4">
             {/* Notifications */}
             <button title="Notifications"
-             className="relative p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+             className="relative p-2 text-gray-600 dark:text-stone-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-stone-800 rounded-lg transition-colors">
               <Bell className="h-5 w-5" />
               <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
             </button>
@@ -40,7 +40,7 @@ export default function DashboardHeader() {
                 <p className="text-sm font-medium text-gray-900 dark:text-white">
                   {user?.firstName} {user?.lastName}
                 </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">
+                <p className="text-xs text-gray-500 dark:text-stone-400">
                   {user?.role}
                 </p>
               </div>

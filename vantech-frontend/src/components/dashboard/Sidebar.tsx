@@ -34,13 +34,13 @@ export default function DashboardSidebar() {
 
   return (
     <aside
-      className={`fixed left-0 top-0 h-full bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 transition-all duration-300 ${
+      className={`fixed left-0 top-0 h-full bg-white dark:bg-stone-900 border-r border-gray-200 dark:border-stone-700 transition-all duration-300 ${
         collapsed ? 'w-20' : 'w-64'
       }`}
     >
       <div className="flex flex-col h-full">
         {/* Logo */}
-        <div className="p-6 border-b border-gray-200 dark:border-gray-700">
+        <div className="p-6 border-b border-gray-200 dark:border-stone-700">
           <div className="flex items-center justify-between">
             {!collapsed && (
               <Link href="/dashboard" className="flex items-center space-x-2">
@@ -64,7 +64,7 @@ export default function DashboardSidebar() {
             
             <button
               onClick={() => setCollapsed(!collapsed)}
-              className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+              className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-stone-800 transition-colors"
             >
               {collapsed ? (
                 <ChevronRight className="h-5 w-5 text-gray-500" />
@@ -86,8 +86,8 @@ export default function DashboardSidebar() {
                     href={item.href}
                     className={`flex items-center rounded-lg p-3 transition-colors ${
                       isActive
-                        ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400'
-                        : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
+                        ? 'bg-blue-50 dark:bg-amber-900/30 text-blue-600 dark:text-amber-300'
+                        : 'text-gray-700 dark:text-stone-300 hover:bg-gray-50 dark:hover:bg-stone-800'
                     }`}
                   >
                     <item.icon className="h-5 w-5" />
@@ -102,11 +102,11 @@ export default function DashboardSidebar() {
         </nav>
 
         {/* Footer */}
-        <div className="p-4 border-t border-gray-200 dark:border-gray-700">
+        <div className="p-4 border-t border-gray-200 dark:border-stone-700">
           <div className="space-y-2">
             <Link
               href="/"
-              className="flex items-center p-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors"
+              className="flex items-center p-3 text-gray-700 dark:text-stone-300 hover:bg-gray-50 dark:hover:bg-stone-800 rounded-lg transition-colors"
             >
               <Home className="h-5 w-5" />
               {!collapsed && <span className="ml-3">Back to Home</span>}

@@ -66,7 +66,7 @@ export default function CookiesPage() {
       <div className="section-shell">
         <div className="glass-panel rounded-[2rem] px-6 py-10 sm:px-10 lg:py-14">
           <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-blue-600 dark:text-blue-300">
+            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-blue-600 dark:text-amber-200">
               Privacy Control
             </p>
             <h1 className="mt-4 text-4xl font-semibold text-slate-950 dark:text-white sm:text-5xl">
@@ -104,7 +104,7 @@ export default function CookiesPage() {
             <div className="glass-panel relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/50 p-6 dark:bg-white/5 sm:p-8">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-blue-100 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400">
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-blue-100 text-blue-600 dark:bg-amber-500/10 dark:text-amber-300">
                     <PieChart className="h-6 w-6" />
                   </div>
                   <div>
@@ -117,7 +117,7 @@ export default function CookiesPage() {
                 <button
                   onClick={() => handleToggle('analytics')}
                   className={`relative inline-flex h-7 w-12 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-                    preferences.analytics ? 'bg-blue-600' : 'bg-slate-200 dark:bg-slate-700'
+                    preferences.analytics ? 'bg-blue-600' : 'bg-slate-200 dark:bg-stone-700'
                   }`}
                 >
                   <span
@@ -133,7 +133,7 @@ export default function CookiesPage() {
             <div className="glass-panel relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/50 p-6 dark:bg-white/5 sm:p-8">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-cyan-100 text-cyan-600 dark:bg-cyan-500/10 dark:text-cyan-400">
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-cyan-100 text-cyan-600 dark:bg-amber-500/10 dark:text-amber-300">
                     <Target className="h-6 w-6" />
                   </div>
                   <div>
@@ -146,7 +146,7 @@ export default function CookiesPage() {
                 <button
                   onClick={() => handleToggle('marketing')}
                   className={`relative inline-flex h-7 w-12 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-                    preferences.marketing ? 'bg-blue-600' : 'bg-slate-200 dark:bg-slate-700'
+                    preferences.marketing ? 'bg-blue-600' : 'bg-slate-200 dark:bg-stone-700'
                   }`}
                 >
                   <span
@@ -176,7 +176,7 @@ export default function CookiesPage() {
 
           <div className="mt-12 rounded-[1.5rem] border border-blue-100 bg-blue-50/50 p-6 dark:border-white/10 dark:bg-white/5">
             <div className="flex items-start gap-4">
-              <Info className="mt-1 h-5 w-5 text-blue-600 dark:text-blue-400" />
+              <Info className="mt-1 h-5 w-5 text-blue-600 dark:text-amber-300" />
               <div>
                 <h4 className="text-sm font-semibold text-slate-900 dark:text-white">Security Note</h4>
                 <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">

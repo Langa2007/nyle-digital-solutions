@@ -8,7 +8,7 @@ const stats = [
     value: '12',
     change: '+2 from last month',
     icon: TrendingUp,
-    color: 'text-blue-600 bg-blue-100 dark:bg-blue-900/30',
+    color: 'text-blue-600 bg-blue-100 dark:bg-amber-900/30',
   },
   {
     title: 'Team Members',
@@ -22,7 +22,7 @@ const stats = [
     value: '99.9%',
     change: 'Last 30 days',
     icon: Server,
-    color: 'text-purple-600 bg-purple-100 dark:bg-purple-900/30',
+    color: 'text-purple-600 bg-purple-100 dark:bg-amber-900/30',
   },
   {
     title: 'Monthly Revenue',
@@ -40,13 +40,13 @@ export default function StatsCards() {
         <Card key={stat.title} hoverable className="p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
+              <p className="text-sm font-medium text-gray-600 dark:text-stone-400">
                 {stat.title}
               </p>
               <p className="text-2xl font-bold text-gray-900 dark:text-white mt-2">
                 {stat.value}
               </p>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+              <p className="text-sm text-gray-500 dark:text-stone-400 mt-1">
                 {stat.change}
               </p>
             </div>

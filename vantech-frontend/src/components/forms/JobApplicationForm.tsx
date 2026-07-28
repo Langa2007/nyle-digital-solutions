@@ -82,12 +82,12 @@ export default function JobApplicationForm({ jobId, jobTitle }: JobApplicationFo
 
   return (
     <div className="max-w-4xl mx-auto">
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
+      <div className="bg-white dark:bg-stone-900 rounded-xl shadow-lg p-8">
         <div className="mb-8">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
             Apply for {jobTitle}
           </h2>
-          <p className="text-gray-600 dark:text-gray-400">
+          <p className="text-gray-600 dark:text-stone-400">
             Fill out the form below to submit your application
           </p>
         </div>
@@ -96,13 +96,13 @@ export default function JobApplicationForm({ jobId, jobTitle }: JobApplicationFo
           {/* Personal Information */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-stone-300 mb-2">
                 Full Name *
               </label>
               <input
                 {...register('fullName')}
                 type="text"
-                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-stone-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary dark:bg-stone-800 dark:text-white"
                 placeholder="John Doe"
               />
               {errors.fullName && (
@@ -111,13 +111,13 @@ export default function JobApplicationForm({ jobId, jobTitle }: JobApplicationFo
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-stone-300 mb-2">
                 Email Address *
               </label>
               <input
                 {...register('email')}
                 type="email"
-                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-stone-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary dark:bg-stone-800 dark:text-white"
                 placeholder="john@example.com"
               />
               {errors.email && (
@@ -128,13 +128,13 @@ export default function JobApplicationForm({ jobId, jobTitle }: JobApplicationFo
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-stone-300 mb-2">
                 Phone Number *
               </label>
               <input
                 {...register('phone')}
                 type="tel"
-                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-stone-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary dark:bg-stone-800 dark:text-white"
                 placeholder="+1 (555) 123-4567"
               />
               {errors.phone && (
@@ -143,14 +143,14 @@ export default function JobApplicationForm({ jobId, jobTitle }: JobApplicationFo
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-stone-300 mb-2">
                 Years of Experience *
               </label>
               <input
                 {...register('experience', { valueAsNumber: true })}
                 type="number"
                 min="0"
-                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-stone-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary dark:bg-stone-800 dark:text-white"
                 placeholder="5"
               />
               {errors.experience && (
@@ -160,20 +160,20 @@ export default function JobApplicationForm({ jobId, jobTitle }: JobApplicationFo
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-stone-300 mb-2">
               Current Company
             </label>
             <input
               {...register('currentCompany')}
               type="text"
-              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+              className="w-full px-4 py-3 border border-gray-300 dark:border-stone-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary dark:bg-stone-800 dark:text-white"
               placeholder="Current Company Inc."
             />
           </div>
 
           {/* Resume Upload */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-stone-300 mb-2">
               Resume *
             </label>
             <div className="mt-2 flex items-center space-x-4">
@@ -194,7 +194,7 @@ export default function JobApplicationForm({ jobId, jobTitle }: JobApplicationFo
                 />
               </label>
               {resumeFile && (
-                <span className="text-sm text-gray-600 dark:text-gray-400">
+                <span className="text-sm text-gray-600 dark:text-stone-400">
                   {resumeFile.name}
                 </span>
               )}
@@ -205,7 +205,7 @@ export default function JobApplicationForm({ jobId, jobTitle }: JobApplicationFo
             <input
               {...register('resume')}
               type="url"
-              className="w-full mt-2 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+              className="w-full mt-2 px-4 py-3 border border-gray-300 dark:border-stone-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary dark:bg-stone-800 dark:text-white"
               placeholder="https://your-resume.com"
             />
             {errors.resume && (
@@ -216,37 +216,37 @@ export default function JobApplicationForm({ jobId, jobTitle }: JobApplicationFo
           {/* Portfolio Links */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-stone-300 mb-2">
                 Portfolio URL
               </label>
               <input
                 {...register('portfolioUrl')}
                 type="url"
-                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-stone-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary dark:bg-stone-800 dark:text-white"
                 placeholder="https://your-portfolio.com"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-stone-300 mb-2">
                 GitHub URL
               </label>
               <input
                 {...register('githubUrl')}
                 type="url"
-                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-stone-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary dark:bg-stone-800 dark:text-white"
                 placeholder="https://github.com/username"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-stone-300 mb-2">
                 LinkedIn URL
               </label>
               <input
                 {...register('linkedinUrl')}
                 type="url"
-                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-stone-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary dark:bg-stone-800 dark:text-white"
                 placeholder="https://linkedin.com/in/username"
               />
             </div>
@@ -254,13 +254,13 @@ export default function JobApplicationForm({ jobId, jobTitle }: JobApplicationFo
 
           {/* Cover Letter */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-stone-300 mb-2">
               Cover Letter *
             </label>
             <textarea
               {...register('coverLetter')}
               rows={8}
-              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white resize-none"
+              className="w-full px-4 py-3 border border-gray-300 dark:border-stone-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary dark:bg-stone-800 dark:text-white resize-none"
               placeholder="Tell us why you're the perfect candidate for this position..."
             />
             {errors.coverLetter && (
@@ -269,9 +269,9 @@ export default function JobApplicationForm({ jobId, jobTitle }: JobApplicationFo
           </div>
 
           {/* Submit Button */}
-          <div className="pt-6 border-t border-gray-200 dark:border-gray-700">
+          <div className="pt-6 border-t border-gray-200 dark:border-stone-700">
             <div className="flex items-center justify-between">
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <p className="text-sm text-gray-500 dark:text-stone-400">
                 * Required fields
               </p>
               <button

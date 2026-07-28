@@ -31,8 +31,8 @@ function AuroraRings({ isDark }: { isDark: boolean }) {
       <mesh ref={r1}>
         <torusGeometry args={[9.5, 0.06, 8, 200]} />
         <meshStandardMaterial
-          color={isDark ? '#22d3ee' : '#3b82f6'}
-          emissive={isDark ? '#0891b2' : '#1d4ed8'}
+          color={isDark ? '#f59e0b' : '#3b82f6'}
+          emissive={isDark ? '#92400e' : '#1d4ed8'}
           emissiveIntensity={isDark ? 2.8 : 1.2}
           transparent
           opacity={0.35}
@@ -41,8 +41,8 @@ function AuroraRings({ isDark }: { isDark: boolean }) {
       <mesh ref={r2} rotation={[1.1, 0.4, 0]}>
         <torusGeometry args={[11.5, 0.045, 8, 220]} />
         <meshStandardMaterial
-          color={isDark ? '#a78bfa' : '#8b5cf6'}
-          emissive={isDark ? '#7c3aed' : '#6d28d9'}
+          color={isDark ? '#d97706' : '#8b5cf6'}
+          emissive={isDark ? '#78350f' : '#6d28d9'}
           emissiveIntensity={isDark ? 2.2 : 0.9}
           transparent
           opacity={0.28}
@@ -51,8 +51,8 @@ function AuroraRings({ isDark }: { isDark: boolean }) {
       <mesh ref={r3} rotation={[0.6, 1.2, 0.8]}>
         <torusGeometry args={[14.0, 0.035, 8, 240]} />
         <meshStandardMaterial
-          color={isDark ? '#34d399' : '#10b981'}
-          emissive={isDark ? '#059669' : '#047857'}
+          color={isDark ? '#fbbf24' : '#10b981'}
+          emissive={isDark ? '#b45309' : '#047857'}
           emissiveIntensity={isDark ? 1.8 : 0.7}
           transparent
           opacity={0.2}
@@ -73,8 +73,8 @@ function CrystalShards({ isDark }: { isDark: boolean }) {
       ] as [number, number, number],
       rot: [Math.random() * Math.PI, Math.random() * Math.PI, 0] as [number, number, number],
       scale: 0.12 + Math.random() * 0.28,
-      color: i % 3 === 0 ? '#22d3ee' : i % 3 === 1 ? '#a78bfa' : '#34d399',
-      emissive: i % 3 === 0 ? '#0891b2' : i % 3 === 1 ? '#7c3aed' : '#059669',
+      color: i % 3 === 0 ? '#f59e0b' : i % 3 === 1 ? '#b45309' : '#fbbf24',
+      emissive: i % 3 === 0 ? '#92400e' : i % 3 === 1 ? '#78350f' : '#d97706',
       speed: 0.6 + Math.random() * 0.8,
     }));
   }, []);
@@ -139,8 +139,8 @@ function ConstellationWeb({ isDark }: { isDark: boolean }) {
           <mesh position={node}>
             <sphereGeometry args={[i % 5 === 0 ? 0.07 : 0.04, 8, 8]} />
             <meshStandardMaterial
-              color={i % 3 === 0 ? '#fbbf24' : isDark ? '#38bdf8' : '#3b82f6'}
-              emissive={i % 3 === 0 ? '#d97706' : '#0ea5e9'}
+              color={i % 3 === 0 ? '#fbbf24' : isDark ? '#d97706' : '#3b82f6'}
+              emissive={i % 3 === 0 ? '#d97706' : isDark ? '#92400e' : '#0ea5e9'}
               emissiveIntensity={isDark ? 1.4 : 0.5}
             />
           </mesh>
@@ -156,8 +156,8 @@ function ConstellationWeb({ isDark }: { isDark: boolean }) {
           <mesh key={i} position={mid} quaternion={quat}>
             <cylinderGeometry args={[0.004, 0.004, len, 4]} />
             <meshStandardMaterial
-              color={isDark ? '#38bdf8' : '#2563eb'}
-              emissive={isDark ? '#0284c7' : '#1d4ed8'}
+              color={isDark ? '#f59e0b' : '#2563eb'}
+              emissive={isDark ? '#92400e' : '#1d4ed8'}
               emissiveIntensity={0.9}
               transparent
               opacity={isDark ? 0.18 : 0.1}
@@ -216,8 +216,8 @@ function HexFloor({ isDark }: { isDark: boolean }) {
         <mesh key={h.idx} position={[h.x, 0, h.z]} userData={{ x: h.x, z: h.z }}>
           <cylinderGeometry args={[0.72, 0.72, 0.12, 6]} />
           <meshStandardMaterial
-            color={isDark ? '#0f172a' : '#e0f2fe'}
-            emissive={isDark ? '#0ea5e9' : '#2563eb'}
+            color={isDark ? '#21140d' : '#e0f2fe'}
+            emissive={isDark ? '#b45309' : '#2563eb'}
             emissiveIntensity={isDark ? 0.7 : 0.25}
             metalness={0.85}
             roughness={0.12}
@@ -275,15 +275,15 @@ function SignalPrisms({ isDark }: { isDark: boolean }) {
     <>
       <mesh ref={p1} scale={[1.8, 0.16, 1.8]}>
         <octahedronGeometry args={[1, 0]} />
-        {prismMat('#22d3ee', '#0891b2')}
+        {prismMat(isDark ? '#f59e0b' : '#22d3ee', isDark ? '#92400e' : '#0891b2')}
       </mesh>
       <mesh ref={p2} scale={[2.3, 0.12, 1.2]}>
         <boxGeometry args={[1, 1, 1]} />
-        {prismMat('#a78bfa', '#7c3aed')}
+        {prismMat(isDark ? '#b45309' : '#a78bfa', isDark ? '#78350f' : '#7c3aed')}
       </mesh>
       <mesh ref={p3} scale={[1.4, 0.18, 1.4]}>
         <octahedronGeometry args={[1, 0]} />
-        {prismMat('#34d399', '#059669')}
+        {prismMat(isDark ? '#fbbf24' : '#34d399', isDark ? '#d97706' : '#059669')}
       </mesh>
     </>
   );
@@ -292,13 +292,13 @@ function SignalPrisms({ isDark }: { isDark: boolean }) {
 function Scene({ isDark }: { isDark: boolean }) {
   return (
     <>
-      <color attach="background" args={[isDark ? '#020617' : '#f0f9ff']} />
-      <fog attach="fog" args={[isDark ? '#020617' : '#eff6ff', 14, 35]} />
+      <color attach="background" args={[isDark ? '#120b07' : '#f0f9ff']} />
+      <fog attach="fog" args={[isDark ? '#120b07' : '#eff6ff', 14, 35]} />
 
       <ambientLight intensity={isDark ? 0.35 : 0.75} />
       <directionalLight position={[6, 8, 4]} intensity={isDark ? 1.8 : 1.0} />
-      <pointLight position={[-8, 4, -4]} color="#22d3ee" intensity={isDark ? 120 : 40} distance={20} />
-      <pointLight position={[8, -3, -5]} color="#a78bfa" intensity={isDark ? 90 : 30} distance={18} />
+      <pointLight position={[-8, 4, -4]} color={isDark ? '#f59e0b' : '#22d3ee'} intensity={isDark ? 120 : 40} distance={20} />
+      <pointLight position={[8, -3, -5]} color={isDark ? '#b45309' : '#a78bfa'} intensity={isDark ? 90 : 30} distance={18} />
       <pointLight position={[0, 6, -6]} color="#fbbf24" intensity={isDark ? 60 : 20} distance={15} />
 
       <Stars
@@ -316,7 +316,7 @@ function Scene({ isDark }: { isDark: boolean }) {
         scale={[18, 8, 14]}
         size={isDark ? 2.8 : 1.4}
         speed={0.25}
-        color={isDark ? '#38bdf8' : '#3b82f6'}
+        color={isDark ? '#f59e0b' : '#3b82f6'}
         opacity={isDark ? 0.65 : 0.25}
       />
       <Sparkles
@@ -324,7 +324,7 @@ function Scene({ isDark }: { isDark: boolean }) {
         scale={[14, 6, 10]}
         size={isDark ? 2.2 : 1.0}
         speed={0.35}
-        color={isDark ? '#f9a8d4' : '#a78bfa'}
+        color={isDark ? '#fbbf24' : '#a78bfa'}
         opacity={isDark ? 0.45 : 0.18}
       />
 
@@ -374,10 +374,10 @@ export default function Vantech3DBackground() {
         style={{
           background: isDark
             ? `
-                radial-gradient(ellipse 80% 55% at 15% 12%, rgba(34,211,238,0.13) 0%, transparent 55%),
-                radial-gradient(ellipse 70% 50% at 88% 20%, rgba(167,139,250,0.12) 0%, transparent 50%),
-                radial-gradient(ellipse 60% 45% at 50% 85%, rgba(52,211,153,0.08) 0%, transparent 50%),
-                linear-gradient(180deg, rgba(2,6,23,0.05) 0%, rgba(2,6,23,0.38) 65%, rgba(2,6,23,0.88) 100%)
+                radial-gradient(ellipse 80% 55% at 15% 12%, rgba(180,83,9,0.16) 0%, transparent 55%),
+                radial-gradient(ellipse 70% 50% at 88% 20%, rgba(120,53,15,0.18) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 45% at 50% 85%, rgba(245,158,11,0.10) 0%, transparent 50%),
+                linear-gradient(180deg, rgba(18,11,7,0.08) 0%, rgba(18,11,7,0.42) 65%, rgba(18,11,7,0.9) 100%)
               `
             : `
                 radial-gradient(ellipse 80% 55% at 15% 12%, rgba(59,130,246,0.11) 0%, transparent 55%),

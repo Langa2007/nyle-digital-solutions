@@ -12,13 +12,13 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
     const baseStyles = 'rounded-xl transition-all duration-300';
     
     const variants = {
-      default: 'bg-white dark:bg-gray-800',
-      bordered: 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700',
-      elevated: 'bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl',
+      default: 'bg-white dark:bg-stone-900',
+      bordered: 'bg-white dark:bg-stone-900 border border-gray-200 dark:border-stone-700',
+      elevated: 'bg-white dark:bg-stone-900 shadow-lg hover:shadow-xl',
     };
 
     const hoverStyles = hoverable 
-      ? 'hover:shadow-xl hover:-translate-y-1 hover:border-blue-500 dark:hover:border-blue-500' 
+      ? 'hover:shadow-xl hover:-translate-y-1 hover:border-blue-500 dark:hover:border-amber-400' 
       : '';
 
     return (

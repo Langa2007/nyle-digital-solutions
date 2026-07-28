@@ -29,7 +29,7 @@ export default function Portfolio() {
       <div className="section-shell relative z-10">
         <div className="mb-14 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-blue-600 dark:text-blue-300">
+            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-blue-600 dark:text-amber-200">
               Our Recent Work
             </p>
             <h2 className="mt-4 text-3xl font-semibold text-slate-950 dark:text-white sm:text-4xl">
@@ -53,7 +53,7 @@ export default function Portfolio() {
                 className="group"
               >
                 <div className="glass-panel overflow-hidden rounded-lg transition-transform duration-300 group-hover:-translate-y-1">
-                  <div className="relative h-72 overflow-hidden bg-slate-100 dark:bg-slate-900">
+                  <div className="relative h-72 overflow-hidden bg-slate-100 dark:bg-stone-900">
                     {project.featuredImage ? (
                       <img
                         src={project.featuredImage}
@@ -61,7 +61,7 @@ export default function Portfolio() {
                         className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                       />
                     ) : (
-                      <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-slate-100 via-blue-50 to-cyan-50 dark:from-slate-900 dark:via-slate-800 dark:to-blue-950">
+                      <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-slate-100 via-blue-50 to-cyan-50 dark:from-stone-900 dark:via-stone-800 dark:to-amber-950">
                         <Image className="h-12 w-12 text-slate-400" />
                       </div>
                     )}
@@ -99,12 +99,12 @@ export default function Portfolio() {
 
                     <div className="mt-7 flex flex-wrap items-center gap-4">
                       <div className="inline-flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-300">
-                        <BadgeCheck className="h-4 w-4 text-blue-600 dark:text-blue-300" aria-hidden="true" />
+                        <BadgeCheck className="h-4 w-4 text-blue-600 dark:text-amber-200" aria-hidden="true" />
                         Delivered and thriving
                       </div>
                       <Link
                         href="/#contact"
-                        className="inline-flex min-h-11 items-center text-sm font-semibold text-blue-700 hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:text-blue-300 dark:hover:text-blue-200 dark:focus:ring-offset-slate-950"
+                        className="inline-flex min-h-11 items-center text-sm font-semibold text-blue-700 hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:text-amber-200 dark:hover:text-amber-100 dark:focus:ring-offset-stone-950"
                       >
                         Build something similar
                         <ArrowRight className="ml-2 h-4 w-4" />

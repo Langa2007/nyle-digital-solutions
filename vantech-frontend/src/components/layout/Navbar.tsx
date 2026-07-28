@@ -40,7 +40,7 @@ export default function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'border-b border-slate-200/60 bg-white/80 shadow-sm backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/80'
+          ? 'border-b border-slate-200/60 bg-white/80 shadow-sm backdrop-blur-2xl dark:border-white/10 dark:bg-stone-950/80'
           : 'border-b border-transparent bg-transparent'
       }`}
     >
@@ -58,7 +58,7 @@ export default function Navbar() {
               />
             </div>
             <div>
-              <p className="text-sm font-semibold uppercase text-blue-600 dark:text-blue-300">
+              <p className="text-sm font-semibold uppercase text-blue-600 dark:text-amber-200">
                 Vantech Softwares
               </p>
               <p className="text-sm text-slate-600 dark:text-slate-300">
@@ -72,7 +72,7 @@ export default function Navbar() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="rounded-lg px-4 py-2 text-sm font-medium text-slate-600 hover:bg-blue-50 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-blue-200 dark:focus:ring-offset-slate-950"
+                  className="rounded-lg px-4 py-2 text-sm font-medium text-slate-600 hover:bg-blue-50 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-amber-100 dark:focus:ring-offset-stone-950"
                 >
                   {item.name}
                 </Link>
@@ -83,7 +83,7 @@ export default function Navbar() {
               {mounted && (
                 <button
                   onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-slate-200/80 bg-white/80 text-slate-700 shadow-sm hover:border-blue-200 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:border-white/10 dark:bg-slate-900/70 dark:text-slate-200 dark:focus:ring-offset-slate-950"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-slate-200/80 bg-white/80 text-slate-700 shadow-sm hover:border-blue-200 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:border-white/10 dark:bg-stone-900/70 dark:text-slate-200 dark:focus:ring-offset-stone-950"
                   aria-label="Toggle theme"
                 >
                   {theme === 'dark' ? (
@@ -94,13 +94,13 @@ export default function Navbar() {
                 </button>
               )}
 
-              <CalendlyButton className="hidden rounded-full bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-slate-950 lg:inline-flex">
+              <CalendlyButton className="hidden rounded-full bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-stone-950 lg:inline-flex">
                 Book a Call
               </CalendlyButton>
 
               <button
                 onClick={() => setMobileMenuOpen((open) => !open)}
-                className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-slate-200/80 bg-white/80 text-slate-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:border-white/10 dark:bg-slate-900/70 dark:text-slate-200 dark:focus:ring-offset-slate-950 lg:hidden"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-slate-200/80 bg-white/80 text-slate-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:border-white/10 dark:bg-stone-900/70 dark:text-slate-200 dark:focus:ring-offset-stone-950 lg:hidden"
                 aria-label="Toggle menu"
               >
                 {mobileMenuOpen ? (
@@ -125,7 +125,7 @@ export default function Navbar() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="block rounded-lg bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                    className="block rounded-lg bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-700 dark:bg-stone-900 dark:text-slate-200 dark:hover:bg-stone-800"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.name}

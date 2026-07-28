@@ -42,7 +42,7 @@ export default function Stats() {
       <div className="section-shell relative z-10">
         <div className="mb-14 grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-blue-600 dark:text-blue-300">
+            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-blue-600 dark:text-amber-200">
               Delivery signal
             </p>
             <h2 className="mt-4 text-3xl font-semibold text-slate-950 dark:text-white sm:text-4xl">

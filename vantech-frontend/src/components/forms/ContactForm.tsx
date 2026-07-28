@@ -101,14 +101,14 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-stone-300 mb-2">
             Full Name *
           </label>
           <input
             {...register('name')}
             type="text"
             id="name"
-            className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-white transition-colors"
+            className="w-full px-4 py-3 border border-gray-300 dark:border-stone-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary dark:bg-stone-900 dark:text-white transition-colors"
             placeholder="John Doe"
           />
           {errors.name && (
@@ -117,14 +117,14 @@ export default function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-stone-300 mb-2">
             Email Address *
           </label>
           <input
             {...register('email')}
             type="email"
             id="email"
-            className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-white transition-colors"
+            className="w-full px-4 py-3 border border-gray-300 dark:border-stone-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary dark:bg-stone-900 dark:text-white transition-colors"
             placeholder="john@example.com"
           />
           {errors.email && (
@@ -135,41 +135,41 @@ export default function ContactForm() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-stone-300 mb-2">
             Phone Number
           </label>
           <input
             {...register('phone')}
             type="tel"
             id="phone"
-            className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-white transition-colors"
+            className="w-full px-4 py-3 border border-gray-300 dark:border-stone-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary dark:bg-stone-900 dark:text-white transition-colors"
             placeholder="+1 (555) 123-4567"
           />
         </div>
 
         <div>
-          <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-stone-300 mb-2">
             Company
           </label>
           <input
             {...register('company')}
             type="text"
             id="company"
-            className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-white transition-colors"
+            className="w-full px-4 py-3 border border-gray-300 dark:border-stone-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary dark:bg-stone-900 dark:text-white transition-colors"
             placeholder="Your Company Inc."
           />
         </div>
       </div>
 
       <div>
-        <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-stone-300 mb-2">
           Subject *
         </label>
         <input
           {...register('subject')}
           type="text"
           id="subject"
-          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-white transition-colors"
+          className="w-full px-4 py-3 border border-gray-300 dark:border-stone-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary dark:bg-stone-900 dark:text-white transition-colors"
           placeholder="What are you looking for?"
         />
         {errors.subject && (
@@ -179,13 +179,13 @@ export default function ContactForm() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div>
-          <label htmlFor="serviceType" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label htmlFor="serviceType" className="block text-sm font-medium text-gray-700 dark:text-stone-300 mb-2">
             Service Needed
           </label>
           <select
             {...register('serviceType')}
             id="serviceType"
-            className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-white transition-colors"
+            className="w-full px-4 py-3 border border-gray-300 dark:border-stone-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary dark:bg-stone-900 dark:text-white transition-colors"
           >
             {serviceOptions.map((option) => (
               <option key={option.value} value={option.value}>
@@ -196,13 +196,13 @@ export default function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="budget" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label htmlFor="budget" className="block text-sm font-medium text-gray-700 dark:text-stone-300 mb-2">
             Estimated Budget
           </label>
           <select
             {...register('budget')}
             id="budget"
-            className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-white transition-colors"
+            className="w-full px-4 py-3 border border-gray-300 dark:border-stone-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary dark:bg-stone-900 dark:text-white transition-colors"
           >
             {budgetOptions.map((option) => (
               <option key={option.value} value={option.value}>
@@ -213,13 +213,13 @@ export default function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="timeline" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label htmlFor="timeline" className="block text-sm font-medium text-gray-700 dark:text-stone-300 mb-2">
             Timeline
           </label>
           <select
             {...register('timeline')}
             id="timeline"
-            className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-white transition-colors"
+            className="w-full px-4 py-3 border border-gray-300 dark:border-stone-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary dark:bg-stone-900 dark:text-white transition-colors"
           >
             {timelineOptions.map((option) => (
               <option key={option.value} value={option.value}>
@@ -231,14 +231,14 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-stone-300 mb-2">
           Message *
         </label>
         <textarea
           {...register('message')}
           id="message"
           rows={6}
-          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-white transition-colors resize-none"
+          className="w-full px-4 py-3 border border-gray-300 dark:border-stone-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary dark:bg-stone-900 dark:text-white transition-colors resize-none"
           placeholder="Tell us about your project requirements, challenges, and goals..."
         />
         {errors.message && (
@@ -247,14 +247,14 @@ export default function ContactForm() {
       </div>
 
       <div className="flex items-center justify-between">
-        <div className="text-sm text-gray-500 dark:text-gray-400">
+        <div className="text-sm text-gray-500 dark:text-stone-400">
           <p>* Required fields</p>
           <p>We typically respond within 24 hours</p>
         </div>
         <button
           type="submit"
           disabled={isSubmitting}
-          className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isSubmitting ? (
             <span className="flex items-center">

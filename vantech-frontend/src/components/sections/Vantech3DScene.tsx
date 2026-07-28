@@ -46,10 +46,10 @@ function CrystalTower() {
       <mesh ref={baseRef} position={[0, -0.5, 0]}>
         <cylinderGeometry args={[0.55, 0.85, 0.9, 6, 1]} />
         <meshStandardMaterial
-          color="#0f172a"
+          color="#21140d"
           metalness={0.9}
           roughness={0.1}
-          emissive="#1d4ed8"
+          emissive="#92400e"
           emissiveIntensity={0.4}
         />
       </mesh>
@@ -58,10 +58,10 @@ function CrystalTower() {
       <mesh ref={midRef} position={[0, 0.25, 0]}>
         <octahedronGeometry args={[0.72, 0]} />
         <meshStandardMaterial
-          color="#38bdf8"
+          color="#f59e0b"
           metalness={0.7}
           roughness={0.05}
-          emissive="#0284c7"
+          emissive="#b45309"
           emissiveIntensity={0.9}
           transparent
           opacity={0.88}
@@ -72,10 +72,10 @@ function CrystalTower() {
       <mesh ref={topRef} position={[0, 1.1, 0]}>
         <tetrahedronGeometry args={[0.52, 0]} />
         <meshStandardMaterial
-          color="#e0f2fe"
+          color="#fff7ed"
           metalness={0.6}
           roughness={0.02}
-          emissive="#7dd3fc"
+          emissive="#fbbf24"
           emissiveIntensity={1.4}
           transparent
           opacity={0.92}
@@ -86,10 +86,10 @@ function CrystalTower() {
       <mesh ref={glowRef} position={[0, 0.25, 0]}>
         <sphereGeometry args={[1.05, 16, 16]} />
         <meshStandardMaterial
-          color="#38bdf8"
+          color="#f59e0b"
           transparent
           opacity={0.06}
-          emissive="#38bdf8"
+          emissive="#f59e0b"
           emissiveIntensity={0.5}
         />
       </mesh>
@@ -98,8 +98,8 @@ function CrystalTower() {
       <mesh ref={ring1Ref} position={[0, 0.25, 0]}>
         <torusGeometry args={[1.28, 0.018, 12, 100]} />
         <meshStandardMaterial
-          color="#22d3ee"
-          emissive="#06b6d4"
+          color="#d97706"
+          emissive="#92400e"
           emissiveIntensity={2.2}
         />
       </mesh>
@@ -197,8 +197,8 @@ function DataRibbon({ index }: { index: number }) {
         args={[1.95 + index * 0.3, 0.01, 120, 4, index % 3 === 0 ? 2 : 3, 5]}
       />
       <meshStandardMaterial
-        color={index % 2 === 0 ? '#818cf8' : '#34d399'}
-        emissive={index % 2 === 0 ? '#6366f1' : '#10b981'}
+        color={index % 2 === 0 ? '#f59e0b' : '#b45309'}
+        emissive={index % 2 === 0 ? '#b45309' : '#78350f'}
         emissiveIntensity={1.5}
         transparent
         opacity={0.55}
@@ -215,10 +215,10 @@ function CodePanel({ position, delay }: { position: [number, number, number]; de
         <mesh castShadow>
           <boxGeometry args={[0.72, 0.45, 0.04]} />
           <meshStandardMaterial
-            color="#0f172a"
+            color="#21140d"
             metalness={0.6}
             roughness={0.35}
-            emissive="#1e3a5f"
+            emissive="#78350f"
             emissiveIntensity={0.4}
             transparent
             opacity={0.82}
@@ -228,8 +228,8 @@ function CodePanel({ position, delay }: { position: [number, number, number]; de
         <mesh position={[0, 0.21, 0.021]}>
           <boxGeometry args={[0.72, 0.03, 0.01]} />
           <meshStandardMaterial
-            color="#38bdf8"
-            emissive="#0284c7"
+            color="#f59e0b"
+            emissive="#b45309"
             emissiveIntensity={3}
           />
         </mesh>
@@ -238,8 +238,8 @@ function CodePanel({ position, delay }: { position: [number, number, number]; de
           <mesh key={i} position={[-0.06 + i * 0.02, y, 0.022]}>
             <boxGeometry args={[0.38 - i * 0.08, 0.025, 0.005]} />
             <meshStandardMaterial
-              color={i === 0 ? '#7dd3fc' : i === 1 ? '#34d399' : '#fbbf24'}
-              emissive={i === 0 ? '#38bdf8' : i === 1 ? '#10b981' : '#f59e0b'}
+              color={i === 0 ? '#fbbf24' : i === 1 ? '#d97706' : '#fff7ed'}
+              emissive={i === 0 ? '#f59e0b' : i === 1 ? '#b45309' : '#f59e0b'}
               emissiveIntensity={1.2}
             />
           </mesh>
@@ -264,10 +264,10 @@ function HexGrid() {
       <mesh ref={gridRef} receiveShadow rotation={[-Math.PI / 2, 0, 0]}>
         <ringGeometry args={[0, 4.5, 6]} />
         <meshStandardMaterial
-          color="#0f172a"
+          color="#21140d"
           metalness={0.75}
           roughness={0.2}
-          emissive="#0891b2"
+          emissive="#92400e"
           emissiveIntensity={0.25}
           side={THREE.DoubleSide}
         />
@@ -277,8 +277,8 @@ function HexGrid() {
         <mesh key={r} position={[0, 0.01 + i * 0.01, 0]} rotation={[-Math.PI / 2, 0, (i % 2) * 0.52]}>
           <ringGeometry args={[r - 0.015, r, 6]} />
           <meshStandardMaterial
-            color={i === 0 ? '#22d3ee' : i === 1 ? '#818cf8' : '#34d399'}
-            emissive={i === 0 ? '#06b6d4' : i === 1 ? '#6366f1' : '#10b981'}
+            color={i === 0 ? '#f59e0b' : i === 1 ? '#b45309' : '#fbbf24'}
+            emissive={i === 0 ? '#b45309' : i === 1 ? '#78350f' : '#d97706'}
             emissiveIntensity={1.5}
           />
         </mesh>
@@ -294,8 +294,8 @@ const satellites: SatelliteProps[] = [
     speed: 0.55,
     phase: 0,
     tilt: 0.4,
-    color: '#22d3ee',
-    emissive: '#0891b2',
+    color: '#f59e0b',
+    emissive: '#92400e',
     label: 'WebGL UI',
     icon: Code2,
     size: 0.22,
@@ -305,8 +305,8 @@ const satellites: SatelliteProps[] = [
     speed: 0.38,
     phase: 2.1,
     tilt: -0.3,
-    color: '#a78bfa',
-    emissive: '#7c3aed',
+    color: '#b45309',
+    emissive: '#78350f',
     label: 'Cloud API',
     icon: Globe2,
     size: 0.19,
@@ -316,8 +316,8 @@ const satellites: SatelliteProps[] = [
     speed: 0.72,
     phase: 4.3,
     tilt: 0.6,
-    color: '#34d399',
-    emissive: '#059669',
+    color: '#fbbf24',
+    emissive: '#b45309',
     label: 'Secure Data',
     icon: Database,
     size: 0.20,
@@ -338,8 +338,8 @@ const satellites: SatelliteProps[] = [
     speed: 0.92,
     phase: 3.5,
     tilt: 0.2,
-    color: '#f472b6',
-    emissive: '#db2777',
+    color: '#fed7aa',
+    emissive: '#c2410c',
     label: 'AI Engine',
     icon: Zap,
     size: 0.17,
@@ -349,8 +349,8 @@ const satellites: SatelliteProps[] = [
     speed: 0.29,
     phase: 5.8,
     tilt: -0.7,
-    color: '#60a5fa',
-    emissive: '#2563eb',
+    color: '#fdba74',
+    emissive: '#ea580c',
     label: 'DevOps Core',
     icon: Cpu,
     size: 0.21,
@@ -376,15 +376,15 @@ export default function Vantech3DScene() {
         {/* Lighting */}
         <ambientLight intensity={0.45} />
         <directionalLight position={[5, 8, 6]} intensity={2.8} castShadow />
-        <pointLight position={[-4, 3, 2]} color="#22d3ee" intensity={80} distance={10} />
-        <pointLight position={[4, -2, 3]} color="#a78bfa" intensity={60} distance={9} />
+        <pointLight position={[-4, 3, 2]} color="#f59e0b" intensity={80} distance={10} />
+        <pointLight position={[4, -2, 3]} color="#b45309" intensity={60} distance={9} />
         <pointLight position={[0, 2, -2]} color="#fbbf24" intensity={40} distance={7} />
 
         <Environment preset="night" />
 
         {/* Dense sparkle field */}
-        <Sparkles count={130} scale={[7, 5.5, 5]} size={1.8} speed={0.35} color="#93c5fd" />
-        <Sparkles count={60} scale={[5, 4, 4]} size={2.8} speed={0.55} color="#f9a8d4" />
+        <Sparkles count={130} scale={[7, 5.5, 5]} size={1.8} speed={0.35} color="#fbbf24" />
+        <Sparkles count={60} scale={[5, 4, 4]} size={2.8} speed={0.55} color="#fdba74" />
 
         <PresentationControls
           global

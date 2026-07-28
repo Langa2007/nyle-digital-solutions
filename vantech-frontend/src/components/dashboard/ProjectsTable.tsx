@@ -81,7 +81,7 @@ export default function ProjectTable() {
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
             Active Projects
           </h3>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+          <p className="text-sm text-gray-500 dark:text-stone-400 mt-1">
             Overview of all active projects
           </p>
         </div>
@@ -116,7 +116,7 @@ export default function ProjectTable() {
               </TableCell>
               <TableCell>
                 <div className="flex items-center">
-                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                  <div className="w-full bg-gray-200 dark:bg-stone-800 rounded-full h-2">
                     <div
                       className="bg-blue-600 h-2 rounded-full"
                       style={{ width: `${project.progress}%` }}

@@ -30,7 +30,7 @@ const siteUrl =
 export const metadata: Metadata = {
   title: 'Vantech Software Solutions | Software, Cloud and Product Delivery',
   description:
-    'Vantech Software Solutions builds modern web platforms, mobile products, cloud systems, and digital operations with a sharp blue-forward brand experience.',
+    'Vantech Software Solutions builds modern web platforms, mobile products, cloud systems, and digital operations with a polished warm brand experience.',
   keywords:
     'software development, web applications, mobile apps, cloud infrastructure, product engineering',
   authors: [{ name: 'Vantech Software Solutions' }],
@@ -87,7 +87,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/vantech-favicon.png" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-slate-950 font-sans text-slate-100 antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-background font-sans text-foreground antialiased`}
       >
         <ReactQueryProvider>
           <ThemeProvider
@@ -110,15 +110,15 @@ export default function RootLayout({
               toastOptions={{
                 duration: 4000,
                 style: {
-                  background: '#0f172a',
-                  color: '#e2e8f0',
-                  border: '1px solid rgba(148, 163, 184, 0.18)',
+                  background: '#21140d',
+                  color: '#f3eadc',
+                  border: '1px solid rgba(245, 158, 11, 0.18)',
                 },
                 success: {
                   duration: 3000,
                   iconTheme: {
-                    primary: '#2563eb',
-                    secondary: '#eff6ff',
+                    primary: '#d97706',
+                    secondary: '#fff7ed',
                   },
                 },
                 error: {

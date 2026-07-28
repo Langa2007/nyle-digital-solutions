@@ -56,17 +56,17 @@ export default function CookieConsent() {
         exit={{ y: 100, opacity: 0 }}
         className="fixed bottom-6 left-6 right-6 z-[100] mx-auto max-w-4xl"
       >
-        <div className="glass-panel overflow-hidden rounded-[2rem] border border-white/10 bg-slate-950/90 p-6 shadow-2xl backdrop-blur-xl sm:p-8">
+        <div className="glass-panel overflow-hidden rounded-[2rem] border border-white/10 bg-stone-950/90 p-6 shadow-2xl backdrop-blur-xl sm:p-8">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div className="flex items-start gap-4 lg:max-w-2xl">
-              <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-blue-600/20 text-blue-400">
+              <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-amber-600/20 text-amber-300">
                 <Cookie className="h-6 w-6" />
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-white">We value your privacy</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-400">
                   We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.
-                  Read our <Link href="/cookies" className="text-blue-400 underline hover:text-blue-300">Cookie Policy</Link> for more details.
+                  Read our <Link href="/cookies" className="text-amber-300 underline hover:text-amber-200">Cookie Policy</Link> for more details.
                 </p>
               </div>
             </div>
@@ -86,7 +86,7 @@ export default function CookieConsent() {
               </Link>
               <button
                 onClick={handleAcceptAll}
-                className="flex w-full items-center justify-center gap-2 rounded-2xl bg-blue-600 px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 hover:bg-blue-700 sm:w-auto"
+                className="flex w-full items-center justify-center gap-2 rounded-2xl bg-amber-500 px-8 py-3 text-sm font-semibold text-stone-950 shadow-lg shadow-amber-500/20 hover:bg-amber-400 sm:w-auto"
               >
                 <Check className="h-4 w-4" />
                 Accept All

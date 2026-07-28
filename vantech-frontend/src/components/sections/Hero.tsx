@@ -39,7 +39,7 @@ export default function Hero() {
 
   return (
     <section ref={heroRef} className="relative overflow-hidden pb-24 pt-32 sm:pt-36 lg:min-h-dvh">
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,_rgba(248,250,252,0.58),_rgba(239,246,255,0.30)_42%,_rgba(248,250,252,0.68))] dark:bg-[linear-gradient(180deg,_rgba(2,6,23,0.44),_rgba(15,23,42,0.22)_42%,_rgba(2,6,23,0.72))]" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,_rgba(248,250,252,0.58),_rgba(239,246,255,0.30)_42%,_rgba(248,250,252,0.68))] dark:bg-[linear-gradient(180deg,_rgba(18,11,7,0.48),_rgba(44,26,16,0.24)_42%,_rgba(18,11,7,0.76))]" />
       <div className="section-shell">
         <div className="grid items-center gap-14 lg:grid-cols-[1.1fr_0.9fr]">
           <motion.div
@@ -48,7 +48,7 @@ export default function Hero() {
             transition={{ duration: 0.55 }}
             className="hero-copy [transform-style:preserve-3d]"
           >
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-200/80 bg-white/75 px-4 py-2 text-sm font-medium text-blue-700 shadow-sm backdrop-blur-xl dark:border-blue-400/20 dark:bg-blue-500/10 dark:text-blue-200">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-200/80 bg-white/75 px-4 py-2 text-sm font-medium text-blue-700 shadow-sm backdrop-blur-xl dark:border-amber-400/20 dark:bg-amber-500/10 dark:text-amber-100">
               <Sparkles className="h-4 w-4" />
               Immersive software delivery for teams ready to move
             </div>
@@ -62,13 +62,13 @@ export default function Hero() {
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <CalendlyButton className="inline-flex min-h-12 items-center justify-center rounded-full bg-blue-600 px-7 py-4 text-sm font-semibold text-white shadow-lg shadow-blue-600/25 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-slate-950">
+              <CalendlyButton className="inline-flex min-h-12 items-center justify-center rounded-full bg-blue-600 px-7 py-4 text-sm font-semibold text-white shadow-lg shadow-blue-600/25 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-stone-950">
                 Book a Discovery Call
                 <ArrowRight className="ml-2 h-4 w-4" />
               </CalendlyButton>
               <Link
                 href="/#portfolio"
-                className="inline-flex min-h-12 items-center justify-center rounded-full border border-slate-300 bg-white/80 px-7 py-4 text-sm font-semibold text-slate-700 backdrop-blur-xl hover:border-blue-200 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:border-white/10 dark:bg-white/5 dark:text-slate-100 dark:hover:border-blue-400/30 dark:hover:text-blue-200 dark:focus:ring-offset-slate-950"
+                className="inline-flex min-h-12 items-center justify-center rounded-full border border-slate-300 bg-white/80 px-7 py-4 text-sm font-semibold text-slate-700 backdrop-blur-xl hover:border-blue-200 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:border-white/10 dark:bg-white/5 dark:text-slate-100 dark:hover:border-amber-400/30 dark:hover:text-amber-100 dark:focus:ring-offset-stone-950"
               >
                 See Recent Work
                 <Play className="ml-2 h-4 w-4" />
@@ -81,13 +81,13 @@ export default function Hero() {
                   key={signal}
                   className="flex items-center gap-3 text-sm text-slate-700 dark:text-slate-200"
                 >
-                  <CheckCircle2 className="h-5 w-5 text-blue-600 dark:text-blue-300" />
+                  <CheckCircle2 className="h-5 w-5 text-blue-600 dark:text-amber-200" />
                   <span>{signal}</span>
                 </div>
               ))}
             </div>
 
-            <div className="mt-10 grid max-w-2xl gap-3 rounded-lg border border-white/55 bg-white/45 p-3 shadow-[0_24px_70px_-48px_rgba(15,23,42,0.7)] backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/35 sm:grid-cols-4">
+            <div className="mt-10 grid max-w-2xl gap-3 rounded-lg border border-white/55 bg-white/45 p-3 shadow-[0_24px_70px_-48px_rgba(15,23,42,0.7)] backdrop-blur-2xl dark:border-white/10 dark:bg-stone-950/35 sm:grid-cols-4">
               {launchFlow.map((step, index) => (
                 <div key={step} className="flex items-center gap-3 rounded-lg border border-white/55 bg-white/55 px-3 py-3 text-sm font-semibold text-slate-700 dark:border-white/10 dark:bg-white/5 dark:text-slate-200">
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-600 text-xs text-white">
@@ -125,11 +125,11 @@ export default function Hero() {
             transition={{ duration: 0.65 }}
             className="relative min-h-[420px] [perspective:1200px] lg:min-h-[590px]"
           >
-            <div className="absolute left-4 top-5 z-10 hidden rounded-lg border border-white/20 bg-slate-950/55 px-4 py-3 text-sm font-semibold text-white shadow-2xl backdrop-blur-xl sm:inline-flex">
-              <Workflow className="mr-2 h-4 w-4 text-cyan-200" />
+            <div className="absolute left-4 top-5 z-10 hidden rounded-lg border border-white/20 bg-stone-950/65 px-4 py-3 text-sm font-semibold text-white shadow-2xl backdrop-blur-xl sm:inline-flex">
+              <Workflow className="mr-2 h-4 w-4 text-amber-200" />
               Live system map
             </div>
-            <div className="absolute -inset-10 -z-10 rounded-lg bg-[conic-gradient(from_200deg,_rgba(34,211,238,0.22),_rgba(167,139,250,0.18),_rgba(251,191,36,0.14),_rgba(52,211,153,0.16),_rgba(34,211,238,0.22))] blur-3xl animate-[spin_18s_linear_infinite]" />
+            <div className="absolute -inset-10 -z-10 rounded-lg bg-[conic-gradient(from_200deg,_rgba(245,158,11,0.22),_rgba(180,83,9,0.18),_rgba(251,191,36,0.16),_rgba(120,53,15,0.18),_rgba(245,158,11,0.22))] blur-3xl animate-[spin_18s_linear_infinite]" />
             <Vantech3DScene />
           </motion.div>
         </div>
