@@ -6,47 +6,25 @@ import { Linkedin, Twitter, Mail } from 'lucide-react';
 
 const teamMembers = [
   {
-    name: 'Alex Johnson',
+    name: 'Fidel Langa',
     role: 'CEO & Founder',
-    bio: 'Former Google engineer with 15+ years in software development',
+    bio: 'Software engineer and entrepreneur with a vision for innovative solutions',
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400',
     social: {
       linkedin: '#',
       twitter: '#',
-      email: 'alex@vantechsoftwares.com',
+      email: '@vantechsoftwares.com',
     },
   },
   {
-    name: 'Sarah Miller',
-    role: 'CTO',
-    bio: 'Expert in cloud architecture and microservices',
+    name: 'FIDEL MUTHOMI',
+    role: 'CTO & Founder',
+    bio: 'Visionary leader with a passion for innovative software solutions',
     image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?auto=format&fit=crop&w=400',
     social: {
       linkedin: '#',
       twitter: '#',
-      email: 'sarah@vantechsoftwares.com',
-    },
-  },
-  {
-    name: 'David Chen',
-    role: 'Lead Developer',
-    bio: 'Full-stack developer specializing in React and Node.js',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400',
-    social: {
-      linkedin: '#',
-      twitter: '#',
-      email: 'david@vantechsoftwares.com',
-    },
-  },
-  {
-    name: 'Maria Garcia',
-    role: 'UX/UI Designer',
-    bio: 'Award-winning designer focused on user experience',
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=400',
-    social: {
-      linkedin: '#',
-      twitter: '#',
-      email: 'maria@vantechsoftwares.com',
+      email: 'cto@vantechsoftwares.com',
     },
   },
 ];

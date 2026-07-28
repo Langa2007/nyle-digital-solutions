@@ -67,11 +67,7 @@ export default function Testimonials() {
                 <Quote className="absolute right-5 top-5 h-8 w-8 text-blue-200 dark:text-blue-900" />
                 
                 <div className="mb-6 flex items-center">
-                  <img
-                    src={testimonial.avatar}
-                    alt={testimonial.name}
-                    className="h-12 w-12 rounded-lg object-cover"
-                  />
+                
                   <div className="ml-4">
                     <h4 className="font-semibold text-slate-950 dark:text-white">
                       {testimonial.name}
