@@ -66,7 +66,7 @@ export default function Footer() {
                 </div>
                 <div className="mt-3 flex items-center gap-3 text-sm text-slate-700 dark:text-slate-200">
                   <Phone className="h-4 w-4 text-blue-600 dark:text-blue-300" />
-                  +254 700 000 000
+                  +254 704 521408
                 </div>
                 <div className="mt-3 flex items-center gap-3 text-sm text-slate-700 dark:text-slate-200">
                   <MapPin className="h-4 w-4 text-blue-600 dark:text-blue-300" />

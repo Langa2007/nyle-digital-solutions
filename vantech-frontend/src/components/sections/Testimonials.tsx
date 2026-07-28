@@ -6,36 +6,32 @@ import { Star, Quote } from 'lucide-react';
 
 const testimonials = [
   {
-    name: 'Sarah Johnson',
+    name: 'Absalom Mwangi',
     role: 'CTO at TechCorp',
     company: 'TechCorp Inc.',
     content: 'Vantech Software Solutions transformed our legacy systems into a modern microservices architecture. Their team exceeded our expectations in every way.',
     rating: 5,
-    avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?auto=format&fit=crop&w=150',
   },
   {
-    name: 'Michael Chen',
+    name: 'AYUBU MOMAMYI',
     role: 'Product Director',
     company: 'GrowthLabs',
     content: 'The mobile app they developed for us increased user engagement by 300%. Their technical expertise is outstanding.',
     rating: 5,
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150',
   },
   {
-    name: 'Emma Rodriguez',
+    name: 'JERUSA KIPLAGAT',
     role: 'CEO at HealthTech',
     company: 'HealthTech Solutions',
     content: 'From concept to deployment, Vantech Software Solutions guided us through the entire process. Their cloud infrastructure saved us 40% in hosting costs.',
     rating: 5,
-    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150',
   },
   {
-    name: 'David Kim',
+    name: 'KIMUTAI DAVID',
     role: 'Engineering Manager',
     company: 'FinServe',
     content: 'The team augmentation service allowed us to scale our engineering team quickly without sacrificing quality.',
     rating: 5,
-    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150',
   },
 ];
 
