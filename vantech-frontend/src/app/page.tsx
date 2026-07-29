@@ -5,6 +5,7 @@ import Testimonials from '@/components/sections/Testimonials';
 import Stats from '@/components/sections/Stats';
 import CTASection from '@/components/sections/CTASection';
 import BlogSection from '@/components/sections/BlogSection';
+import TeamSection from '@/components/sections/TeamSection';
 
 export default function Home() {
   return (
@@ -25,6 +26,7 @@ export default function Home() {
       <div id="insights" className="scroll-mt-28">
         <BlogSection />
       </div>
+      <TeamSection />
       <div id="contact" className="scroll-mt-28">
         <CTASection />
       </div>
