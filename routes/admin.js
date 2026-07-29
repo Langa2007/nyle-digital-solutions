@@ -110,35 +110,46 @@ router.get('/activity/recent', async (req, res) => {
   }
 });
 
-router.post('/upload/image', upload.single('image'), async (req, res) => {
+router.post('/upload/image', upload.any(), async (req, res) => {
   try {
-    if (!req.file) return res.status(400).json({ success: false, error: 'No file uploaded' });
+    const file = req.files?.[0];
+    if (!file) return res.status(400).json({ success: false, error: 'No file uploaded' });
 
-    const result = await uploadToCloudinary(req.file.buffer, 'vantech-software-solutions');
+    const result = await uploadToCloudinary(file.buffer, 'vantech-software-solutions');
     res.json({
       success: true,
       url: result.secure_url,
       public_id: result.public_id,
+      data: {
+        url: result.secure_url,
+        public_id: result.public_id,
+      }
     });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
 });
 
-router.post('/upload/file', upload.single('file'), async (req, res) => {
+router.post('/upload/file', upload.any(), async (req, res) => {
   try {
-    if (!req.file) return res.status(400).json({ success: false, error: 'No file uploaded' });
+    const file = req.files?.[0];
+    if (!file) return res.status(400).json({ success: false, error: 'No file uploaded' });
 
-    const result = await uploadToCloudinary(req.file.buffer, 'vantech-software-solutions/files');
+    const result = await uploadToCloudinary(file.buffer, 'vantech-software-solutions/files');
     res.json({
       success: true,
       url: result.secure_url,
-      filename: req.file.originalname,
+      filename: file.originalname,
+      data: {
+        url: result.secure_url,
+        filename: file.originalname,
+      }
     });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
 });
+
 
 router.post('/contacts/bulk-action', async (req, res) => {
   try {
