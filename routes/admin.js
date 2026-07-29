@@ -7,7 +7,12 @@ import multer from 'multer';
 import { v2 as cloudinary } from 'cloudinary';
 import streamifier from 'streamifier';
 import dotenv from 'dotenv';
+import { createLogger } from '../utils/logger.js';
+
 dotenv.config();
+
+const logger = createLogger('admin-routes');
+
 
 const router = express.Router();
 
@@ -110,12 +115,35 @@ router.get('/activity/recent', async (req, res) => {
   }
 });
 
-router.post('/upload/image', upload.any(), async (req, res) => {
+router.post('/upload/image', upload.any(), async (req, res, next) => {
+  logger.info('Image upload requested', {
+    hasFiles: !!req.files,
+    filesCount: req.files?.length,
+    filesMetadata: req.files?.map(f => ({
+      fieldname: f.fieldname,
+      originalname: f.originalname,
+      mimetype: f.mimetype,
+      size: f.size
+    })),
+    cloudinaryConfig: {
+      cloud_name: process.env.CLOUD_NAME ? 'Configured' : 'Missing',
+      api_key: process.env.CLOUD_API_KEY ? 'Configured' : 'Missing',
+      api_secret: process.env.CLOUD_API_SECRET ? 'Configured' : 'Missing',
+    }
+  });
+
   try {
     const file = req.files?.[0];
-    if (!file) return res.status(400).json({ success: false, error: 'No file uploaded' });
+    if (!file) {
+      logger.warn('Image upload failed: No file found in request');
+      return res.status(400).json({ success: false, error: 'No file uploaded' });
+    }
 
+    logger.info('Uploading file buffer to Cloudinary...', { originalname: file.originalname });
     const result = await uploadToCloudinary(file.buffer, 'vantech-software-solutions');
+    
+    logger.info('Cloudinary upload successful', { public_id: result.public_id, secure_url: result.secure_url });
+    
     res.json({
       success: true,
       url: result.secure_url,
@@ -126,16 +154,44 @@ router.post('/upload/image', upload.any(), async (req, res) => {
       }
     });
   } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
+    logger.error('Image upload handler encountered an error:', {
+      message: error.message,
+      stack: error.stack,
+      rawError: error
+    });
+    next(error);
   }
 });
 
-router.post('/upload/file', upload.any(), async (req, res) => {
+router.post('/upload/file', upload.any(), async (req, res, next) => {
+  logger.info('File upload requested', {
+    hasFiles: !!req.files,
+    filesCount: req.files?.length,
+    filesMetadata: req.files?.map(f => ({
+      fieldname: f.fieldname,
+      originalname: f.originalname,
+      mimetype: f.mimetype,
+      size: f.size
+    })),
+    cloudinaryConfig: {
+      cloud_name: process.env.CLOUD_NAME ? 'Configured' : 'Missing',
+      api_key: process.env.CLOUD_API_KEY ? 'Configured' : 'Missing',
+      api_secret: process.env.CLOUD_API_SECRET ? 'Configured' : 'Missing',
+    }
+  });
+
   try {
     const file = req.files?.[0];
-    if (!file) return res.status(400).json({ success: false, error: 'No file uploaded' });
+    if (!file) {
+      logger.warn('File upload failed: No file found in request');
+      return res.status(400).json({ success: false, error: 'No file uploaded' });
+    }
 
+    logger.info('Uploading file buffer to Cloudinary (files folder)...', { originalname: file.originalname });
     const result = await uploadToCloudinary(file.buffer, 'vantech-software-solutions/files');
+    
+    logger.info('Cloudinary file upload successful', { public_id: result.public_id, secure_url: result.secure_url });
+
     res.json({
       success: true,
       url: result.secure_url,
@@ -146,9 +202,15 @@ router.post('/upload/file', upload.any(), async (req, res) => {
       }
     });
   } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
+    logger.error('File upload handler encountered an error:', {
+      message: error.message,
+      stack: error.stack,
+      rawError: error
+    });
+    next(error);
   }
 });
+
 
 
 router.post('/contacts/bulk-action', async (req, res) => {
