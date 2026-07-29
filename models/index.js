@@ -51,6 +51,9 @@ const sequelize = new Sequelize(
       acquire: 30000,
       idle: 10000,
     },
+    define: {
+      schema: 'public', // Explicitly use public schema to avoid search_path issues with Neon DB pooler
+    }
   }
 );
 
