@@ -10,6 +10,7 @@ import {
   Palette,
   Server,
   Users,
+  UserCheck,
   X,
 } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
@@ -22,6 +23,7 @@ const navigation = [
   { name: 'Blog', href: '/dashboard/blog', icon: FileText },
   { name: 'Portfolio', href: '/dashboard/portfolio', icon: Palette },
   { name: 'Services', href: '/dashboard/services', icon: Server },
+  { name: 'Team', href: '/dashboard/team', icon: UserCheck },
 ];
 
 interface SidebarProps {

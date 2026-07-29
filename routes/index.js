@@ -8,6 +8,7 @@ import serviceRoutes from './services.js';
 import authRoutes from './auth.js';
 import admin from './admin.js';
 import logRoutes from './logRoutes.js';
+import teamRoutes from './team.js';
 
 const router = express.Router();
 
@@ -29,5 +30,6 @@ router.use('/services', serviceRoutes);
 router.use('/auth', authRoutes);
 router.use('/admin', admin);
 router.use('/logs', logRoutes);
+router.use('/team', teamRoutes);
 
 export default router;

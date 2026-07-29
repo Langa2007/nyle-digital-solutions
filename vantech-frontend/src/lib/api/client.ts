@@ -104,6 +104,10 @@ export const portfolioApi = {
   getBySlug: (slug: string) => apiClient.get(`/portfolio/${slug}`),
 };
 
+export const teamApi = {
+  getAll: () => apiClient.get('/team'),
+};
+
 export const authApi = {
   login: (data: LoginData) => apiClient.post('/auth/login', data),
   register: (data: RegisterData) => apiClient.post('/auth/register', data),

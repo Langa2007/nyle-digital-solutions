@@ -5,7 +5,7 @@ import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
-import { sequelize } from './models/index.js';
+import { sequelize, TeamMember } from './models/index.js';
 import routes from './routes/index.js';
 import errorHandler from './middleware/errorHandler.js';
 import { createLogger } from './utils/logger.js';
@@ -128,6 +128,34 @@ async function start() {
 
     await sequelize.authenticate();
     logger.info('Database connected');
+
+    // Safely create/update the team_members table without touching other tables
+    await TeamMember.sync({ alter: true });
+    logger.info('TeamMember table synced');
+
+    // Seed founding members if table is empty
+    const count = await TeamMember.count();
+    if (count === 0) {
+      await TeamMember.bulkCreate([
+        {
+          name: 'Fidel Langa',
+          title: 'CEO & Founder',
+          bio: 'Software engineer and entrepreneur with a vision for innovative solutions',
+          email: 'ceo@vantechsoftwares.com',
+          order: 1,
+          active: true,
+        },
+        {
+          name: 'Fidel Muthomi',
+          title: 'CTO & Founder',
+          bio: 'Visionary leader with a passion for innovative software solutions',
+          email: 'cto@vantechsoftwares.com',
+          order: 2,
+          active: true,
+        },
+      ]);
+      logger.info('TeamMember seed complete (2 founding members)');
+    }
 
     app.listen(PORT, () => {
       logger.info(`Server running on ${PORT}`);

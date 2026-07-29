@@ -90,8 +90,18 @@ export const adminApi = {
   getServiceCategories: () => adminClient.get('/services/categories'),
 
   // Upload
-  uploadImage: (data: FormData) => adminClient.post('/admin/upload/image', data),
-  uploadFile: (data: FormData) => adminClient.post('/admin/upload/file', data),
+  uploadImage: (data: FormData) => adminClient.post('/admin/upload/image', data, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+  }),
+  uploadFile: (data: FormData) => adminClient.post('/admin/upload/file', data, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+  }),
+
+  // Team Members
+  getTeamMembers: () => adminClient.get('/team/all'),
+  createTeamMember: (data: any) => adminClient.post('/team', data),
+  updateTeamMember: (id: string, data: any) => adminClient.put(`/team/${id}`, data),
+  deleteTeamMember: (id: string) => adminClient.delete(`/team/${id}`),
 
   // Generic
   get: (url: string, config?: any) => adminClient.get(url, config),

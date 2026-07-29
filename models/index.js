@@ -13,6 +13,7 @@ import testimonialModel from './Testimonial.js';
 import serviceModel from './Service.js';
 import hostingPlanModel from './HostingPlan.js';
 import subscriptionModel from './Subscription.js';
+import teamMemberModel from './TeamMember.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -67,6 +68,7 @@ const Testimonial = testimonialModel(sequelize, Sequelize.DataTypes);
 const Service = serviceModel(sequelize, Sequelize.DataTypes);
 const HostingPlan = hostingPlanModel(sequelize, Sequelize.DataTypes);
 const Subscription = subscriptionModel(sequelize, Sequelize.DataTypes);
+const TeamMember = teamMemberModel(sequelize, Sequelize.DataTypes);
 
 
 const models = {
@@ -79,6 +81,7 @@ const models = {
   Service,
   HostingPlan,
   Subscription,
+  TeamMember,
 };
 
 
@@ -102,6 +105,7 @@ export {
   Service,
   HostingPlan,
   Subscription,
+  TeamMember,
   models,
 };
 
