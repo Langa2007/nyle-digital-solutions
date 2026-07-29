@@ -17,9 +17,9 @@ const logger = createLogger('admin-routes');
 const router = express.Router();
 
 cloudinary.config({
-  cloud_name: process.env.CLOUD_NAME,
-  api_key: process.env.CLOUD_API_KEY,
-  api_secret: process.env.CLOUD_API_SECRET,
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
 const storage = multer.memoryStorage();
@@ -126,9 +126,9 @@ router.post('/upload/image', upload.any(), async (req, res, next) => {
       size: f.size
     })),
     cloudinaryConfig: {
-      cloud_name: process.env.CLOUD_NAME ? 'Configured' : 'Missing',
-      api_key: process.env.CLOUD_API_KEY ? 'Configured' : 'Missing',
-      api_secret: process.env.CLOUD_API_SECRET ? 'Configured' : 'Missing',
+      cloud_name: process.env.CLOUDINARY_CLOUD_NAME ? 'Configured' : 'Missing',
+      api_key: process.env.CLOUDINARY_API_KEY ? 'Configured' : 'Missing',
+      api_secret: process.env.CLOUDINARY_API_SECRET ? 'Configured' : 'Missing',
     }
   });
 
@@ -174,9 +174,9 @@ router.post('/upload/file', upload.any(), async (req, res, next) => {
       size: f.size
     })),
     cloudinaryConfig: {
-      cloud_name: process.env.CLOUD_NAME ? 'Configured' : 'Missing',
-      api_key: process.env.CLOUD_API_KEY ? 'Configured' : 'Missing',
-      api_secret: process.env.CLOUD_API_SECRET ? 'Configured' : 'Missing',
+      cloud_name: process.env.CLOUDINARY_CLOUD_NAME ? 'Configured' : 'Missing',
+      api_key: process.env.CLOUDINARY_API_KEY ? 'Configured' : 'Missing',
+      api_secret: process.env.CLOUDINARY_API_SECRET ? 'Configured' : 'Missing',
     }
   });
 
