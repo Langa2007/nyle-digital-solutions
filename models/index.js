@@ -1,5 +1,7 @@
 // backend/models/index.js
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { Sequelize, Op } from 'sequelize';
 
 import userModel from './users.js';
@@ -12,11 +14,10 @@ import serviceModel from './Service.js';
 import hostingPlanModel from './HostingPlan.js';
 import subscriptionModel from './Subscription.js';
 
-dotenv.config();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
-/* ===========================
-   Database (Neon FIRST)
-=========================== */
 
 const DATABASE_URL =
   process.env.NODE_ENV === 'production'
@@ -53,9 +54,6 @@ const sequelize = new Sequelize(
   }
 );
 
-/* ===========================
-   Models
-=========================== */
 
 const User = userModel(sequelize, Sequelize.DataTypes);
 const JobApplication = jobApplicationModel(sequelize, Sequelize.DataTypes);
@@ -67,9 +65,6 @@ const Service = serviceModel(sequelize, Sequelize.DataTypes);
 const HostingPlan = hostingPlanModel(sequelize, Sequelize.DataTypes);
 const Subscription = subscriptionModel(sequelize, Sequelize.DataTypes);
 
-/* ===========================
-   Registry
-=========================== */
 
 const models = {
   User,
@@ -83,9 +78,6 @@ const models = {
   Subscription,
 };
 
-/* ===========================
-   Associations
-=========================== */
 
 Object.values(models).forEach(model => {
   if (typeof model.associate === 'function') {
@@ -93,9 +85,6 @@ Object.values(models).forEach(model => {
   }
 });
 
-/* ===========================
-   Exports
-=========================== */
 
 export {
   sequelize,
