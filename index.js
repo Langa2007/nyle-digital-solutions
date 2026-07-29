@@ -63,7 +63,19 @@ app.use(
   })
 );
 
-app.options('*', cors());
+// Use the same CORS config for OPTIONS preflight (not a wildcard bypass)
+app.options('*', cors({
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    return callback(null, false);
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
 
 app.use(
   '/api',
@@ -77,7 +89,7 @@ app.use(
   '/api/auth',
   rateLimit({
     windowMs: 15 * 60 * 1000,
-    max: 20,
+    max: 50,
   })
 );
 

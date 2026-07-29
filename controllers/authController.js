@@ -17,7 +17,9 @@ const getCookieOptions = () => ({
   ),
   httpOnly: true,
   secure: process.env.NODE_ENV === 'production',
-  sameSite: 'lax',
+  // 'none' + secure=true required for cross-site XHR (Vercel → Render)
+  sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+  path: '/',
 });
 
 const getPrimarySiteUrl = () => {

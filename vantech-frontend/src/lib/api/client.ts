@@ -14,7 +14,12 @@ const apiClient = axios.create({
 // Request interceptor
 apiClient.interceptors.request.use(
   (config) => {
-    // Authentication is handled via HTTP-only cookies
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('vantech_token');
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+    }
     return config;
   },
   (error) => {

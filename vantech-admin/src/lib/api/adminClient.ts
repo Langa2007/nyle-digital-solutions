@@ -12,10 +12,13 @@ const adminClient = axios.create({
   withCredentials: true,
 });
 
-// Request interceptor
+// Request interceptor – attach Bearer token from store
 adminClient.interceptors.request.use(
   (config) => {
-    // Auth handled by HTTP-only cookies
+    const token = useAuthStore.getState().token;
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
     return config;
   },
   (error) => {
@@ -23,13 +26,13 @@ adminClient.interceptors.request.use(
   }
 );
 
-// Response interceptor
+// Response interceptor – only redirect to /login if NOT already there
 adminClient.interceptors.response.use(
   (response) => response,
   async (error) => {
     if (error.response?.status === 401) {
       useAuthStore.getState().logout();
-      if (typeof window !== 'undefined') {
+      if (typeof window !== 'undefined' && !window.location.pathname.startsWith('/login')) {
         window.location.href = '/login';
       }
     }

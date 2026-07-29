@@ -1,34 +1,49 @@
 // src/hooks/useAuth.ts
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useEffect, useRef } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 import { useAuthStore } from '@/lib/store/authStore';
 import { adminApi } from '@/lib/api/adminClient';
 
 export const useAuth = () => {
   const router = useRouter();
-  const { user, isAuthenticated, login, logout, updateUser } = useAuthStore();
+  const pathname = usePathname();
+  const { user, token, isAuthenticated, login, logout, updateUser } = useAuthStore();
+  const checkedRef = useRef(false);
 
   const checkAuth = async () => {
+    // Skip check if on the login page — no token means no auth, just stay
+    if (pathname?.startsWith('/login')) return;
+    // Skip if already checked this mount cycle
+    if (checkedRef.current) return;
+    checkedRef.current = true;
+
     try {
       const response = await adminApi.get('/auth/me');
       if (response.data.success) {
-        login(response.data.data);
+        login(response.data.data, token ?? undefined);
       } else {
         logout();
+        router.push('/login');
       }
     } catch (error) {
-      logout();
+      // Only logout + redirect if we had a token (i.e. session expired)
+      if (token) {
+        logout();
+        router.push('/login');
+      }
     }
   };
 
   useEffect(() => {
+    checkedRef.current = false;
     checkAuth();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
 
   const handleLogin = async (email: string, password: string) => {
     const response = await adminApi.post('/auth/login', { email, password });
-    const { user } = response.data;
-    login(user);
+    const { user, token } = response.data;
+    login(user, token);
   };
 
   const handleLogout = async () => {
@@ -48,6 +63,6 @@ export const useAuth = () => {
     login: handleLogin,
     logout: handleLogout,
     updateUser,
-    loading: !user && isAuthenticated, // Slight adjustment for initial load
+    loading: false,
   };
 };

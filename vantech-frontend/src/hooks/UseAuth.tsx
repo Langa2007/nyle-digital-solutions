@@ -35,12 +35,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const checkAuth = async () => {
+    // Skip if on auth pages
+    if (typeof window !== 'undefined') {
+      const path = window.location.pathname;
+      if (path.startsWith('/login') || path.startsWith('/register')) {
+        setLoading(false);
+        return;
+      }
+    }
+
     try {
       const response = await authApi.me();
       if (response.data.success) {
         setUser(response.data.data);
       } else {
         setUser(null);
+        if (typeof window !== 'undefined') localStorage.removeItem('vantech_token');
       }
     } catch (error) {
       setUser(null);
@@ -52,8 +62,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const login = async (email: string, password: string) => {
     try {
       const response = await authApi.login({ email, password });
-      const { user } = response.data;
+      const { user, token } = response.data;
       
+      if (token && typeof window !== 'undefined') {
+        localStorage.setItem('vantech_token', token);
+      }
+
       setUser(user);
       router.push('/dashboard');
     } catch (error) {
@@ -64,8 +78,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const register = async (data: any) => {
     try {
       const response = await authApi.register(data);
-      const { user } = response.data;
+      const { user, token } = response.data;
       
+      if (token && typeof window !== 'undefined') {
+        localStorage.setItem('vantech_token', token);
+      }
+
       setUser(user);
       router.push('/dashboard');
     } catch (error) {
@@ -79,6 +97,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     } catch (error) {
       console.error('Logout error:', error);
     } finally {
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem('vantech_token');
+      }
       setUser(null);
       router.push('/login');
     }
