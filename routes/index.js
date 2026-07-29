@@ -11,7 +11,6 @@ import logRoutes from './logRoutes.js';
 
 const router = express.Router();
 
-// Health check
 router.get('/', (req, res) => {
   res.json({
     message: 'Vantech Software Solutions API',

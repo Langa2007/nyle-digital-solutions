@@ -16,12 +16,18 @@ const PORT = process.env.PORT || 5000;
 
 app.set('trust proxy', 1);
 
+const normalizeOrigin = (value) =>
+  value
+    .trim()
+    .replace(/\/$/, '')
+    .replace(/\/$/, '');
+
 const parseOrigins = (...keys) =>
   [...new Set(
     keys.flatMap((key) =>
       (process.env[key] || '')
         .split(',')
-        .map((origin) => origin.trim())
+        .map((origin) => normalizeOrigin(origin))
         .filter(Boolean)
     )
   )];

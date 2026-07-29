@@ -11,24 +11,16 @@ dotenv.config();
 
 const router = express.Router();
 
-// ----------------------
-// Configure Cloudinary
-// ----------------------
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
   api_key: process.env.CLOUD_API_KEY,
   api_secret: process.env.CLOUD_API_SECRET,
 });
 
-// ----------------------
-// Multer memory storage
-// ----------------------
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-// ----------------------
-// Helper to upload files to Cloudinary
-// ----------------------
+
 const uploadToCloudinary = (fileBuffer, folder = 'vantech-software-solutions') => {
   return new Promise((resolve, reject) => {
     const stream = cloudinary.uploader.upload_stream(
@@ -42,15 +34,9 @@ const uploadToCloudinary = (fileBuffer, folder = 'vantech-software-solutions') =
   });
 };
 
-// ----------------------
-// Middleware: Admin authentication
-// ----------------------
 router.use(authenticate);
 router.use(authorize(['admin', 'staff']));
 
-// ----------------------
-// Dashboard Stats
-// ----------------------
 router.get('/dashboard/stats', async (req, res) => {
   try {
     const [
@@ -86,9 +72,6 @@ router.get('/dashboard/stats', async (req, res) => {
   }
 });
 
-// ----------------------
-// Recent Activity
-// ----------------------
 router.get('/activity/recent', async (req, res) => {
   try {
     const [recentContacts, recentApplications] = await Promise.all([
@@ -127,9 +110,6 @@ router.get('/activity/recent', async (req, res) => {
   }
 });
 
-// ----------------------
-// File Upload Endpoints
-// ----------------------
 router.post('/upload/image', upload.single('image'), async (req, res) => {
   try {
     if (!req.file) return res.status(400).json({ success: false, error: 'No file uploaded' });
@@ -160,9 +140,6 @@ router.post('/upload/file', upload.single('file'), async (req, res) => {
   }
 });
 
-// ----------------------
-// Bulk Actions for Contacts
-// ----------------------
 router.post('/contacts/bulk-action', async (req, res) => {
   try {
     const { ids, action } = req.body;

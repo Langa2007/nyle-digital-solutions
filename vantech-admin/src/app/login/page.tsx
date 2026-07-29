@@ -185,7 +185,7 @@ export default function LoginPage() {
 
               <div className="mt-8 border-t border-slate-100 pt-6">
                 <Link
-                  href="/https://vantechsoftwares.vercel.app"
+                  href={process.env.NEXT_PUBLIC_SITE_URL || '/'}
                   className="inline-flex items-center text-sm font-semibold text-slate-600 hover:text-blue-700"
                 >
                   <ArrowRight className="mr-2 h-4 w-4 rotate-180" />

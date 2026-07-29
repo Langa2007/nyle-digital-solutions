@@ -21,6 +21,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/vantech-favicon.png" type="image/png" />
+        <link rel="shortcut icon" href="/vantech-favicon.png" />
+        <link rel="apple-touch-icon" href="/vantech-favicon.png" />
+      </head>
       <body className="bg-[var(--color-admin-bg)] text-[var(--color-admin-ink)]">
         <ReactQueryProvider>
           <AuthProvider>
