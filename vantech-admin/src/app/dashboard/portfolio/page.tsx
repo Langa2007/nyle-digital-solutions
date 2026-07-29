@@ -2,111 +2,131 @@
 'use client';
 
 import { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { Search, Plus, Image, Globe, Github, Edit, Trash2 } from 'lucide-react';
 import DataTable from '@/components/ui/DataTable';
 import { adminApi } from '@/lib/api/adminClient';
 import Link from 'next/link';
 
-const columns = [
-  {
-    header: 'Project',
-    accessorKey: 'title',
-    cell: (info: any) => (
-      <div className="flex items-center">
-        {info.row.original.featuredImage ? (
-          <img
-            src={info.row.original.featuredImage}
-            alt={info.getValue()}
-            className="h-12 w-12 rounded-lg object-cover"
-          />
-        ) : (
-          <div className="h-12 w-12 bg-gray-100 rounded-lg flex items-center justify-center">
-            <Image className="h-6 w-6 text-gray-400" />
-          </div>
-        )}
-        <div className="ml-3">
-          <p className="font-medium text-gray-900">{info.getValue()}</p>
-          <p className="text-sm text-gray-500">{info.row.original.category}</p>
-        </div>
-      </div>
-    ),
-  },
-  {
-    header: 'Client',
-    accessorKey: 'client',
-  },
-  {
-    header: 'Technologies',
-    accessorKey: 'technologies',
-    cell: (info: any) => (
-      <div className="flex flex-wrap gap-1">
-        {info.getValue()?.slice(0, 3).map((tech: string) => (
-          <span key={tech} className="px-2 py-1 text-xs bg-gray-100 text-gray-800 rounded">
-            {tech}
-          </span>
-        ))}
-        {info.getValue()?.length > 3 && (
-          <span className="px-2 py-1 text-xs bg-gray-100 text-gray-800 rounded">
-            +{info.getValue().length - 3}
-          </span>
-        )}
-      </div>
-    ),
-  },
-  {
-    header: 'Links',
-    cell: (info: any) => (
-      <div className="flex items-center space-x-2">
-        {info.row.original.liveUrl && (
-          <a
-            href={info.row.original.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-1 text-blue-600 hover:bg-blue-50 rounded"
-            title="View live project"
-            aria-label="View live project"
-          >
-            <Globe className="h-4 w-4" />
-          </a>
-        )}
-        {info.row.original.githubUrl && (
-          <a
-            href={info.row.original.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-1 text-gray-600 hover:bg-gray-50 rounded"
-            title="View GitHub repository"
-            aria-label="View GitHub repository"
-          >
-            <Github className="h-4 w-4" />
-          </a>
-        )}
-      </div>
-    ),
-  },
-  {
-    header: 'Actions',
-    cell: (info: any) => (
-      <div className="flex items-center space-x-2">
-        <Link
-          href={`/dashboard/portfolio/edit/${info.row.original.id}`}
-          className="p-1.5 text-gray-400 hover:text-green-600 rounded-lg hover:bg-green-50"
-        >
-          <Edit className="h-4 w-4" />
-        </Link>
-        <button title= "Delete Project"
-         className="p-1.5 text-gray-400 hover:text-red-600 rounded-lg hover:bg-red-50">
-          <Trash2 className="h-4 w-4" />
-        </button>
-      </div>
-    ),
-  },
-];
-
 export default function PortfolioPage() {
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(1);
+  const queryClient = useQueryClient();
+
+  const handleDelete = async (id: string, title: string) => {
+    const confirmDelete = window.confirm(
+      `Are you sure you want to delete the project "${title}"? This action cannot be undone.`
+    );
+    if (!confirmDelete) return;
+
+    try {
+      await adminApi.deletePortfolioItem(id);
+      alert('Portfolio item deleted successfully!');
+      queryClient.invalidateQueries({ queryKey: ['portfolio'] });
+    } catch (error) {
+      console.error('Failed to delete portfolio item:', error);
+      alert('Failed to delete portfolio item.');
+    }
+  };
+
+  const columns = [
+    {
+      header: 'Project',
+      accessorKey: 'title',
+      cell: (info: any) => (
+        <div className="flex items-center">
+          {info.row.original.featuredImage ? (
+            <img
+              src={info.row.original.featuredImage}
+              alt={info.getValue()}
+              className="h-12 w-12 rounded-lg object-cover"
+            />
+          ) : (
+            <div className="h-12 w-12 bg-gray-100 rounded-lg flex items-center justify-center">
+              <Image className="h-6 w-6 text-gray-400" />
+            </div>
+          )}
+          <div className="ml-3">
+            <p className="font-medium text-gray-900">{info.getValue()}</p>
+            <p className="text-sm text-gray-500">{info.row.original.category}</p>
+          </div>
+        </div>
+      ),
+    },
+    {
+      header: 'Client',
+      accessorKey: 'client',
+    },
+    {
+      header: 'Technologies',
+      accessorKey: 'technologies',
+      cell: (info: any) => (
+        <div className="flex flex-wrap gap-1">
+          {info.getValue()?.slice(0, 3).map((tech: string) => (
+            <span key={tech} className="px-2 py-1 text-xs bg-gray-100 text-gray-800 rounded">
+              {tech}
+            </span>
+          ))}
+          {info.getValue()?.length > 3 && (
+            <span className="px-2 py-1 text-xs bg-gray-100 text-gray-800 rounded">
+              +{info.getValue().length - 3}
+            </span>
+          )}
+        </div>
+      ),
+    },
+    {
+      header: 'Links',
+      cell: (info: any) => (
+        <div className="flex items-center space-x-2">
+          {info.row.original.liveUrl && (
+            <a
+              href={info.row.original.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-1 text-blue-600 hover:bg-blue-50 rounded"
+              title="View live project"
+              aria-label="View live project"
+            >
+              <Globe className="h-4 w-4" />
+            </a>
+          )}
+          {info.row.original.githubUrl && (
+            <a
+              href={info.row.original.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-1 text-gray-600 hover:bg-gray-50 rounded"
+              title="View GitHub repository"
+              aria-label="View GitHub repository"
+            >
+              <Github className="h-4 w-4" />
+            </a>
+          )}
+        </div>
+      ),
+    },
+    {
+      header: 'Actions',
+      cell: (info: any) => (
+        <div className="flex items-center space-x-2">
+          <Link
+            href={`/dashboard/portfolio/edit/${info.row.original.id}`}
+            className="p-1.5 text-gray-400 hover:text-green-600 rounded-lg hover:bg-green-50"
+          >
+            <Edit className="h-4 w-4" />
+          </Link>
+          <button
+            title="Delete Project"
+            onClick={() => handleDelete(info.row.original.id, info.row.original.title)}
+            className="p-1.5 text-gray-400 hover:text-red-600 rounded-lg hover:bg-red-50"
+          >
+            <Trash2 className="h-4 w-4" />
+          </button>
+        </div>
+      ),
+    },
+  ];
 
   const { data: portfolio, isLoading } = useQuery({
     queryKey: ['portfolio', { search, page }],

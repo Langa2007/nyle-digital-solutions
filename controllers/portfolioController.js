@@ -28,9 +28,17 @@ export const getPortfolioItemBySlug = async (req, res, next) => {
   try {
     const { slug } = req.params;
     
-    const portfolioItem = await Portfolio.findOne({
-      where: { slug, status: 'published' },
-    });
+    // Check if the slug is actually a UUID (ID)
+    const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(slug);
+    
+    let portfolioItem;
+    if (isUUID) {
+      portfolioItem = await Portfolio.findByPk(slug);
+    } else {
+      portfolioItem = await Portfolio.findOne({
+        where: { slug, status: 'published' },
+      });
+    }
 
     if (!portfolioItem) {
       return res.status(404).json({

@@ -27,7 +27,6 @@ const socialLinks = [
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const adminUrl = process.env.NEXT_PUBLIC_ADMIN_URL;
 
   return (
     <footer className="footer-atmosphere z-20">
@@ -105,18 +104,6 @@ export default function Footer() {
                   </Link>
                 ))}
               </div>
-
-              {adminUrl ? (
-                <a
-                  href={adminUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-5 inline-flex items-center rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:border-blue-200 hover:text-blue-700 dark:border-white/10 dark:text-slate-200 dark:hover:border-amber-400/30 dark:hover:text-amber-100"
-                >
-                  Open Admin Portal
-                  <ArrowUpRight className="ml-2 h-4 w-4" />
-                </a>
-              ) : null}
             </div>
 
             <div className="flex items-center justify-between rounded-lg border border-white/10 bg-stone-900/80 px-6 py-5 backdrop-blur-xl">
