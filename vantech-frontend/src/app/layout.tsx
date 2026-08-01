@@ -10,6 +10,7 @@ import { ReactQueryProvider } from '@/components/providers/react-query-provider'
 import SmoothScrollProvider from '@/components/providers/SmoothScrollProvider';
 
 import Vantech3DBackground from '@/components/ui/Vantech3DBackground';
+import JsonLd from '@/components/seo/JsonLd';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -29,6 +30,7 @@ const siteUrl =
 
 export const metadata: Metadata = {
   title: 'Vantech Software Solutions | Software, Cloud and Product Delivery',
+  applicationName: 'Vantech Software Solutions',
   description:
     'Vantech Software Solutions builds modern web platforms, mobile products, cloud systems, and digital operations with a polished warm brand experience.',
   keywords:
@@ -72,6 +74,23 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  verification: {
+    google: 'google6c614c3b4435269b',
+  },
+};
+
+const orgJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Vantech Software Solutions',
+  url: siteUrl,
+  logo: `${siteUrl}/vantech-favicon.png`,
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+254704521408',
+    contactType: 'customer service',
+    email: 'contact@vantechsoftwares.com',
+  },
 };
 
 export default function RootLayout({
@@ -89,6 +108,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-background font-sans text-foreground antialiased`}
       >
+        <JsonLd data={orgJsonLd} />
         <ReactQueryProvider>
           <ThemeProvider
             attribute="class"

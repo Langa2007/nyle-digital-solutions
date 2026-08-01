@@ -10,12 +10,11 @@ import CalendlyButton from '../ui/CalendlyButton';
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'Services', href: '/#services' },
-  { name: 'Impact', href: '/#impact' },
-  { name: 'Work', href: '/#portfolio' },
-  { name: 'Testimonials', href: '/#testimonials' },
-  { name: 'Insights', href: '/#insights' },
-  { name: 'Contact', href: '/#contact' },
+  { name: 'Services', href: '/services' },
+  { name: 'Portfolio', href: '/portfolio' },
+  { name: 'Careers', href: '/careers' },
+  { name: 'Blog', href: '/blog' },
+  { name: 'Contact', href: '/contact' },
 ];
 
 export default function Navbar() {

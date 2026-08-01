@@ -4,12 +4,13 @@ import { ArrowUpRight, Github, Linkedin, Mail, MapPin, Phone } from 'lucide-reac
 import CalendlyButton from '../ui/CalendlyButton';
 
 const siteLinks = [
-  { name: 'Services', href: '/#services' },
-  { name: 'Impact', href: '/#impact' },
-  { name: 'Portfolio', href: '/#portfolio' },
-  { name: 'Testimonials', href: '/#testimonials' },
-  { name: 'Insights', href: '/#insights' },
-  { name: 'Contact', href: '/#contact' },
+  { name: 'Services', href: '/services' },
+  { name: 'Portfolio', href: '/portfolio' },
+  { name: 'Careers', href: '/careers' },
+  { name: 'Blog', href: '/blog' },
+  { name: 'Contact', href: '/contact' },
+  { name: 'Privacy Policy', href: '/privacy-policy' },
+  { name: 'Terms of Service', href: '/terms' },
 ];
 
 const socialLinks = [
