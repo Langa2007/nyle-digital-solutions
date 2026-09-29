@@ -4,25 +4,25 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 222 47% 11%;
+    --background: 36 38% 97%;
+    --foreground: 24 32% 12%;
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 24 32% 12%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-    --primary: 217 91% 60%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222 47% 11%;
-    --muted: 214 32% 91%;
-    --muted-foreground: 215 16% 46%;
-    --accent: 210 40% 96%;
-    --accent-foreground: 222 47% 11%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214 32% 89%;
-    --input: 214 32% 89%;
-    --ring: 217 91% 60%;
+    --popover-foreground: 24 32% 12%;
+    --primary: 18 72% 46%;
+    --primary-foreground: 36 38% 97%;
+    --secondary: 36 32% 92%;
+    --secondary-foreground: 24 32% 12%;
+    --muted: 36 22% 88%;
+    --muted-foreground: 24 12% 42%;
+    --accent: 42 76% 52%;
+    --accent-foreground: 24 32% 12%;
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 36 38% 97%;
+    --border: 35 24% 84%;
+    --input: 35 24% 84%;
+    --ring: 18 72% 46%;
     --radius: 1rem;
   }
 
@@ -74,12 +74,12 @@
 
   body {
     @apply bg-background text-foreground;
-    background-color: #f0f9ff;
+    background-color: #fbf5eb;
     background-image:
-      radial-gradient(ellipse 90% 60% at 10% 5%, rgba(59, 130, 246, 0.09) 0%, transparent 55%),
-      radial-gradient(ellipse 80% 55% at 90% 15%, rgba(139, 92, 246, 0.07) 0%, transparent 50%),
-      radial-gradient(ellipse 70% 50% at 50% 90%, rgba(16, 185, 129, 0.06) 0%, transparent 50%),
-      linear-gradient(180deg, #f0f9ff, #eff6ff 45%, #f8fafc);
+      radial-gradient(ellipse 90% 60% at 10% 5%, rgba(194, 65, 12, 0.1) 0%, transparent 55%),
+      radial-gradient(ellipse 80% 55% at 90% 15%, rgba(217, 119, 6, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse 70% 50% at 50% 90%, rgba(101, 122, 58, 0.07) 0%, transparent 50%),
+      linear-gradient(180deg, #fbf5eb, #f8efe2 45%, #faf7f1);
     background-attachment: fixed;
     font-family: var(--font-geist-sans), sans-serif;
   }
@@ -109,13 +109,13 @@
     transform-style: preserve-3d;
   }
 
-  .blue-glow {
+  .warm-glow {
     box-shadow:
-      0 24px 80px -30px rgba(37, 99, 235, 0.45),
+      0 24px 80px -30px rgba(194, 65, 12, 0.42),
       inset 0 1px 0 rgba(255, 255, 255, 0.15);
   }
 
-  .dark .blue-glow {
+  .dark .warm-glow {
     box-shadow:
       0 24px 80px -30px rgba(217, 119, 6, 0.48),
       inset 0 1px 0 rgba(255, 255, 255, 0.14);
@@ -123,9 +123,9 @@
 
   .site-frame {
     background:
-      linear-gradient(120deg, rgba(37, 99, 235, 0.06), transparent 24%),
-      linear-gradient(240deg, rgba(13, 148, 136, 0.05), transparent 26%),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(239, 246, 255, 0.14));
+      linear-gradient(120deg, rgba(194, 65, 12, 0.07), transparent 24%),
+      linear-gradient(240deg, rgba(101, 122, 58, 0.06), transparent 26%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(248, 239, 226, 0.2));
   }
 
   .dark .site-frame {
@@ -147,8 +147,8 @@
     position: absolute;
     inset: -20% -8%;
     background-image:
-      linear-gradient(rgba(37, 99, 235, 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(37, 99, 235, 0.1) 1px, transparent 1px);
+      linear-gradient(rgba(194, 65, 12, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(194, 65, 12, 0.1) 1px, transparent 1px);
     background-size: 72px 72px;
     -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8), transparent 78%);
     mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8), transparent 78%);
@@ -217,9 +217,9 @@
   .section-atmosphere {
     @apply relative overflow-hidden;
     background:
-      radial-gradient(ellipse 65% 45% at 12% 18%, rgba(59, 130, 246, 0.07) 0%, transparent 60%),
-      radial-gradient(ellipse 55% 40% at 90% 80%, rgba(16, 185, 129, 0.06) 0%, transparent 55%),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.20), rgba(240, 249, 255, 0.06));
+      radial-gradient(ellipse 65% 45% at 12% 18%, rgba(194, 65, 12, 0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 55% 40% at 90% 80%, rgba(101, 122, 58, 0.07) 0%, transparent 55%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.24), rgba(248, 239, 226, 0.08));
     transform-style: preserve-3d;
   }
 
@@ -235,8 +235,8 @@
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(115deg, transparent 0 42%, rgba(37, 99, 235, 0.06) 42% 43%, transparent 43% 100%),
-      linear-gradient(65deg, transparent 0 58%, rgba(13, 148, 136, 0.06) 58% 59%, transparent 59% 100%);
+      linear-gradient(115deg, transparent 0 42%, rgba(194, 65, 12, 0.07) 42% 43%, transparent 43% 100%),
+      linear-gradient(65deg, transparent 0 58%, rgba(101, 122, 58, 0.07) 58% 59%, transparent 59% 100%);
     opacity: 0.55;
     pointer-events: none;
   }
@@ -248,8 +248,8 @@
     inset: auto 0 0;
     height: 50%;
     background-image:
-      linear-gradient(rgba(37, 99, 235, 0.09) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(20, 184, 166, 0.08) 1px, transparent 1px);
+      linear-gradient(rgba(194, 65, 12, 0.09) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(101, 122, 58, 0.08) 1px, transparent 1px);
     background-size: 52px 52px;
     -webkit-mask-image: linear-gradient(0deg, rgba(0, 0, 0, 0.32), transparent 82%);
     mask-image: linear-gradient(0deg, rgba(0, 0, 0, 0.32), transparent 82%);
@@ -260,7 +260,7 @@
 
   .footer-atmosphere {
     @apply relative overflow-hidden border-t border-slate-200/80 dark:border-white/10 text-slate-700 dark:text-slate-300 z-20;
-    background: #f8fafc;
+    background: #faf7f1;
   }
 
   .dark .footer-atmosphere {
@@ -419,7 +419,7 @@
 }
 
 ::selection {
-  @apply bg-blue-500/25 text-blue-950 dark:bg-amber-500/25 dark:text-amber-100;
+  @apply bg-orange-500/25 text-orange-950 dark:bg-amber-500/25 dark:text-amber-100;
 }
 
 ::-webkit-scrollbar {

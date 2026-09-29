@@ -13,7 +13,6 @@ function useMountedTheme() {
   return mounted ? resolvedTheme : 'dark';
 }
 
-// ─── Aurora Rings (gentle slow-spinning coloured tori) ────────────────────────
 function AuroraRings({ isDark }: { isDark: boolean }) {
   const r1 = useRef<THREE.Mesh>(null);
   const r2 = useRef<THREE.Mesh>(null);
@@ -31,8 +30,8 @@ function AuroraRings({ isDark }: { isDark: boolean }) {
       <mesh ref={r1}>
         <torusGeometry args={[9.5, 0.06, 8, 200]} />
         <meshStandardMaterial
-          color={isDark ? '#f59e0b' : '#3b82f6'}
-          emissive={isDark ? '#92400e' : '#1d4ed8'}
+          color={isDark ? '#f59e0b' : '#c2410c'}
+          emissive={isDark ? '#92400e' : '#9a3412'}
           emissiveIntensity={isDark ? 2.8 : 1.2}
           transparent
           opacity={0.35}
@@ -41,8 +40,8 @@ function AuroraRings({ isDark }: { isDark: boolean }) {
       <mesh ref={r2} rotation={[1.1, 0.4, 0]}>
         <torusGeometry args={[11.5, 0.045, 8, 220]} />
         <meshStandardMaterial
-          color={isDark ? '#d97706' : '#8b5cf6'}
-          emissive={isDark ? '#78350f' : '#6d28d9'}
+          color={isDark ? '#d97706' : '#d97706'}
+          emissive={isDark ? '#78350f' : '#b45309'}
           emissiveIntensity={isDark ? 2.2 : 0.9}
           transparent
           opacity={0.28}
@@ -51,8 +50,8 @@ function AuroraRings({ isDark }: { isDark: boolean }) {
       <mesh ref={r3} rotation={[0.6, 1.2, 0.8]}>
         <torusGeometry args={[14.0, 0.035, 8, 240]} />
         <meshStandardMaterial
-          color={isDark ? '#fbbf24' : '#10b981'}
-          emissive={isDark ? '#b45309' : '#047857'}
+          color={isDark ? '#fbbf24' : '#87944a'}
+          emissive={isDark ? '#b45309' : '#657a3a'}
           emissiveIntensity={isDark ? 1.8 : 0.7}
           transparent
           opacity={0.2}
@@ -62,7 +61,6 @@ function AuroraRings({ isDark }: { isDark: boolean }) {
   );
 }
 
-// ─── Floating Crystal Shards (background depth) ──────────────────────────────
 function CrystalShards({ isDark }: { isDark: boolean }) {
   const shards = useMemo(() => {
     return Array.from({ length: 18 }, (_, i) => ({
@@ -101,7 +99,6 @@ function CrystalShards({ isDark }: { isDark: boolean }) {
   );
 }
 
-// ─── Constellation Web (connected nodes in far background) ───────────────────
 function ConstellationWeb({ isDark }: { isDark: boolean }) {
   const groupRef = useRef<THREE.Group>(null);
 
@@ -139,8 +136,8 @@ function ConstellationWeb({ isDark }: { isDark: boolean }) {
           <mesh position={node}>
             <sphereGeometry args={[i % 5 === 0 ? 0.07 : 0.04, 8, 8]} />
             <meshStandardMaterial
-              color={i % 3 === 0 ? '#fbbf24' : isDark ? '#d97706' : '#3b82f6'}
-              emissive={i % 3 === 0 ? '#d97706' : isDark ? '#92400e' : '#0ea5e9'}
+              color={i % 3 === 0 ? '#fbbf24' : isDark ? '#d97706' : '#c2410c'}
+              emissive={i % 3 === 0 ? '#d97706' : isDark ? '#92400e' : '#9a3412'}
               emissiveIntensity={isDark ? 1.4 : 0.5}
             />
           </mesh>
@@ -156,8 +153,8 @@ function ConstellationWeb({ isDark }: { isDark: boolean }) {
           <mesh key={i} position={mid} quaternion={quat}>
             <cylinderGeometry args={[0.004, 0.004, len, 4]} />
             <meshStandardMaterial
-              color={isDark ? '#f59e0b' : '#2563eb'}
-              emissive={isDark ? '#92400e' : '#1d4ed8'}
+              color={isDark ? '#f59e0b' : '#c2410c'}
+              emissive={isDark ? '#92400e' : '#9a3412'}
               emissiveIntensity={0.9}
               transparent
               opacity={isDark ? 0.18 : 0.1}
@@ -169,7 +166,6 @@ function ConstellationWeb({ isDark }: { isDark: boolean }) {
   );
 }
 
-// ─── Interactive Hex Floor Grid ───────────────────────────────────────────────
 function HexFloor({ isDark }: { isDark: boolean }) {
   const groupRef = useRef<THREE.Group>(null);
 
@@ -216,8 +212,8 @@ function HexFloor({ isDark }: { isDark: boolean }) {
         <mesh key={h.idx} position={[h.x, 0, h.z]} userData={{ x: h.x, z: h.z }}>
           <cylinderGeometry args={[0.72, 0.72, 0.12, 6]} />
           <meshStandardMaterial
-            color={isDark ? '#21140d' : '#e0f2fe'}
-            emissive={isDark ? '#b45309' : '#2563eb'}
+            color={isDark ? '#21140d' : '#f3e7d3'}
+            emissive={isDark ? '#b45309' : '#c2410c'}
             emissiveIntensity={isDark ? 0.7 : 0.25}
             metalness={0.85}
             roughness={0.12}
@@ -275,15 +271,15 @@ function SignalPrisms({ isDark }: { isDark: boolean }) {
     <>
       <mesh ref={p1} scale={[1.8, 0.16, 1.8]}>
         <octahedronGeometry args={[1, 0]} />
-        {prismMat(isDark ? '#f59e0b' : '#22d3ee', isDark ? '#92400e' : '#0891b2')}
+        {prismMat(isDark ? '#f59e0b' : '#c2410c', isDark ? '#92400e' : '#9a3412')}
       </mesh>
       <mesh ref={p2} scale={[2.3, 0.12, 1.2]}>
         <boxGeometry args={[1, 1, 1]} />
-        {prismMat(isDark ? '#b45309' : '#a78bfa', isDark ? '#78350f' : '#7c3aed')}
+        {prismMat(isDark ? '#b45309' : '#d97706', isDark ? '#78350f' : '#b45309')}
       </mesh>
       <mesh ref={p3} scale={[1.4, 0.18, 1.4]}>
         <octahedronGeometry args={[1, 0]} />
-        {prismMat(isDark ? '#fbbf24' : '#34d399', isDark ? '#d97706' : '#059669')}
+        {prismMat(isDark ? '#fbbf24' : '#87944a', isDark ? '#d97706' : '#657a3a')}
       </mesh>
     </>
   );
@@ -292,13 +288,13 @@ function SignalPrisms({ isDark }: { isDark: boolean }) {
 function Scene({ isDark }: { isDark: boolean }) {
   return (
     <>
-      <color attach="background" args={[isDark ? '#120b07' : '#f0f9ff']} />
-      <fog attach="fog" args={[isDark ? '#120b07' : '#eff6ff', 14, 35]} />
+      <color attach="background" args={[isDark ? '#120b07' : '#fbf5eb']} />
+      <fog attach="fog" args={[isDark ? '#120b07' : '#f8efe2', 14, 35]} />
 
       <ambientLight intensity={isDark ? 0.35 : 0.75} />
       <directionalLight position={[6, 8, 4]} intensity={isDark ? 1.8 : 1.0} />
-      <pointLight position={[-8, 4, -4]} color={isDark ? '#f59e0b' : '#22d3ee'} intensity={isDark ? 120 : 40} distance={20} />
-      <pointLight position={[8, -3, -5]} color={isDark ? '#b45309' : '#a78bfa'} intensity={isDark ? 90 : 30} distance={18} />
+      <pointLight position={[-8, 4, -4]} color={isDark ? '#f59e0b' : '#c2410c'} intensity={isDark ? 120 : 40} distance={20} />
+      <pointLight position={[8, -3, -5]} color={isDark ? '#b45309' : '#d97706'} intensity={isDark ? 90 : 30} distance={18} />
       <pointLight position={[0, 6, -6]} color="#fbbf24" intensity={isDark ? 60 : 20} distance={15} />
 
       <Stars
@@ -316,7 +312,7 @@ function Scene({ isDark }: { isDark: boolean }) {
         scale={[18, 8, 14]}
         size={isDark ? 2.8 : 1.4}
         speed={0.25}
-        color={isDark ? '#f59e0b' : '#3b82f6'}
+        color={isDark ? '#f59e0b' : '#c2410c'}
         opacity={isDark ? 0.65 : 0.25}
       />
       <Sparkles
@@ -324,7 +320,7 @@ function Scene({ isDark }: { isDark: boolean }) {
         scale={[14, 6, 10]}
         size={isDark ? 2.2 : 1.0}
         speed={0.35}
-        color={isDark ? '#fbbf24' : '#a78bfa'}
+        color={isDark ? '#fbbf24' : '#87944a'}
         opacity={isDark ? 0.45 : 0.18}
       />
 
@@ -380,10 +376,10 @@ export default function Vantech3DBackground() {
                 linear-gradient(180deg, rgba(18,11,7,0.08) 0%, rgba(18,11,7,0.42) 65%, rgba(18,11,7,0.9) 100%)
               `
             : `
-                radial-gradient(ellipse 80% 55% at 15% 12%, rgba(59,130,246,0.11) 0%, transparent 55%),
-                radial-gradient(ellipse 70% 50% at 88% 20%, rgba(139,92,246,0.08) 0%, transparent 50%),
-                radial-gradient(ellipse 60% 45% at 50% 85%, rgba(16,185,129,0.06) 0%, transparent 50%),
-                linear-gradient(180deg, rgba(240,249,255,0.15) 0%, rgba(240,249,255,0.58) 65%, rgba(240,249,255,0.92) 100%)
+                radial-gradient(ellipse 80% 55% at 15% 12%, rgba(194,65,12,0.12) 0%, transparent 55%),
+                radial-gradient(ellipse 70% 50% at 88% 20%, rgba(217,119,6,0.09) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 45% at 50% 85%, rgba(101,122,58,0.07) 0%, transparent 50%),
+                linear-gradient(180deg, rgba(251,245,235,0.15) 0%, rgba(251,245,235,0.58) 65%, rgba(251,245,235,0.92) 100%)
               `,
         }}
       />

@@ -104,9 +104,9 @@ export default function ServicesContent({ embedded = false }: { embedded?: boole
       <section className="section-atmosphere pb-14 pt-8">
         <div className="section-shell relative z-10">
           <div className="glass-panel relative overflow-hidden rounded-lg px-6 py-10 sm:px-10">
-            <div className="absolute inset-y-0 right-0 hidden w-1/2 bg-[linear-gradient(120deg,transparent,rgba(34,211,238,0.12),transparent)] dark:bg-[linear-gradient(120deg,transparent,rgba(245,158,11,0.14),transparent)] lg:block" />
+            <div className="absolute inset-y-0 right-0 hidden w-1/2 bg-[linear-gradient(120deg,transparent,rgba(217,119,6,0.12),transparent)] dark:bg-[linear-gradient(120deg,transparent,rgba(245,158,11,0.14),transparent)] lg:block" />
             <div className="relative max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-blue-600 dark:text-amber-200">
+              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-orange-700 dark:text-amber-200">
                 Service focus
               </p>
               <h1 className="mt-4 text-4xl font-semibold text-slate-950 dark:text-white sm:text-5xl">
@@ -159,7 +159,7 @@ export default function ServicesContent({ embedded = false }: { embedded?: boole
                 key={step.number}
                 className="glass-panel rounded-lg px-6 py-7 text-left"
               >
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-lg bg-blue-600 text-lg font-semibold text-white shadow-lg shadow-blue-600/25">
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-lg bg-orange-700 text-lg font-semibold text-white shadow-lg shadow-orange-700/25">
                   {step.number}
                 </div>
                 <h2 className="text-xl font-semibold text-slate-950 dark:text-white">

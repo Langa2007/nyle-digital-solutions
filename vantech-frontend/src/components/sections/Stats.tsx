@@ -42,7 +42,7 @@ export default function Stats() {
       <div className="section-shell relative z-10">
         <div className="mb-14 grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-blue-600 dark:text-amber-200">
+            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-orange-700 dark:text-amber-200">
               Delivery signal
             </p>
             <h2 className="mt-4 text-3xl font-semibold text-slate-950 dark:text-white sm:text-4xl">
@@ -65,8 +65,8 @@ export default function Stats() {
                 viewport={{ once: true }}
                 className="relative overflow-hidden rounded-lg border border-slate-200/70 bg-white/65 px-5 py-7 dark:border-white/10 dark:bg-white/5"
               >
-                <div className="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-transparent via-blue-400/70 to-transparent" />
-                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-blue-600 text-white shadow-lg shadow-blue-600/20">
+                <div className="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-transparent via-orange-400/70 to-transparent" />
+                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-orange-700 text-white shadow-lg shadow-orange-700/20">
                   {stat.icon}
                 </div>
 

@@ -46,7 +46,7 @@ export default function Navbar() {
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <nav className="flex items-center justify-between py-4">
           <Link href="/" className="flex items-center gap-3">
-            <div className="blue-glow flex h-12 w-12 items-center justify-center overflow-hidden rounded-lg bg-white ring-1 ring-slate-200/70 dark:ring-white/10">
+            <div className="warm-glow flex h-12 w-12 items-center justify-center overflow-hidden rounded-lg bg-white ring-1 ring-stone-200/70 dark:ring-white/10">
               <Image
                 src="/vantech-favicon.png"
                 alt="Vantech Softwares logo"
@@ -57,7 +57,7 @@ export default function Navbar() {
               />
             </div>
             <div>
-              <p className="text-sm font-semibold uppercase text-blue-600 dark:text-amber-200">
+              <p className="text-sm font-semibold uppercase text-orange-700 dark:text-amber-200">
                 Vantech Softwares
               </p>
               <p className="text-sm text-slate-600 dark:text-slate-300">
@@ -71,7 +71,7 @@ export default function Navbar() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="rounded-lg px-4 py-2 text-sm font-medium text-slate-600 hover:bg-blue-50 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-amber-100 dark:focus:ring-offset-stone-950"
+                  className="rounded-lg px-4 py-2 text-sm font-medium text-slate-600 hover:bg-orange-50 hover:text-orange-800 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-amber-100 dark:focus:ring-offset-stone-950"
                 >
                   {item.name}
                 </Link>
@@ -82,7 +82,7 @@ export default function Navbar() {
               {mounted && (
                 <button
                   onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-slate-200/80 bg-white/80 text-slate-700 shadow-sm hover:border-blue-200 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:border-white/10 dark:bg-stone-900/70 dark:text-slate-200 dark:focus:ring-offset-stone-950"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-stone-200/80 bg-white/80 text-slate-700 shadow-sm hover:border-orange-300 hover:text-orange-800 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:border-white/10 dark:bg-stone-900/70 dark:text-slate-200 dark:focus:ring-offset-stone-950"
                   aria-label="Toggle theme"
                 >
                   {theme === 'dark' ? (
@@ -93,7 +93,7 @@ export default function Navbar() {
                 </button>
               )}
 
-              <CalendlyButton className="hidden rounded-full bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-stone-950 lg:inline-flex">
+              <CalendlyButton className="hidden rounded-full bg-orange-700 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-orange-700/25 hover:bg-orange-800 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-stone-950 lg:inline-flex">
                 Book a Call
               </CalendlyButton>
 
@@ -124,14 +124,14 @@ export default function Navbar() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="block rounded-lg bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-700 dark:bg-stone-900 dark:text-slate-200 dark:hover:bg-stone-800"
+                    className="block rounded-lg bg-stone-50 px-4 py-3 text-sm font-medium text-slate-700 hover:bg-orange-50 hover:text-orange-800 dark:bg-stone-900 dark:text-slate-200 dark:hover:bg-stone-800"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.name}
                   </Link>
                 ))}
                 <CalendlyButton
-                  className="block w-full rounded-lg bg-blue-600 px-4 py-3 text-center text-sm font-semibold text-white hover:bg-blue-700"
+                  className="block w-full rounded-lg bg-orange-700 px-4 py-3 text-center text-sm font-semibold text-white hover:bg-orange-800"
                 >
                   Book a Call
                 </CalendlyButton>

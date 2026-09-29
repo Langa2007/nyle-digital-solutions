@@ -35,7 +35,7 @@ export default function Footer() {
         <div className="grid gap-10 lg:grid-cols-[1.25fr_0.75fr]">
           <div className="glass-panel rounded-lg px-6 py-8 sm:px-8">
             <div className="flex items-center gap-3">
-              <div className="blue-glow flex h-14 w-14 items-center justify-center overflow-hidden rounded-lg bg-white ring-1 ring-slate-200/70 dark:ring-white/10">
+              <div className="warm-glow flex h-14 w-14 items-center justify-center overflow-hidden rounded-lg bg-white ring-1 ring-stone-200/70 dark:ring-white/10">
                 <Image
                   src="/vantech-favicon.png"
                   alt="Vantech Softwares logo"
@@ -45,7 +45,7 @@ export default function Footer() {
                 />
               </div>
               <div>
-                <p className="text-sm font-semibold uppercase text-blue-600 dark:text-amber-200">
+                <p className="text-sm font-semibold uppercase text-orange-700 dark:text-amber-200">
                   Vantech Softwares
                 </p>
                 <p className="text-sm text-slate-500 dark:text-slate-400">
@@ -61,27 +61,27 @@ export default function Footer() {
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               <div className="rounded-lg border border-slate-200/70 bg-white/80 px-5 py-5 dark:border-white/10 dark:bg-white/5">
                 <div className="flex items-center gap-3 text-sm text-slate-700 dark:text-slate-200">
-                  <Mail className="h-4 w-4 text-blue-600 dark:text-amber-200" />
+                  <Mail className="h-4 w-4 text-orange-700 dark:text-amber-200" />
                   contact@vantechsoftwares.com
                 </div>
                 <div className="mt-3 flex items-center gap-3 text-sm text-slate-700 dark:text-slate-200">
-                  <Phone className="h-4 w-4 text-blue-600 dark:text-amber-200" />
+                  <Phone className="h-4 w-4 text-orange-700 dark:text-amber-200" />
                   +254 704 521408
                 </div>
                 <div className="mt-3 flex items-center gap-3 text-sm text-slate-700 dark:text-slate-200">
-                  <MapPin className="h-4 w-4 text-blue-600 dark:text-amber-200" />
+                  <MapPin className="h-4 w-4 text-orange-700 dark:text-amber-200" />
                   Nairobi, Kenya
                 </div>
               </div>
 
-              <div className="rounded-lg border border-blue-200/80 bg-blue-50 px-5 py-5 text-slate-900 dark:border-amber-400/20 dark:bg-amber-500/10 dark:text-white">
-                <p className="text-xs font-semibold uppercase tracking-[0.26em] text-blue-700 dark:text-amber-100">
+              <div className="rounded-lg border border-orange-200/80 bg-orange-50 px-5 py-5 text-slate-900 dark:border-amber-400/20 dark:bg-amber-500/10 dark:text-white">
+                <p className="text-xs font-semibold uppercase tracking-[0.26em] text-orange-800 dark:text-amber-100">
                   Get Started
                 </p>
                 <p className="mt-3 text-base leading-7 text-slate-700 dark:text-slate-200">
                   Have a project in mind? Let's discuss your ideas and bring your vision to life.
                 </p>
-                <CalendlyButton className="mt-4 inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700 dark:text-amber-200 dark:hover:text-amber-100">
+                <CalendlyButton className="mt-4 inline-flex items-center text-sm font-semibold text-orange-700 hover:text-orange-800 dark:text-amber-200 dark:hover:text-amber-100">
                   Book a Call now
                   <ArrowUpRight className="ml-2 h-4 w-4" />
                 </CalendlyButton>
@@ -99,7 +99,7 @@ export default function Footer() {
                   <Link
                     key={link.name}
                     href={link.href}
-                    className="rounded-lg px-4 py-3 text-sm font-medium text-slate-600 hover:bg-blue-50 hover:text-blue-700 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-amber-100"
+                    className="rounded-lg px-4 py-3 text-sm font-medium text-slate-600 hover:bg-orange-50 hover:text-orange-800 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-amber-100"
                   >
                     {link.name}
                   </Link>

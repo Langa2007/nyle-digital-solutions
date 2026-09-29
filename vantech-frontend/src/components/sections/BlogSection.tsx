@@ -46,7 +46,7 @@ export default function BlogSection() {
       <div className="section-shell relative z-10">
         <div className="mb-12 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-blue-600 dark:text-amber-200">
+            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-orange-700 dark:text-amber-200">
               Insights
             </p>
             <h2 className="mt-4 text-3xl font-semibold text-slate-950 dark:text-white sm:text-4xl">
@@ -56,7 +56,7 @@ export default function BlogSection() {
 
           <Link
             href="/#contact"
-            className="inline-flex items-center text-sm font-semibold text-blue-700 hover:text-blue-800 dark:text-amber-200 dark:hover:text-amber-100"
+            className="inline-flex items-center text-sm font-semibold text-orange-800 hover:text-orange-900 dark:text-amber-200 dark:hover:text-amber-100"
           >
             Talk through your roadmap
             <ArrowRight className="ml-2 h-4 w-4" />
@@ -82,7 +82,7 @@ export default function BlogSection() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/10 to-transparent" />
                   <div className="absolute left-5 top-5">
-                    <span className="rounded-full bg-blue-600 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-white">
+                    <span className="rounded-full bg-orange-700 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-white">
                       {post.category}
                     </span>
                   </div>
@@ -113,7 +113,7 @@ export default function BlogSection() {
                     </span>
                     <Link
                       href="/#contact"
-                      className="inline-flex min-h-11 items-center text-sm font-semibold text-blue-700 hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:text-amber-200 dark:hover:text-amber-100 dark:focus:ring-offset-stone-950"
+                      className="inline-flex min-h-11 items-center text-sm font-semibold text-orange-800 hover:text-orange-900 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:text-amber-200 dark:hover:text-amber-100 dark:focus:ring-offset-stone-950"
                     >
                       Continue the conversation
                       <ArrowRight className="ml-2 h-4 w-4" />
