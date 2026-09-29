@@ -62,11 +62,11 @@ module.exports = {
           foreground: 'hsl(var(--card-foreground))',
         },
         vantech: {
-          blue: '#2563eb',
+          orange: '#c2410c',
           dark: '#1e293b',
           gray: '#64748b',
           light: '#f8fafc',
-          teal: '#0d9488',
+          olive: '#657a3a',
         },
       },
       fontFamily: {

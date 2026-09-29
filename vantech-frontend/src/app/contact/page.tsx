@@ -36,7 +36,7 @@ export default function ContactPage() {
       <div className="section-shell relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-start max-w-6xl mx-auto">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-blue-600 dark:text-amber-200">
+            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-orange-700 dark:text-amber-200">
               Get in Touch
             </p>
             <h1 className="mt-4 text-4xl font-semibold text-slate-950 dark:text-white sm:text-5xl">
@@ -48,33 +48,33 @@ export default function ContactPage() {
             
             <div className="mt-12 space-y-8">
               <div className="flex items-start gap-4">
-                <div className="mt-1 bg-blue-100 dark:bg-amber-500/10 p-3 rounded-lg text-blue-600 dark:text-amber-200">
+                <div className="mt-1 bg-orange-100 dark:bg-amber-500/10 p-3 rounded-lg text-orange-700 dark:text-amber-200">
                   <Mail className="h-6 w-6" />
                 </div>
                 <div>
                   <h3 className="text-lg font-medium text-slate-950 dark:text-white">Email Us</h3>
                   <p className="mt-1 text-slate-600 dark:text-slate-400">We aim to respond within 24 hours.</p>
-                  <a href="mailto:contact@vantechsoftwares.com" className="mt-2 inline-block font-medium text-blue-600 hover:text-blue-700 dark:text-amber-200 dark:hover:text-amber-100">
+                  <a href="mailto:contact@vantechsoftwares.com" className="mt-2 inline-block font-medium text-orange-700 hover:text-orange-800 dark:text-amber-200 dark:hover:text-amber-100">
                     contact@vantechsoftwares.com
                   </a>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="mt-1 bg-blue-100 dark:bg-amber-500/10 p-3 rounded-lg text-blue-600 dark:text-amber-200">
+                <div className="mt-1 bg-orange-100 dark:bg-amber-500/10 p-3 rounded-lg text-orange-700 dark:text-amber-200">
                   <Phone className="h-6 w-6" />
                 </div>
                 <div>
                   <h3 className="text-lg font-medium text-slate-950 dark:text-white">Call Us</h3>
                   <p className="mt-1 text-slate-600 dark:text-slate-400">Mon-Fri from 9am to 6pm EAT.</p>
-                  <a href="tel:+254704521408" className="mt-2 inline-block font-medium text-blue-600 hover:text-blue-700 dark:text-amber-200 dark:hover:text-amber-100">
+                  <a href="tel:+254704521408" className="mt-2 inline-block font-medium text-orange-700 hover:text-orange-800 dark:text-amber-200 dark:hover:text-amber-100">
                     +254 704 521408
                   </a>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="mt-1 bg-blue-100 dark:bg-amber-500/10 p-3 rounded-lg text-blue-600 dark:text-amber-200">
+                <div className="mt-1 bg-orange-100 dark:bg-amber-500/10 p-3 rounded-lg text-orange-700 dark:text-amber-200">
                   <MapPin className="h-6 w-6" />
                 </div>
                 <div>

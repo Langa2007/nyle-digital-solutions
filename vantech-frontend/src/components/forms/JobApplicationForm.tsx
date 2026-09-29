@@ -178,7 +178,7 @@ export default function JobApplicationForm({ jobId, jobTitle }: JobApplicationFo
             </label>
             <div className="mt-2 flex items-center space-x-4">
               <label className="cursor-pointer">
-                <span className="px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors inline-block">
+                <span className="px-4 py-3 bg-orange-700 hover:bg-orange-800 text-white rounded-lg font-medium transition-colors inline-block">
                   Upload Resume
                 </span>
                 <input

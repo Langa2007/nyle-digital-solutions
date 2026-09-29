@@ -19,7 +19,7 @@ export default function CareersSection() {
     <section className="section-atmosphere py-20">
       <div className="section-shell relative z-10">
         <div className="mb-14 max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.28em] text-blue-600 dark:text-amber-200">
+          <p className="text-sm font-semibold uppercase tracking-[0.28em] text-orange-700 dark:text-amber-200">
             Join the Team
           </p>
           <h2 className="mt-4 text-3xl font-semibold text-slate-950 dark:text-white sm:text-4xl">
@@ -32,7 +32,7 @@ export default function CareersSection() {
 
         {isLoading ? (
           <div className="flex justify-center py-12">
-            <div className="h-8 w-8 animate-spin rounded-full border-4 border-blue-600 border-t-transparent dark:border-amber-400 dark:border-t-transparent"></div>
+            <div className="h-8 w-8 animate-spin rounded-full border-4 border-orange-700 border-t-transparent dark:border-amber-400 dark:border-t-transparent"></div>
           </div>
         ) : jobs.length > 0 ? (
           <div className="grid gap-6">
@@ -59,7 +59,7 @@ export default function CareersSection() {
                 </div>
                 <button
                   onClick={() => setSelectedJob(job)}
-                  className="inline-flex items-center justify-center whitespace-nowrap rounded-lg bg-blue-600 px-6 py-3 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-stone-950"
+                  className="inline-flex items-center justify-center whitespace-nowrap rounded-lg bg-orange-700 px-6 py-3 text-sm font-medium text-white shadow-sm hover:bg-orange-800 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-stone-950"
                 >
                   Apply Now
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -69,7 +69,7 @@ export default function CareersSection() {
           </div>
         ) : (
           <div className="glass-panel rounded-xl p-10 text-center">
-            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-lg bg-blue-50 text-blue-600 dark:bg-stone-900 dark:text-amber-200">
+            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-lg bg-orange-50 text-orange-700 dark:bg-stone-900 dark:text-amber-200">
               <Briefcase className="h-6 w-6" />
             </div>
             <h3 className="text-xl font-semibold text-slate-950 dark:text-white mb-2">No open positions right now</h3>

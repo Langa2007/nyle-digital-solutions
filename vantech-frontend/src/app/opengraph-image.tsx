@@ -15,8 +15,8 @@ export default async function Image() {
     (
       <div
         style={{
-          fontSize: 64,
-          background: 'linear-gradient(to bottom, #020617, #0f172a)',
+            fontSize: 64,
+          background: 'linear-gradient(to bottom, #21140d, #0f0906)',
           color: 'white',
           width: '100%',
           height: '100%',
@@ -30,16 +30,16 @@ export default async function Image() {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 40 }}>
           <div style={{
             fontSize: 120,
-            color: '#3b82f6',
+            color: '#f59e0b',
             fontWeight: 'bold',
             padding: '20px 40px',
-            border: '8px solid #3b82f6',
+            border: '8px solid #f59e0b',
             borderRadius: '20px',
-            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+            backgroundColor: 'rgba(245, 158, 11, 0.1)',
           }}>V</div>
         </div>
         <div style={{ fontSize: 72, fontWeight: 'bold', textAlign: 'center' }}>Vantech Software Solutions</div>
-        <div style={{ fontSize: 36, marginTop: 30, color: '#94a3b8', textAlign: 'center' }}>Software, Cloud and Product Delivery</div>
+        <div style={{ fontSize: 36, marginTop: 30, color: '#f3eadc', textAlign: 'center' }}>Software, Cloud and Product Delivery</div>
       </div>
     ),
     {
