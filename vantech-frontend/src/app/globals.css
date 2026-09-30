@@ -37,34 +37,34 @@
   }
 
   .dark {
-    --background: 24 34% 7%;
-    --foreground: 39 42% 93%;
-    --card: 25 30% 10%;
-    --card-foreground: 39 42% 93%;
-    --popover: 25 30% 10%;
-    --popover-foreground: 39 42% 93%;
+    --background: 0 0% 5%;
+    --foreground: 0 0% 96%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 96%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 96%;
 
-    /* Main dark-mode brand color - Amber */
-    --primary: 34 84% 58%;
-    --primary-foreground: 25 32% 9%;
+    /* Main dark-mode brand color - Crisp Vibrant Amber */
+    --primary: 38 92% 50%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 28 26% 16%;
-    --secondary-foreground: 39 42% 93%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 96%;
 
-    --muted: 28 21% 17%;
-    --muted-foreground: 32 18% 72%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 65%;
 
     /* Forest Green - dark mode */
-    --accent: 142 48% 38%;
+    --accent: 142 65% 42%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 39 42% 93%;
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 30 24% 24%;
-    --input: 30 24% 24%;
+    --border: 0 0% 16%;
+    --input: 0 0% 16%;
 
-    --ring: 34 84% 58%;
+    --ring: 38 92% 50%;
   }
 
   * {
@@ -124,29 +124,29 @@
   }
 
   .dark body {
-    background-color: #120b07;
+    background-color: #080808;
 
     background-image:
       radial-gradient(
         ellipse 90% 60% at 10% 5%,
-        rgba(180, 83, 9, 0.18) 0%,
+        rgba(217, 119, 6, 0.08) 0%,
         transparent 55%
       ),
       radial-gradient(
         ellipse 80% 55% at 90% 15%,
-        rgba(120, 53, 15, 0.18) 0%,
+        rgba(180, 83, 9, 0.07) 0%,
         transparent 50%
       ),
       radial-gradient(
         ellipse 70% 50% at 50% 90%,
-        rgba(22, 101, 52, 0.12) 0%,
+        rgba(22, 163, 74, 0.06) 0%,
         transparent 50%
       ),
       linear-gradient(
         180deg,
-        #120b07,
-        #21140d 45%,
-        #0f0906
+        #080808,
+        #0d0d0e 45%,
+        #050505
       );
   }
 
@@ -211,18 +211,18 @@
     background:
       linear-gradient(
         120deg,
-        rgba(180, 83, 9, 0.20),
+        rgba(217, 119, 6, 0.08),
         transparent 24%
       ),
       linear-gradient(
         240deg,
-        rgba(22, 101, 52, 0.14),
+        rgba(22, 163, 74, 0.06),
         transparent 28%
       ),
       linear-gradient(
         180deg,
-        rgba(18, 11, 7, 0.16),
-        rgba(44, 26, 16, 0.42)
+        rgba(8, 8, 8, 0.3),
+        rgba(12, 12, 12, 0.6)
       );
   }
 
