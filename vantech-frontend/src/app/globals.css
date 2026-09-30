@@ -10,19 +10,29 @@
     --card-foreground: 24 32% 12%;
     --popover: 0 0% 100%;
     --popover-foreground: 24 32% 12%;
+
+    /* Main brand color - Orange */
     --primary: 18 72% 46%;
     --primary-foreground: 36 38% 97%;
+
     --secondary: 36 32% 92%;
     --secondary-foreground: 24 32% 12%;
+
     --muted: 36 22% 88%;
     --muted-foreground: 24 12% 42%;
-    --accent: 42 76% 52%;
-    --accent-foreground: 24 32% 12%;
+
+    /* Secondary brand color - Forest Green */
+    --accent: 142 52% 32%;
+    --accent-foreground: 0 0% 100%;
+
     --destructive: 0 72% 50%;
     --destructive-foreground: 36 38% 97%;
+
     --border: 35 24% 84%;
     --input: 35 24% 84%;
+
     --ring: 18 72% 46%;
+
     --radius: 1rem;
   }
 
@@ -33,18 +43,27 @@
     --card-foreground: 39 42% 93%;
     --popover: 25 30% 10%;
     --popover-foreground: 39 42% 93%;
+
+    /* Main dark-mode brand color - Amber */
     --primary: 34 84% 58%;
     --primary-foreground: 25 32% 9%;
+
     --secondary: 28 26% 16%;
     --secondary-foreground: 39 42% 93%;
+
     --muted: 28 21% 17%;
     --muted-foreground: 32 18% 72%;
-    --accent: 31 37% 22%;
-    --accent-foreground: 39 42% 93%;
+
+    /* Forest Green - dark mode */
+    --accent: 142 48% 38%;
+    --accent-foreground: 0 0% 100%;
+
     --destructive: 0 63% 31%;
     --destructive-foreground: 39 42% 93%;
+
     --border: 30 24% 24%;
     --input: 30 24% 24%;
+
     --ring: 34 84% 58%;
   }
 
@@ -74,23 +93,61 @@
 
   body {
     @apply bg-background text-foreground;
+
     background-color: #fbf5eb;
+
     background-image:
-      radial-gradient(ellipse 90% 60% at 10% 5%, rgba(194, 65, 12, 0.1) 0%, transparent 55%),
-      radial-gradient(ellipse 80% 55% at 90% 15%, rgba(217, 119, 6, 0.08) 0%, transparent 50%),
-      radial-gradient(ellipse 70% 50% at 50% 90%, rgba(101, 122, 58, 0.07) 0%, transparent 50%),
-      linear-gradient(180deg, #fbf5eb, #f8efe2 45%, #faf7f1);
+      radial-gradient(
+        ellipse 90% 60% at 10% 5%,
+        rgba(194, 65, 12, 0.1) 0%,
+        transparent 55%
+      ),
+      radial-gradient(
+        ellipse 80% 55% at 90% 15%,
+        rgba(217, 119, 6, 0.08) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        ellipse 70% 50% at 50% 90%,
+        rgba(22, 101, 52, 0.07) 0%,
+        transparent 50%
+      ),
+      linear-gradient(
+        180deg,
+        #fbf5eb,
+        #f8efe2 45%,
+        #faf7f1
+      );
+
     background-attachment: fixed;
     font-family: var(--font-geist-sans), sans-serif;
   }
 
   .dark body {
     background-color: #120b07;
+
     background-image:
-      radial-gradient(ellipse 90% 60% at 10% 5%, rgba(180, 83, 9, 0.18) 0%, transparent 55%),
-      radial-gradient(ellipse 80% 55% at 90% 15%, rgba(120, 53, 15, 0.18) 0%, transparent 50%),
-      radial-gradient(ellipse 70% 50% at 50% 90%, rgba(245, 158, 11, 0.08) 0%, transparent 50%),
-      linear-gradient(180deg, #120b07, #21140d 45%, #0f0906);
+      radial-gradient(
+        ellipse 90% 60% at 10% 5%,
+        rgba(180, 83, 9, 0.18) 0%,
+        transparent 55%
+      ),
+      radial-gradient(
+        ellipse 80% 55% at 90% 15%,
+        rgba(120, 53, 15, 0.18) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        ellipse 70% 50% at 50% 90%,
+        rgba(22, 101, 52, 0.12) 0%,
+        transparent 50%
+      ),
+      linear-gradient(
+        180deg,
+        #120b07,
+        #21140d 45%,
+        #0f0906
+      );
   }
 
   a,
@@ -105,7 +162,17 @@
   }
 
   .glass-panel {
-    @apply border border-white/45 bg-white/70 shadow-[0_28px_90px_-38px_rgba(15,23,42,0.45)] backdrop-blur-2xl transition-transform duration-300 dark:border-amber-200/10 dark:bg-stone-950/60;
+    @apply border border-white/45
+      bg-white/70
+      backdrop-blur-2xl
+      transition-transform
+      duration-300
+      dark:border-amber-200/10
+      dark:bg-stone-950/60;
+
+    box-shadow:
+      0 28px 90px -38px rgba(28, 25, 23, 0.45);
+
     transform-style: preserve-3d;
   }
 
@@ -123,16 +190,40 @@
 
   .site-frame {
     background:
-      linear-gradient(120deg, rgba(194, 65, 12, 0.07), transparent 24%),
-      linear-gradient(240deg, rgba(101, 122, 58, 0.06), transparent 26%),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(248, 239, 226, 0.2));
+      linear-gradient(
+        120deg,
+        rgba(194, 65, 12, 0.07),
+        transparent 24%
+      ),
+      linear-gradient(
+        240deg,
+        rgba(22, 101, 52, 0.07),
+        transparent 26%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.1),
+        rgba(248, 239, 226, 0.2)
+      );
   }
 
   .dark .site-frame {
     background:
-      linear-gradient(120deg, rgba(180, 83, 9, 0.20), transparent 24%),
-      linear-gradient(240deg, rgba(92, 51, 23, 0.20), transparent 28%),
-      linear-gradient(180deg, rgba(18, 11, 7, 0.16), rgba(44, 26, 16, 0.42));
+      linear-gradient(
+        120deg,
+        rgba(180, 83, 9, 0.20),
+        transparent 24%
+      ),
+      linear-gradient(
+        240deg,
+        rgba(22, 101, 52, 0.14),
+        transparent 28%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(18, 11, 7, 0.16),
+        rgba(44, 26, 16, 0.42)
+      );
   }
 
   .site-backdrop {
@@ -146,20 +237,53 @@
   .site-grid {
     position: absolute;
     inset: -20% -8%;
+
     background-image:
-      linear-gradient(rgba(194, 65, 12, 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(194, 65, 12, 0.1) 1px, transparent 1px);
+      linear-gradient(
+        rgba(194, 65, 12, 0.1) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(194, 65, 12, 0.1) 1px,
+        transparent 1px
+      );
+
     background-size: 72px 72px;
-    -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8), transparent 78%);
-    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8), transparent 78%);
-    transform: perspective(900px) rotateX(58deg) translateY(-18%);
+
+    -webkit-mask-image:
+      linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.8),
+        transparent 78%
+      );
+
+    mask-image:
+      linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.8),
+        transparent 78%
+      );
+
+    transform:
+      perspective(900px)
+      rotateX(58deg)
+      translateY(-18%);
+
     transform-origin: top;
   }
 
   .dark .site-grid {
     background-image:
-      linear-gradient(rgba(245, 158, 11, 0.13) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(146, 64, 14, 0.12) 1px, transparent 1px);
+      linear-gradient(
+        rgba(245, 158, 11, 0.13) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(22, 101, 52, 0.12) 1px,
+        transparent 1px
+      );
   }
 
   .site-beam {
@@ -174,16 +298,40 @@
   .site-beam-one {
     top: -22vh;
     width: 42rem;
-    background: linear-gradient(180deg, transparent 0%, rgba(245, 158, 11, 0.26) 30%, rgba(120, 53, 15, 0.18) 65%, transparent 100%);
-    transform: translateX(-95%) rotate(22deg);
+
+    background:
+      linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(245, 158, 11, 0.26) 30%,
+        rgba(120, 53, 15, 0.18) 65%,
+        transparent 100%
+      );
+
+    transform:
+      translateX(-95%)
+      rotate(22deg);
+
     animation-delay: 0s;
   }
 
   .site-beam-two {
     top: 22vh;
     width: 38rem;
-    background: linear-gradient(180deg, transparent 0%, rgba(180, 83, 9, 0.24) 30%, rgba(251, 191, 36, 0.14) 65%, transparent 100%);
-    transform: translateX(15%) rotate(-24deg);
+
+    background:
+      linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(180, 83, 9, 0.24) 30%,
+        rgba(251, 191, 36, 0.14) 65%,
+        transparent 100%
+      );
+
+    transform:
+      translateX(15%)
+      rotate(-24deg);
+
     animation-delay: -5s;
   }
 
@@ -191,8 +339,20 @@
     top: 58vh;
     left: 30%;
     width: 30rem;
-    background: linear-gradient(180deg, transparent 0%, rgba(217, 119, 6, 0.18) 35%, rgba(92, 51, 23, 0.16) 70%, transparent 100%);
-    transform: translateX(-50%) rotate(8deg);
+
+    background:
+      linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(22, 101, 52, 0.18) 35%,
+        rgba(92, 51, 23, 0.16) 70%,
+        transparent 100%
+      );
+
+    transform:
+      translateX(-50%)
+      rotate(8deg);
+
     animation-delay: -2.5s;
     animation-duration: 13s;
   }
@@ -200,43 +360,100 @@
   .site-noise {
     position: absolute;
     inset: 0;
+
     background-image:
-      repeating-linear-gradient(0deg, rgba(15, 23, 42, 0.035) 0 1px, transparent 1px 3px),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.46), rgba(255, 255, 255, 0.08));
+      repeating-linear-gradient(
+        0deg,
+        rgba(28, 25, 23, 0.035) 0 1px,
+        transparent 1px 3px
+      ),
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.46),
+        rgba(255, 255, 255, 0.08)
+      );
+
     opacity: 0.42;
     mix-blend-mode: multiply;
   }
 
   .dark .site-noise {
     background-image:
-      repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 3px),
-      linear-gradient(180deg, rgba(18, 11, 7, 0.28), rgba(18, 11, 7, 0.66));
+      repeating-linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.035) 0 1px,
+        transparent 1px 3px
+      ),
+      linear-gradient(
+        180deg,
+        rgba(18, 11, 7, 0.28),
+        rgba(18, 11, 7, 0.66)
+      );
+
     mix-blend-mode: screen;
   }
 
   .section-atmosphere {
     @apply relative overflow-hidden;
+
     background:
-      radial-gradient(ellipse 65% 45% at 12% 18%, rgba(194, 65, 12, 0.08) 0%, transparent 60%),
-      radial-gradient(ellipse 55% 40% at 90% 80%, rgba(101, 122, 58, 0.07) 0%, transparent 55%),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.24), rgba(248, 239, 226, 0.08));
+      radial-gradient(
+        ellipse 65% 45% at 12% 18%,
+        rgba(194, 65, 12, 0.08) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 55% 40% at 90% 80%,
+        rgba(22, 101, 52, 0.08) 0%,
+        transparent 55%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.24),
+        rgba(248, 239, 226, 0.08)
+      );
+
     transform-style: preserve-3d;
   }
 
   .dark .section-atmosphere {
     background:
-      radial-gradient(ellipse 65% 45% at 12% 18%, rgba(180, 83, 9, 0.13) 0%, transparent 60%),
-      radial-gradient(ellipse 55% 40% at 90% 80%, rgba(245, 158, 11, 0.08) 0%, transparent 55%),
-      linear-gradient(180deg, rgba(44, 26, 16, 0.18), rgba(18, 11, 7, 0.08));
+      radial-gradient(
+        ellipse 65% 45% at 12% 18%,
+        rgba(180, 83, 9, 0.13) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 55% 40% at 90% 80%,
+        rgba(22, 101, 52, 0.12) 0%,
+        transparent 55%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(44, 26, 16, 0.18),
+        rgba(18, 11, 7, 0.08)
+      );
   }
 
   .section-atmosphere::before {
     content: '';
     position: absolute;
     inset: 0;
+
     background-image:
-      linear-gradient(115deg, transparent 0 42%, rgba(194, 65, 12, 0.07) 42% 43%, transparent 43% 100%),
-      linear-gradient(65deg, transparent 0 58%, rgba(101, 122, 58, 0.07) 58% 59%, transparent 59% 100%);
+      linear-gradient(
+        115deg,
+        transparent 0 42%,
+        rgba(194, 65, 12, 0.07) 42% 43%,
+        transparent 43% 100%
+      ),
+      linear-gradient(
+        65deg,
+        transparent 0 58%,
+        rgba(22, 101, 52, 0.07) 58% 59%,
+        transparent 59% 100%
+      );
+
     opacity: 0.55;
     pointer-events: none;
   }
@@ -247,19 +464,53 @@
     position: absolute;
     inset: auto 0 0;
     height: 50%;
+
     background-image:
-      linear-gradient(rgba(194, 65, 12, 0.09) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(101, 122, 58, 0.08) 1px, transparent 1px);
+      linear-gradient(
+        rgba(194, 65, 12, 0.09) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(22, 101, 52, 0.08) 1px,
+        transparent 1px
+      );
+
     background-size: 52px 52px;
-    -webkit-mask-image: linear-gradient(0deg, rgba(0, 0, 0, 0.32), transparent 82%);
-    mask-image: linear-gradient(0deg, rgba(0, 0, 0, 0.32), transparent 82%);
-    transform: perspective(900px) rotateX(60deg) translateY(28%);
+
+    -webkit-mask-image:
+      linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.32),
+        transparent 82%
+      );
+
+    mask-image:
+      linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.32),
+        transparent 82%
+      );
+
+    transform:
+      perspective(900px)
+      rotateX(60deg)
+      translateY(28%);
+
     transform-origin: bottom;
     opacity: 0.28;
   }
 
   .footer-atmosphere {
-    @apply relative overflow-hidden border-t border-slate-200/80 dark:border-white/10 text-slate-700 dark:text-slate-300 z-20;
+    @apply relative
+      overflow-hidden
+      border-t
+      border-stone-200/80
+      dark:border-white/10
+      text-stone-700
+      dark:text-stone-300
+      z-20;
+
     background: #faf7f1;
   }
 
@@ -271,13 +522,39 @@
     content: '';
     position: absolute;
     inset: 0;
+
     background-image:
-      linear-gradient(rgba(245, 158, 11, 0.09) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(146, 64, 14, 0.08) 1px, transparent 1px);
+      linear-gradient(
+        rgba(245, 158, 11, 0.09) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(22, 101, 52, 0.08) 1px,
+        transparent 1px
+      );
+
     background-size: 64px 64px;
-    -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), transparent 78%);
-    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), transparent 78%);
-    transform: perspective(900px) rotateX(60deg) translateY(-22%);
+
+    -webkit-mask-image:
+      linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.7),
+        transparent 78%
+      );
+
+    mask-image:
+      linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.7),
+        transparent 78%
+      );
+
+    transform:
+      perspective(900px)
+      rotateX(60deg)
+      translateY(-22%);
+
     transform-origin: top;
   }
 
@@ -294,13 +571,24 @@
   .vantech-core-face {
     position: absolute;
     inset: 0;
+
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 2rem;
+
     background:
-      linear-gradient(145deg, rgba(18, 11, 7, 0.96), rgba(44, 26, 16, 0.9)),
-      radial-gradient(circle at 22% 18%, rgba(245, 158, 11, 0.22), transparent 34%);
+      linear-gradient(
+        145deg,
+        rgba(18, 11, 7, 0.96),
+        rgba(44, 26, 16, 0.9)
+      ),
+      radial-gradient(
+        circle at 22% 18%,
+        rgba(245, 158, 11, 0.22),
+        transparent 34%
+      );
+
     box-shadow:
-      0 34px 90px -38px rgba(15, 23, 42, 0.72),
+      0 34px 90px -38px rgba(28, 25, 23, 0.72),
       inset 0 1px 0 rgba(255, 255, 255, 0.16);
   }
 
@@ -310,8 +598,16 @@
   }
 
   .vantech-core-side {
-    background: linear-gradient(145deg, rgba(120, 53, 15, 0.58), rgba(245, 158, 11, 0.22));
-    transform: translateZ(-48px) rotateY(180deg);
+    background:
+      linear-gradient(
+        145deg,
+        rgba(22, 101, 52, 0.58),
+        rgba(245, 158, 11, 0.22)
+      );
+
+    transform:
+      translateZ(-48px)
+      rotateY(180deg);
   }
 
   .vantech-orbit {
@@ -328,16 +624,32 @@
 
   .vantech-orbit-two {
     inset: 19% 8%;
-    border-color: rgba(180, 83, 9, 0.25);
-    transform: rotateX(62deg) rotateZ(-20deg);
-    animation: vantechOrbitSpinReverse 22s linear infinite;
+    border-color: rgba(22, 101, 52, 0.32);
+
+    transform:
+      rotateX(62deg)
+      rotateZ(-20deg);
+
+    animation:
+      vantechOrbitSpinReverse
+      22s
+      linear
+      infinite;
   }
 
   .vantech-orbit-three {
     inset: 30% 3%;
     border-color: rgba(251, 191, 36, 0.22);
-    transform: rotateX(72deg) rotateZ(26deg);
-    animation: vantechOrbitSpin 26s linear infinite;
+
+    transform:
+      rotateX(72deg)
+      rotateZ(26deg);
+
+    animation:
+      vantechOrbitSpin
+      26s
+      linear
+      infinite;
   }
 
   .vantech-orbit-node,
@@ -351,14 +663,21 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
+
     border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: 9999px;
-    background: rgba(15, 23, 42, 0.76);
+
+    background: rgba(28, 25, 23, 0.88);
+
     padding: 0.75rem 1rem;
+
     color: white;
     font-size: 0.875rem;
     font-weight: 600;
-    box-shadow: 0 18px 50px -28px rgba(15, 23, 42, 0.78);
+
+    box-shadow:
+      0 18px 50px -28px rgba(28, 25, 23, 0.78);
+
     -webkit-backdrop-filter: blur(16px);
     backdrop-filter: blur(16px);
   }
@@ -368,17 +687,25 @@
     align-items: center;
     gap: 0.45rem;
     min-width: max-content;
+
     border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 9999px;
-    background: rgba(2, 6, 23, 0.72);
+
+    background: rgba(28, 25, 23, 0.88);
+
     padding: 0.5rem 0.72rem;
+
     color: white;
     font-size: 0.76rem;
     font-weight: 700;
     line-height: 1;
-    box-shadow: 0 18px 48px -20px rgba(217, 119, 6, 0.48);
+
+    box-shadow:
+      0 18px 48px -20px rgba(217, 119, 6, 0.48);
+
     -webkit-backdrop-filter: blur(18px);
     backdrop-filter: blur(18px);
+
     white-space: nowrap;
   }
 }
@@ -387,6 +714,7 @@
   0% {
     transform: rotateX(64deg) rotateZ(0deg);
   }
+
   100% {
     transform: rotateX(64deg) rotateZ(360deg);
   }
@@ -396,17 +724,34 @@
   0% {
     transform: rotateX(62deg) rotateZ(360deg);
   }
+
   100% {
     transform: rotateX(62deg) rotateZ(0deg);
   }
 }
 
 @keyframes auroraBeamPulse {
-  0%   { opacity: 0;    scaleY: 0.95; }
-  20%  { opacity: 0.78; }
-  50%  { opacity: 0.92; }
-  80%  { opacity: 0.62; }
-  100% { opacity: 0;    scaleY: 0.95; }
+  0% {
+    opacity: 0;
+    scaleY: 0.95;
+  }
+
+  20% {
+    opacity: 0.78;
+  }
+
+  50% {
+    opacity: 0.92;
+  }
+
+  80% {
+    opacity: 0.62;
+  }
+
+  100% {
+    opacity: 0;
+    scaleY: 0.95;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -419,7 +764,10 @@
 }
 
 ::selection {
-  @apply bg-orange-500/25 text-orange-950 dark:bg-amber-500/25 dark:text-amber-100;
+  @apply bg-orange-500/25
+    text-orange-950
+    dark:bg-amber-500/25
+    dark:text-amber-100;
 }
 
 ::-webkit-scrollbar {
@@ -427,13 +775,13 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-slate-100 dark:bg-stone-900;
+  @apply bg-stone-100 dark:bg-stone-900;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply rounded-full bg-slate-300 dark:bg-stone-700;
+  @apply rounded-full bg-stone-300 dark:bg-stone-700;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-slate-400 dark:bg-stone-600;
+  @apply bg-stone-400 dark:bg-stone-600;
 }
