@@ -44,19 +44,19 @@ export default function DashboardSidebar() {
           <div className="flex items-center justify-between">
             {!collapsed && (
               <Link href="/dashboard" className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-gradient-to-br from-orange-600 to-amber-600 rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-sm">V</span>
                 </div>
                 <div>
                   <span className="font-bold text-gray-900 dark:text-white">Vantech</span>
-                  <span className="font-bold text-blue-600">Softwares</span>
+                  <span className="font-bold text-orange-700 dark:text-amber-400">Softwares</span>
                 </div>
               </Link>
             )}
             
             {collapsed && (
               <Link href="/dashboard" className="flex items-center justify-center">
-                <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-gradient-to-br from-orange-600 to-amber-600 rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-sm">V</span>
                 </div>
               </Link>
@@ -86,7 +86,7 @@ export default function DashboardSidebar() {
                     href={item.href}
                     className={`flex items-center rounded-lg p-3 transition-colors ${
                       isActive
-                        ? 'bg-blue-50 dark:bg-amber-900/30 text-blue-600 dark:text-amber-300'
+                        ? 'bg-orange-50 dark:bg-amber-900/30 text-orange-800 dark:text-amber-300'
                         : 'text-gray-700 dark:text-stone-300 hover:bg-gray-50 dark:hover:bg-stone-800'
                     }`}
                   >

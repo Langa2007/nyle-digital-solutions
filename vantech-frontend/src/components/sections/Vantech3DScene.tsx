@@ -94,7 +94,7 @@ function CrystalTower() {
         />
       </mesh>
 
-      {/* Orbital ring 1 — cyan */}
+      {/* Orbital ring 1 — amber */}
       <mesh ref={ring1Ref} position={[0, 0.25, 0]}>
         <torusGeometry args={[1.28, 0.018, 12, 100]} />
         <meshStandardMaterial

@@ -16,7 +16,7 @@ export default function TermsPage() {
           Terms of Service
         </h1>
         
-        <div className="prose prose-lg prose-slate dark:prose-invert max-w-none text-slate-700 dark:text-slate-300">
+        <div className="prose prose-lg prose-stone dark:prose-invert max-w-none text-stone-700 dark:text-stone-300">
           <p>Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
           
           <h2>1. Agreement to Terms</h2>

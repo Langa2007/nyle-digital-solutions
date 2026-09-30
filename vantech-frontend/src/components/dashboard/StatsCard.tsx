@@ -8,7 +8,7 @@ const stats = [
     value: '12',
     change: '+2 from last month',
     icon: TrendingUp,
-    color: 'text-blue-600 bg-blue-100 dark:bg-amber-900/30',
+    color: 'text-amber-700 bg-amber-100 dark:bg-amber-900/30',
   },
   {
     title: 'Team Members',
@@ -22,7 +22,7 @@ const stats = [
     value: '99.9%',
     change: 'Last 30 days',
     icon: Server,
-    color: 'text-purple-600 bg-purple-100 dark:bg-amber-900/30',
+    color: 'text-emerald-700 bg-emerald-100 dark:bg-emerald-900/30',
   },
   {
     title: 'Monthly Revenue',

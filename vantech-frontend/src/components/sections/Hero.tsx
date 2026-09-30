@@ -87,7 +87,7 @@ export default function Hero() {
               ))}
             </div>
 
-            <div className="mt-10 grid max-w-2xl gap-3 rounded-lg border border-white/55 bg-white/45 p-3 shadow-[0_24px_70px_-48px_rgba(15,23,42,0.7)] backdrop-blur-2xl dark:border-white/10 dark:bg-stone-950/35 sm:grid-cols-4">
+            <div className="mt-10 grid max-w-2xl gap-3 rounded-lg border border-white/55 bg-white/45 p-3 shadow-[0_24px_70px_-48px_rgba(28,25,23,0.7)] backdrop-blur-2xl dark:border-white/10 dark:bg-stone-950/35 sm:grid-cols-4">
               {launchFlow.map((step, index) => (
                 <div key={step} className="flex items-center gap-3 rounded-lg border border-white/55 bg-white/55 px-3 py-3 text-sm font-semibold text-slate-700 dark:border-white/10 dark:bg-white/5 dark:text-slate-200">
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-orange-700 text-xs text-white">

@@ -46,7 +46,7 @@ export default function DashboardHeader() {
               </div>
               
               <button title="User Menu"
-               className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 text-white rounded-full">
+               className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-orange-600 to-amber-600 text-white rounded-full">
                 <User className="h-5 w-5" />
               </button>
             </div>

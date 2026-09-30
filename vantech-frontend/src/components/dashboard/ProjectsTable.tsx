@@ -50,7 +50,7 @@ const projects = [
 const getStatusIcon = (status: string) => {
   switch (status) {
     case 'active':
-      return <Clock className="h-4 w-4 text-blue-500" />;
+      return <Clock className="h-4 w-4 text-amber-500" />;
     case 'completed':
       return <CheckCircle className="h-4 w-4 text-green-500" />;
     case 'delayed':
@@ -118,7 +118,7 @@ export default function ProjectTable() {
                 <div className="flex items-center">
                   <div className="w-full bg-gray-200 dark:bg-stone-800 rounded-full h-2">
                     <div
-                      className="bg-blue-600 h-2 rounded-full"
+                      className="bg-orange-600 h-2 rounded-full"
                       style={{ width: `${project.progress}%` }}
                     />
                   </div>

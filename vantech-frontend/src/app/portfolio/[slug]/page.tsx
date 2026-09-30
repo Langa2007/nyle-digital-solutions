@@ -72,7 +72,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
       <div className="section-shell relative z-10 max-w-4xl mx-auto">
         <header className="mb-12">
           <div className="mb-6 flex items-center gap-3">
-            <span className="rounded-full bg-blue-600 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-white">
+            <span className="rounded-full bg-orange-700 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-white">
               {project.category || 'Case Study'}
             </span>
           </div>
@@ -95,7 +95,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
         )}
 
         <div className="grid md:grid-cols-[1fr_300px] gap-12">
-          <div className="prose prose-lg prose-slate dark:prose-invert max-w-none text-slate-700 dark:text-slate-300">
+          <div className="prose prose-lg prose-stone dark:prose-invert max-w-none text-slate-700 dark:text-slate-300">
             {project.content ? (
               <div dangerouslySetInnerHTML={{ __html: project.content }} />
             ) : (
@@ -128,7 +128,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex w-full justify-center items-center rounded-lg bg-blue-600 px-4 py-3 text-sm font-semibold text-white shadow-lg hover:bg-blue-700"
+                  className="inline-flex w-full justify-center items-center rounded-lg bg-orange-700 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-orange-700/25 hover:bg-orange-800"
                 >
                   Visit Live Project
                 </a>

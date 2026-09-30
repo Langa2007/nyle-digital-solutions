@@ -106,7 +106,7 @@ export default function BlogPostPage({ params }: Props) {
           />
         </div>
 
-        <div className="prose prose-lg prose-slate dark:prose-invert max-w-none text-slate-700 dark:text-slate-300">
+        <div className="prose prose-lg prose-stone dark:prose-invert max-w-none text-stone-700 dark:text-stone-300">
           <p>{post.content}</p>
         </div>
       </div>

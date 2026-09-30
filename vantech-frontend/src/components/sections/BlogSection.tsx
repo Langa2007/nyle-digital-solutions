@@ -17,7 +17,7 @@ const blogPosts = [
       'https://images.unsplash.com/photo-1457305237443-44c3d5a30b89?auto=format&fit=crop&w=800',
   },
   {
-    title: 'Designing Blue-Forward Interfaces Without Losing Clarity',
+    title: 'Designing Warm Brand Interfaces Without Losing Clarity',
     excerpt:
       'How to keep a strong color identity while improving readability, spacing, and hierarchy.',
     author: 'Vantech Design Team',
